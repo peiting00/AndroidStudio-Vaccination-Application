@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Group14_VaccinationApp</string>
+    <string name="appname">Vaccine Now</string>
+    <string name="content_desc_splash_screen_json">splash screen json</string>
+    <string name="content_desc_logo">logo</string>
 </resources>
