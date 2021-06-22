@@ -2,7 +2,12 @@ package com.example.group14_vaccinationapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Handler;
 import android.os.Bundle;
+import android.os.HandlerThread;
+import android.os.Looper;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -29,6 +34,20 @@ public class SplashScreen extends AppCompatActivity {
         appname.animate().setDuration(1000).setDuration(4000);
         lottieAnimationView.animate().setDuration(1000).setDuration(4000);
 
+        Runnable r = new Runnable() {
+
+            @Override
+            public void run() {
+                // if you are redirecting from a fragment then use getActivity() as the context.
+                startActivity(new Intent(SplashScreen.this, MainActivity.class));
+                finish();//user cannot switch back to splash screen
+            }
+        };
+
+
+        Handler h = new Handler();
+        // The Runnable will be executed after the given delay time
+        h.postDelayed(r, 5000); // delay 3 sec
 
     }
 
