@@ -3,4 +3,5 @@
     <string name="appname">Vaccine Now</string>
     <string name="content_desc_splash_screen_json">splash screen json</string>
     <string name="content_desc_logo">logo</string>
+    <string name="label_covid19_info">COVID-19 Info</string>
 </resources>

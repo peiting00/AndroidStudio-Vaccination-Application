@@ -39,7 +39,7 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 // if you are redirecting from a fragment then use getActivity() as the context.
-                startActivity(new Intent(SplashScreen.this, MainActivity.class));
+                startActivity(new Intent(SplashScreen.this, CovidWebsite.class));
                 finish();//user cannot switch back to splash screen
             }
         };
@@ -47,7 +47,7 @@ public class SplashScreen extends AppCompatActivity {
 
         Handler h = new Handler();
         // The Runnable will be executed after the given delay time
-        h.postDelayed(r, 5000); // delay 3 sec
+        h.postDelayed(r, 2000); // delay 3 sec
 
     }
 
