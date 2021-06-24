@@ -12,15 +12,11 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/Theme.Group14_VaccinationApp.NoActionBar"></activity>
-
-        <activity
-            android:name=".CovidWebsite"
-            android:label="CovidWebsite"></activity>
-
-        <activity
-            android:name=".SplashScreen">
+        <activity android:name=".CovidWebsite"></activity>
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
