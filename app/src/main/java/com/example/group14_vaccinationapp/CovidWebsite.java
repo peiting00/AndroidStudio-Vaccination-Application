@@ -1,14 +1,22 @@
 package com.example.group14_vaccinationapp;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.SearchManager;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
 import androidx.appcompat.widget.Toolbar;
 
 public class CovidWebsite extends AppCompatActivity {
 
     Toolbar toolbar;
+    private TextView mWebsite1,mWebsite2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +29,8 @@ public class CovidWebsite extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mWebsite1=findViewById(R.id.web_desc);
+        mWebsite2=findViewById(R.id.web_desc_2);
     }
 
     @Override //when back button clicked
@@ -29,5 +39,28 @@ public class CovidWebsite extends AppCompatActivity {
             finish();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    public void openWebsiteJKJAV(View view) {
+        mWebsite1=findViewById(R.id.web_address);
+        String url = mWebsite1.getText().toString();
+        Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
+        intent.putExtra(SearchManager.QUERY,url); // url is the query
+        if(intent.resolveActivity(getPackageManager())!=null){
+            startActivity(intent);
+        }
+
+    }
+
+    public void openWebsiteMOH(View view) {
+        mWebsite2=findViewById(R.id.web_address);
+        String url2 = mWebsite2.getText().toString();
+        Intent intent2 = new Intent(Intent.ACTION_WEB_SEARCH);
+        intent2.putExtra(SearchManager.QUERY,url2); // url is the query
+        if(intent2.resolveActivity(getPackageManager())!=null){
+            startActivity(intent2);
+        }
+
     }
 }

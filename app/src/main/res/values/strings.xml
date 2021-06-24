@@ -15,9 +15,4 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
-    <string name="get_your_vaccine_now">Get your vaccine now!</string>
-    <string name="vaccination">Vaccination</string>
-    <string name="faqs">FAQs</string>
-    <string name="things_to_do">Things To Do</string>
-    <string name="covid_19_info_amp_news"><![CDATA[COVID-19 Info & News]]></string>
 </resources>
