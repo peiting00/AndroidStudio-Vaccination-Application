@@ -26,6 +26,7 @@
     <string name="faqs">FAQs</string>
     <string name="things_to_do">Things To Do</string>
     <string name="covid_19_info_amp_news"><![CDATA[COVID-19 Info & News]]></string>
+
     <string name="text_astra_zeneca">Astra Zeneca</string>
     <string name="text_covid_19_vaccination_in_malaysia">COVID-19 Vaccination in Malaysia</string>
     <string name="text_sinovac_coronavac">Sinovac - Coronavac</string>
@@ -62,7 +63,6 @@
 • had a severe allergic reaction after a previous dose of this vaccine\n
 • had a severe allergic reaction to any ingredient of this vaccine\n
     </string>
-
-
     <string name="expandbutton">expandButton</string>
+    <string name="personal_nhealthcare"><![CDATA[Personal Healthcare]]></string>
 </resources>

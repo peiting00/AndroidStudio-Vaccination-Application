@@ -36,8 +36,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                Intent intent=new Intent(getApplicationContext(),SelectVaccine.class);
-                startActivity(intent);
             }
         });
         DrawerLayout drawer = binding.drawerLayout;
@@ -65,5 +63,9 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    public void toVaccinationMenu(View view) {
+        Intent intent = new Intent(this, VaccinationMenu.class);
     }
 }

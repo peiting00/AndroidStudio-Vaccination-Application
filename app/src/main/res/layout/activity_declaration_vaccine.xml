@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DeclarationVaccine">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarDeclare"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#00a9b0 "
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:theme="@style/Toolbar_back_button_style"
+        app:title="Declaration"
+        app:titleMargin="2dp"
+        app:titleTextColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="537dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:inputType="textMultiLine"
+        android:text="1.	    The Covid-19 vaccine may lead to side effects as stated in the Covid-19 Vaccine Information for Recipients. \n\n2.	    The signatory is responsible for any possible risks because the benefits far outweigh the side effects. \n\n3.	    The vaccine does not guarantee the signatory will not be infected with Covid-19 in the future. \n\n4.	    The signatory consents to receiving the vaccine voluntarily to complete the vaccination as scheduled. "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarDeclare" />
+</androidx.constraintlayout.widget.ConstraintLayout>

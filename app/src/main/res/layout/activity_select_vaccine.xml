@@ -8,7 +8,7 @@
     tools:context=".SelectVaccine">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbarVaccineInfor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#00a9b0 "
@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:theme="@style/Toolbar_back_button_style"
-        app:title="Vaccination Menu"
+        app:title="Information about Vaccines"
         app:titleMargin="2dp"
         app:titleTextColor="#FFFFFF" />
 
@@ -324,7 +324,6 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar"
         android:layout_centerInParent="true"
         android:layout_centerVertical="false"
         android:layout_marginTop="16dp"
@@ -333,6 +332,6 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbarVaccineInfor" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

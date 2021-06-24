@@ -4,19 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.app.ActionBar;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 
-public class VaccinationMenu extends AppCompatActivity {
-
+public class DeclarationVaccine extends AppCompatActivity {
+    //private  toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vaccination_menu);
+        setContentView(R.layout.activity_declaration_vaccine);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarVaccination);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarDeclare);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -29,15 +27,5 @@ public class VaccinationMenu extends AppCompatActivity {
             finish();
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    public void toVaccinationRegisDeclare(View view) {
-        Intent intent = new Intent(this, DeclarationVaccine.class);
-        startActivity(intent);
-    }
-
-    public void toVaccineInfo(View view) {
-        Intent intent = new Intent(getApplicationContext(),SelectVaccine.class);
-        startActivity(intent);
     }
 }
