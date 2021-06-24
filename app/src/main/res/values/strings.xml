@@ -20,4 +20,10 @@
     <string name="www_vaksincovid_gov_my">www.vaksincovid.gov.my</string>
     <string name="www_moh_gov_my">www.moh.gov.my</string>
     <string name="click_to_know_the_latest_health_updates_from_the_ministry_of_health_moh">Click to know the latest health updates from The Ministry of Health (MOH)</string>
-</resources>
+
+    <string name="get_your_vaccine_now">Get your vaccine now!</string>
+    <string name="vaccination">Vaccination</string>
+    <string name="faqs">FAQs</string>
+    <string name="things_to_do">Things To Do</string>
+    <string name="covid_19_info_amp_news"><![CDATA[COVID-19 Info & News]]></string>
+    </resources>
