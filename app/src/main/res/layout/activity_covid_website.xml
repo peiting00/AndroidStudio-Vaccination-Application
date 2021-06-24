@@ -16,7 +16,7 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:theme="@style/Toolbar_back_button_style"
@@ -25,7 +25,7 @@
         app:titleTextColor="#FFFFFF" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/box_web1"
+        android:id="@+id/box_vaccine_1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/icon_web"
+                android:id="@+id/icon_vaccine_1"
                 android:layout_width="59dp"
                 android:layout_height="56dp"
                 android:layout_marginStart="8dp"
@@ -54,7 +54,7 @@
                 app:srcCompat="@drawable/website" />
 
             <TextView
-                android:id="@+id/web_address"
+                android:id="@+id/label_vaccine_1"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginStart="8dp"
@@ -63,7 +63,7 @@
                 android:text="@string/www_vaksincovid_gov_my"
                 android:textColor="#000000"
                 android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@+id/icon_web"
+                app:layout_constraintStart_toEndOf="@+id/icon_vaccine_1"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -81,15 +81,15 @@
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/icon_web"
-                app:layout_constraintTop_toBottomOf="@+id/web_address" />
+                app:layout_constraintStart_toEndOf="@+id/icon_vaccine_1"
+                app:layout_constraintTop_toBottomOf="@+id/label_vaccine_1" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/box_web2"
+        android:id="@+id/box_vaccine_2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -99,14 +99,14 @@
         android:layout_marginRight="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/box_web1">
+        app:layout_constraintTop_toBottomOf="@id/box_vaccine_1">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/icon_web_2"
+                android:id="@+id/icon_vaccine_3"
                 android:layout_width="54dp"
                 android:layout_height="53dp"
                 android:layout_marginStart="8dp"
@@ -118,7 +118,7 @@
                 app:srcCompat="@drawable/website" />
 
             <TextView
-                android:id="@+id/web_address_2"
+                android:id="@+id/label_vaccine_sinovac"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginStart="8dp"
@@ -127,7 +127,7 @@
                 android:text="@string/www_moh_gov_my"
                 android:textColor="#000000"
                 android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@+id/icon_web_2"
+                app:layout_constraintStart_toEndOf="@+id/icon_vaccine_3"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -146,8 +146,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@id/icon_web_2"
-                app:layout_constraintTop_toBottomOf="@+id/web_address_2" />
+                app:layout_constraintStart_toEndOf="@id/icon_vaccine_3"
+                app:layout_constraintTop_toBottomOf="@+id/label_vaccine_sinovac" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

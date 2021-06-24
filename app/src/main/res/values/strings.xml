@@ -26,4 +26,43 @@
     <string name="faqs">FAQs</string>
     <string name="things_to_do">Things To Do</string>
     <string name="covid_19_info_amp_news"><![CDATA[COVID-19 Info & News]]></string>
-    </resources>
+    <string name="text_astra_zeneca">Astra Zeneca</string>
+    <string name="text_covid_19_vaccination_in_malaysia">COVID-19 Vaccination in Malaysia</string>
+    <string name="text_sinovac_coronavac">Sinovac - Coronavac</string>
+    <string name="text_pfizer_biontech">Pfizer - BioNTech</string>
+
+    <!-- Vaccine Information -->
+    <string name="vaccine_info_pfizer"><b>Company:</b> US, Germany\n<b>Type of Vaccine:</b>mRNA\n<b>Number of Shots:</b> 2 shots, 21 days apart into muscle
+        \n<b>Effectiveness:</b> 95%\n<b>Does NOT contain:</b> Eggs, preservatives, latex\n\n
+        <b>What is the Pfizer-BioNTech COVID-19 Vaccine?</b>\nThe Pfizer-BioNTech COVID-19 Vaccine is an unapproved vaccine that may preventCOVID-19.
+        There is no FDA-approved vaccine to prevent COVID-19.The FDA has authorized the emergency use of the Pfizer-BioNTech COVID-19 Vaccine to prevent
+        COVID-19 in individuals 12 years of age and older under an Emergency Use Authorization (EUA).\n\n<b>Who should get the Pfizer-BioNTech COVID-19 Vaccine?</b>
+        \nFDA has authorized the emergency use of the Pfizer-BioNTech COVID-19 Vaccine individuals 12 years of age and older.\n\n<b>Who should NOT get the Pfizer-BioNTech COVID-19 Vaccine</b>
+        \nYou should not get the Pfizer-BioNTech COVID-19 Vaccine if you:\n
+• had a severe allergic reaction after a previous dose of this vaccine\n
+• had a severe allergic reaction to any ingredient of this vaccine\n
+    </string>
+    <string name="vaccine_info_sinovac"><b>Company:</b> China\n<b>Type of Vaccine:</b> Inactivated virus vaccine\n<b>Number of Shots:</b> 2 shots, 21 days apart into muscle
+        <b>Effectiveness:</b> 68%\n<b>Does NOT contain:</b> Eggs, preservatives, latex\n\n
+        <b>What is the Sinovac CoronaVac COVID-19 Vaccine?</b>\nThe Sinovac CoronaVac COVID-19 Vaccine is an unapproved vaccine that may preventCOVID-19.
+        There is no FDA-approved vaccine to prevent COVID-19.The FDA has authorized the emergency use of the Sinovac CoronaVac COVID-19 Vaccine to prevent
+        COVID-19 in individuals 12 years of age and older under an Emergency Use Authorization (EUA).\n\n<b>Who should get the Sinovac CoronaVac COVID-19 Vaccine?</b>
+        \nFDA has authorized the emergency use of the Sinovac CoronaVac COVID-19 Vaccine individuals 18 years of age and older.\n\n<b>Who should NOT get the Sinovac CoronaVac COVID-19 Vaccine:</b>
+        \nYou should not get the Sinovac CoronaVac COVID-19 Vaccine if you:\n
+• had a severe allergic reaction after a previous dose of this vaccine\n
+• had a severe allergic reaction to any ingredient of this vaccine\n
+    </string>
+    <string name="vaccine_info_az"><b>Company:</b> Oxford\n<b>Type of Vaccine:</b> Chimpanzee adenovirus\n<b>Number of Shots:</b> 2 shots, 28 days apart into muscle
+        <b>Effectiveness:</b> 90%\n<b>Does NOT contain:</b> Eggs, preservatives, latex\n\n
+        <b>What is the AstraZeneca COVID-19 Vaccine?</b>\nThe AstraZeneca COVID-19 Vaccine is an unapproved vaccine that may preventCOVID-19.
+        There is no FDA-approved vaccine to prevent COVID-19.The FDA has authorized the emergency use of the AstraZeneca COVID-19 Vaccine to prevent
+        COVID-19 in individuals 12 years of age and older under an Emergency Use Authorization (EUA).\n\n<b>Who should get the AstraZeneca COVID-19 Vaccine?</b>
+        \nFDA has authorized the emergency use of the AstraZeneca COVID-19 Vaccine individuals 18 years of age and older.\n\n<b>Who should NOT get the AstraZeneca COVID-19 Vaccine</b>
+        \nYou should not get the AstraZeneca COVID-19 Vaccine if you:\n
+• had a severe allergic reaction after a previous dose of this vaccine\n
+• had a severe allergic reaction to any ingredient of this vaccine\n
+    </string>
+
+
+    <string name="expandbutton">expandButton</string>
+</resources>

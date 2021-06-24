@@ -4,9 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.SearchManager;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -43,7 +41,7 @@ public class CovidWebsite extends AppCompatActivity {
 
 
     public void openWebsiteJKJAV(View view) {
-        mWebsite1=findViewById(R.id.web_address);
+        mWebsite1=findViewById(R.id.label_vaccine_1);
         String url = mWebsite1.getText().toString();
         Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
         intent.putExtra(SearchManager.QUERY,url); // url is the query
@@ -54,7 +52,7 @@ public class CovidWebsite extends AppCompatActivity {
     }
 
     public void openWebsiteMOH(View view) {
-        mWebsite2=findViewById(R.id.web_address);
+        mWebsite2=findViewById(R.id.label_vaccine_1);
         String url2 = mWebsite2.getText().toString();
         Intent intent2 = new Intent(Intent.ACTION_WEB_SEARCH);
         intent2.putExtra(SearchManager.QUERY,url2); // url is the query
