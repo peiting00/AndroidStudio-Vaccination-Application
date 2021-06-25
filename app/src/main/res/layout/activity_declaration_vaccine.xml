@@ -24,16 +24,83 @@
         app:titleTextColor="#FFFFFF" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/txtHeaderDeclare"
         android:layout_width="0dp"
-        android:layout_height="537dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:inputType="textMultiLine"
-        android:text="1.	    The Covid-19 vaccine may lead to side effects as stated in the Covid-19 Vaccine Information for Recipients. \n\n2.	    The signatory is responsible for any possible risks because the benefits far outweigh the side effects. \n\n3.	    The vaccine does not guarantee the signatory will not be infected with Covid-19 in the future. \n\n4.	    The signatory consents to receiving the vaccine voluntarily to complete the vaccination as scheduled. "
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="@string/b_please_read_the_declaration_below_carefully_b"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbarDeclare" />
+
+
+    <ScrollView
+        android:id="@+id/scrollViewDeclaration"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtHeaderDeclare">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtDeclareContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:inputType="textMultiLine"
+                android:text="@string/declaration" />
+
+            <TextView
+                android:id="@+id/txtSubHeaderDeclare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/SubheadingDeclare"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/txtSubSubHeaderDeclare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/phase_1a"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/txtDeclareContent02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:inputType="textMultiLine"
+                android:text="@string/Declaration_phase_1A" />
+
+            <TextView
+                android:id="@+id/txtSubSubHeaderDeclare02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/phase_1b"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/txtDeclareContent03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:inputType="textMultiLine"
+                android:text="@string/Declaration_phase_1B" />
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
