@@ -29,6 +29,7 @@
         android:gravity="center"
         android:text="@string/get_your_vaccine_now"
         android:textSize="18sp"
+        android:fontFamily="@font/roboto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -44,7 +45,7 @@
         android:layout_marginBottom="8dp"
         android:orientation="horizontal"
         android:useDefaultMargins="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/txtCall"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtSlogan">
@@ -62,9 +63,17 @@
                 android:layout_margin="8dp"
                 android:layout_weight=".60"
                 android:background="@drawable/rounded_corners"
+                android:drawingCacheQuality="auto"
+                android:fontFamily="@font/roboto"
+                android:gravity="bottom|center"
+                android:paddingBottom="40dp"
                 android:inputType="textCapSentences"
+                app:icon="@mipmap/ic_channel_syringe02_foreground"
                 android:text="@string/vaccination"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+
+                app:iconGravity="textTop"
+                app:iconPadding="10dp" />
 
             <Button
                 android:id="@+id/btnFaq"
@@ -73,10 +82,17 @@
                 android:layout_margin="8dp"
                 android:layout_weight=".40"
                 android:background="@drawable/rounded_corners"
-                android:inputType="textCapSentences"
-                android:text="@string/faqs"
+                android:fontFamily="@font/roboto"
+                android:gravity="center|bottom"
+                android:inputType="textLongMessage|textCapSentences"
+                android:paddingBottom="10dp"
+                android:text="FAQs"
+                android:textColor="#FFFFFF"
                 android:textSize="20sp"
-                app:backgroundTint="#94A1A1" />
+
+                app:backgroundTint="#94A1A1"
+                app:icon="@drawable/faqiconedit"
+                app:iconGravity="textTop" />
         </LinearLayout>
 
         <LinearLayout
@@ -92,9 +108,16 @@
                 android:layout_margin="8dp"
                 android:layout_weight=".40"
                 android:background="@drawable/rounded_corners"
-                android:inputType="textMultiLine|textCapSentences"
+                android:gravity="bottom|center"
+                android:inputType="textMultiLine"
                 android:text="Personal Healthcare"
-                android:textSize="16sp"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                android:fontFamily="@font/roboto"
+                app:icon="@drawable/healthcareedit"
+                app:iconGravity="textTop"
+                app:iconPadding="20dp"
+                android:paddingBottom="10dp"
                 app:backgroundTint="#A600A9B0" />
 
             <Button
@@ -104,10 +127,23 @@
                 android:layout_margin="8dp"
                 android:layout_weight=".60"
                 android:background="@drawable/rounded_corners"
+                android:gravity="bottom|center"
                 android:text="@string/covid_19_info_amp_news"
                 android:textSize="20sp"
+                android:fontFamily="@font/roboto"
+                app:icon="@mipmap/ic_channel_covidedit_foreground"
+                app:iconGravity="textTop"
                 app:backgroundTint="@color/teal_700" />
         </LinearLayout>
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtCall"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:gravity="end"
+        android:text="Feeling unwell? Contact Us!                                "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearParent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
