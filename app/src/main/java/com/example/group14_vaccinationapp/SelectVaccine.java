@@ -19,9 +19,9 @@ public class SelectVaccine extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_vaccine);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarVaccineInfor);
+        //set back button
+        Toolbar toolbar = findViewById(R.id.toolbarVaccineInfor);
         setSupportActionBar(toolbar);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
@@ -33,6 +33,11 @@ public class SelectVaccine extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    /**
+     * Pfizer vaccine
+     * When user clicked the up/down arrow
+     */
     public void pfizer(View view) {
         info_pfizer=findViewById(R.id.info_vaccine_pfizer);
         imgbtn=findViewById(R.id.imageButton);
@@ -50,6 +55,10 @@ public class SelectVaccine extends AppCompatActivity {
         }
     }
 
+    /**
+     * Sinovac vaccine
+     * When user clicked the up/down arrow
+     */
     public void sinovac(View view) {
         info_sinovac=findViewById(R.id.info_vaccine_sinovac);
         imgbtn=findViewById(R.id.imageButton2);
@@ -66,6 +75,10 @@ public class SelectVaccine extends AppCompatActivity {
         }
     }
 
+    /**
+     * Astra Zeneca vaccine
+     * When user clicked the up/down arrow
+     */
     public void az(View view) {
         info_az=findViewById(R.id.info_vaccine_az);
         imgbtn=findViewById(R.id.imageButton3);
