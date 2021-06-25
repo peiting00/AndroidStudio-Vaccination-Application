@@ -10,6 +10,10 @@
         android:theme="@style/Theme.Group14_VaccinationApp">
         <activity android:name=".Quiz"></activity>
         <activity android:name=".DeclarationVaccine" />
+        android:theme="@style/Theme.Group14_VaccinationApp" >
+        <activity android:name=".Registration" >
+        </activity>
+
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"

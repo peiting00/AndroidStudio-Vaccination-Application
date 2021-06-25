@@ -44,7 +44,7 @@
 • had a severe allergic reaction to any ingredient of this vaccine\n
     </string>
     <string name="vaccine_info_sinovac"><b>Company:</b> China\n<b>Type of Vaccine:</b> Inactivated virus vaccine\n<b>Number of Shots:</b> 2 shots, 21 days apart into muscle
-        <b>Effectiveness:</b> 68%\n<b>Does NOT contain:</b> Eggs, preservatives, latex\n\n
+        \n<b>Effectiveness:</b> 68%\n<b>Does NOT contain:</b> Eggs, preservatives, latex\n\n
         <b>What is the Sinovac CoronaVac COVID-19 Vaccine?</b>\nThe Sinovac CoronaVac COVID-19 Vaccine is an unapproved vaccine that may preventCOVID-19.
         There is no FDA-approved vaccine to prevent COVID-19.The FDA has authorized the emergency use of the Sinovac CoronaVac COVID-19 Vaccine to prevent
         COVID-19 in individuals 12 years of age and older under an Emergency Use Authorization (EUA).\n\n<b>Who should get the Sinovac CoronaVac COVID-19 Vaccine?</b>
@@ -54,7 +54,7 @@
 • had a severe allergic reaction to any ingredient of this vaccine\n
     </string>
     <string name="vaccine_info_az"><b>Company:</b> Oxford\n<b>Type of Vaccine:</b> Chimpanzee adenovirus\n<b>Number of Shots:</b> 2 shots, 28 days apart into muscle
-        <b>Effectiveness:</b> 90%\n<b>Does NOT contain:</b> Eggs, preservatives, latex\n\n
+        \n<b>Effectiveness:</b> 90%\n<b>Does NOT contain:</b> Eggs, preservatives, latex\n\n
         <b>What is the AstraZeneca COVID-19 Vaccine?</b>\nThe AstraZeneca COVID-19 Vaccine is an unapproved vaccine that may preventCOVID-19.
         There is no FDA-approved vaccine to prevent COVID-19.The FDA has authorized the emergency use of the AstraZeneca COVID-19 Vaccine to prevent
         COVID-19 in individuals 12 years of age and older under an Emergency Use Authorization (EUA).\n\n<b>Who should get the AstraZeneca COVID-19 Vaccine?</b>
@@ -103,6 +103,4 @@
         \n\n 6. \t\t People who have been diagnosed by a medical practitioner with one or more of the following edical conditions (this eligibility criteria applies to people aged 69 years and under)
     </string>
     <string name="latest_information_about_covid_19">COVID-19 Information &amp; News</string>
-    <string name="agreement">I confirm that I have read, consent and agree to the declaration of Vaccination of COVID-19. \nI understand the risk and side effects of vaccines.</string>
-    <string name="padding"> \n\n </string>
 </resources>
