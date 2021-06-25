@@ -44,7 +44,7 @@
 • had a severe allergic reaction to any ingredient of this vaccine\n
     </string>
     <string name="vaccine_info_sinovac"><b>Company:</b> China\n<b>Type of Vaccine:</b> Inactivated virus vaccine\n<b>Number of Shots:</b> 2 shots, 21 days apart into muscle
-        <b>Effectiveness:</b> 68%\n<b>Does NOT contain:</b> Eggs, preservatives, latex\n\n
+        \n<b>Effectiveness:</b> 68%\n<b>Does NOT contain:</b> Eggs, preservatives, latex\n\n
         <b>What is the Sinovac CoronaVac COVID-19 Vaccine?</b>\nThe Sinovac CoronaVac COVID-19 Vaccine is an unapproved vaccine that may preventCOVID-19.
         There is no FDA-approved vaccine to prevent COVID-19.The FDA has authorized the emergency use of the Sinovac CoronaVac COVID-19 Vaccine to prevent
         COVID-19 in individuals 12 years of age and older under an Emergency Use Authorization (EUA).\n\n<b>Who should get the Sinovac CoronaVac COVID-19 Vaccine?</b>
@@ -54,7 +54,7 @@
 • had a severe allergic reaction to any ingredient of this vaccine\n
     </string>
     <string name="vaccine_info_az"><b>Company:</b> Oxford\n<b>Type of Vaccine:</b> Chimpanzee adenovirus\n<b>Number of Shots:</b> 2 shots, 28 days apart into muscle
-        <b>Effectiveness:</b> 90%\n<b>Does NOT contain:</b> Eggs, preservatives, latex\n\n
+        \n<b>Effectiveness:</b> 90%\n<b>Does NOT contain:</b> Eggs, preservatives, latex\n\n
         <b>What is the AstraZeneca COVID-19 Vaccine?</b>\nThe AstraZeneca COVID-19 Vaccine is an unapproved vaccine that may preventCOVID-19.
         There is no FDA-approved vaccine to prevent COVID-19.The FDA has authorized the emergency use of the AstraZeneca COVID-19 Vaccine to prevent
         COVID-19 in individuals 12 years of age and older under an Emergency Use Authorization (EUA).\n\n<b>Who should get the AstraZeneca COVID-19 Vaccine?</b>
@@ -65,6 +65,9 @@
     </string>
     <string name="expandbutton">expandButton</string>
     <string name="personal_nhealthcare"><![CDATA[Personal Healthcare]]></string>
+    <string name="latest_information_about_covid_19">Latest information about COVID-19</string>
+
+    <!-- Declaration    -->
     <string name="declaration">
         1. \t\t The Covid-19 vaccine may lead to side effects as stated in the Covid-19 Vaccine Information for Recipients.
         \n\n2. \t\t The signatory is responsible for any possible risks because the benefits far outweigh the side effects.
@@ -80,7 +83,7 @@
         \n\n12. \t\t Diagnosed with a disability or age-related condition and am attending center-based services.
         \n\n13. \t\t An essential career of a person with a disability or elderly person eligible under Phase 1A or Phase 1B.
         \n
-</string>
+    </string>
     <string name="b_please_read_the_declaration_below_carefully_b"><b>Please read the declaration below carefully: \n</b></string>
     <string name="SubheadingDeclare"><b>People who are eligible under Phase 1A and Phase 1B of the rollout:</b></string>
     <string name="phase_1a"><b><u>Phase 1A</u></b></string>
@@ -102,5 +105,21 @@
         \n\n 5. \t\t People who have either undergone or are undergoing one or more of the following treatments or procedures.
         \n\n 6. \t\t People who have been diagnosed by a medical practitioner with one or more of the following edical conditions (this eligibility criteria applies to people aged 69 years and under)
     </string>
-    <string name="latest_information_about_covid_19">COVID-19 Information &amp; News</string>
+
+    <!-- String for registration page    -->
+    <string name="registration_topInfo">Please ensure that all information provided is complete and accurate for a smooth and fuss-free registration.</string>
+    <string name="registration_label_fullname">Full Name</string>
+    <string name="registration_label_email">Email</string>
+    <string name="registration_label_NRIC">NRIC / Passport No</string>
+    <string name="registration_label_NRIC_confirm">Confirm NRIC / Passport No</string>
+    <string name="label_registration_personalinfoTitle">Personal Information</string>
+    <string name="label_registration_Title">VACCINE NOW\nREGISTER FOR YOU VACCINATION NOW</string>
+    <string name="contentDesc_register_icon">registration_icon</string>
+    <string name="label_register_currentAdd">Current Address</string>
+    <string name="label_register_hint_address">Address</string>
+    <string name="label_register_hint_area">Area</string>
+    <string name="label_register_hint_postalcode">Postal code</string>
+    <string name="label_register_hint_state">State</string>
+    <string name="label_register_hint_vaccinepreference">Vaccine Preference</string>
+    <!-- End    -->
 </resources>

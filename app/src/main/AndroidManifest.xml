@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.group14_vaccinationapp">
+    package="com.example.group14_vaccinationapp" >
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_vaccine"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Group14_VaccinationApp">
-        <activity android:name=".DeclarationVaccine"></activity>
+        android:theme="@style/Theme.Group14_VaccinationApp" >
+        <activity android:name=".Registration" >
+        </activity>
+        <activity android:name=".DeclarationVaccine" />
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/Theme.Group14_VaccinationApp.NoActionBar"></activity>
-        <activity android:name=".CovidWebsite"></activity>
-        <activity android:name=".SplashScreen">
+            android:theme="@style/Theme.Group14_VaccinationApp.NoActionBar" />
+        <activity android:name=".CovidWebsite" />
+        <activity android:name=".SplashScreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,8 +25,8 @@
         </activity>
         <activity
             android:name=".VaccinationMenu"
-            android:label="@string/vaccination"></activity>
-        <activity android:name=".SelectVaccine"></activity>
+            android:label="@string/vaccination" />
+        <activity android:name=".SelectVaccine" />
 
         <meta-data
             android:name="preloaded_fonts"
