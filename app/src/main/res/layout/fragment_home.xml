@@ -68,7 +68,7 @@
                 android:gravity="bottom|center"
                 android:paddingBottom="40dp"
                 android:inputType="textCapSentences"
-                app:icon="@mipmap/ic_channel_syringe02_foreground"
+                app:icon="@drawable/syringe"
                 android:text="@string/vaccination"
                 android:textSize="20sp"
 
