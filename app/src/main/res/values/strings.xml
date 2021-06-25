@@ -122,4 +122,5 @@
     <string name="label_register_hint_state">State</string>
     <string name="label_register_hint_vaccinepreference">Vaccine Preference</string>
     <!-- End    -->
+
 </resources>
