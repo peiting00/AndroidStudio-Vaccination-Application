@@ -1,7 +1,9 @@
 package com.example.group14_vaccinationapp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+    private static final String TAG = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +37,20 @@ public class MainActivity extends AppCompatActivity {
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+
+                // Set the data for the intent as the phone number.
+                intent.setData(Uri.parse("tel:123456789"));
+
+                // If the intent resolves to a package (app),
+                // start the activity with the intent.
+                if (intent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(intent);
+                } else {
+                    Log.d(TAG, "ImplicitIntents: Can't handle this!");
+                }
             }
         });
         DrawerLayout drawer = binding.drawerLayout;
@@ -67,5 +82,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void toVaccinationMenu(View view) {
         Intent intent = new Intent(this, VaccinationMenu.class);
+    }
+
+    public void dial(View view) {
+
     }
 }

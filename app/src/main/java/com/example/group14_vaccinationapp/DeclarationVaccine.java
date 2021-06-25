@@ -4,8 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
 
 public class DeclarationVaccine extends AppCompatActivity {
     //private  toolbar;
@@ -27,5 +31,17 @@ public class DeclarationVaccine extends AppCompatActivity {
             finish();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void isCheckedcbxAgreement(View view) {
+        CheckBox checkBox = findViewById(R.id.cbxAgreement);
+        Button btnSubmit = findViewById(R.id.btnSubmitDeclare);
+
+        btnSubmit.setEnabled(checkBox.isChecked());
+    }
+
+    public void toQuiz(View view) {
+        Intent intent = new Intent(this, Quiz.class);
+        startActivity(intent);
     }
 }

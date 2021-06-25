@@ -39,67 +39,165 @@
         android:id="@+id/scrollViewDeclaration"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtHeaderDeclare">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/txtDeclareContent"
+            <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:inputType="textMultiLine"
-                android:text="@string/declaration" />
+                card_view:cardCornerRadius="7dp"
+                card_view:cardUseCompatPadding="true">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/conCard01"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/txtDeclareContent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:inputType="textMultiLine"
+                        android:text="@string/declaration"
+
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/txtSubHeaderDeclare"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="@string/SubheadingDeclare"
+                        android:textSize="15sp"
+
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtDeclareContent" />
+
+                    <TextView
+                        android:id="@+id/txtSubSubHeaderDeclare"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="@string/phase_1a"
+                        android:textSize="15sp"
+
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtSubHeaderDeclare" />
+
+                    <TextView
+                        android:id="@+id/txtDeclareContent02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:inputType="textMultiLine"
+                        android:text="@string/Declaration_phase_1A"
+
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtSubSubHeaderDeclare" />
+
+                    <TextView
+                        android:id="@+id/txtSubSubHeaderDeclare02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="@string/phase_1b"
+                        android:textSize="15sp"
+
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtDeclareContent02" />
+
+                    <TextView
+                        android:id="@+id/txtDeclareContent03"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:inputType="textMultiLine"
+                        android:text="@string/Declaration_phase_1B"
+
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtSubSubHeaderDeclare02" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="7dp"
+                app:cardUseCompatPadding="true">
+
+                <!-- Main Content View -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+                    <CheckBox
+                        android:id="@+id/cbxAgreement"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="clip_vertical"
+                        android:padding="5dp"
+                        android:text="@string/agreement"
+                        android:fontFamily="@font/roboto"
+                        android:textSize="17sp"
+
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:onClick="isCheckedcbxAgreement"/>
+
+                    <Button
+                        android:id="@+id/btnSubmitDeclare"
+                        android:layout_width="120dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:enabled="false"
+                        android:fontFamily="@font/roboto"
+                        android:shadowColor="#FFFFFF"
+                        android:text="Next"
+                        android:textAllCaps="false"
+                        android:textSize="16sp"
+                        app:backgroundTint="#B5009385"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/cbxAgreement"
+                        android:onClick="toQuiz"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.cardview.widget.CardView>
 
             <TextView
-                android:id="@+id/txtSubHeaderDeclare"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="@string/SubheadingDeclare"
-                android:textSize="15sp" />
+                android:text="@string/padding">
 
-            <TextView
-                android:id="@+id/txtSubSubHeaderDeclare"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="@string/phase_1a"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/txtDeclareContent02"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:inputType="textMultiLine"
-                android:text="@string/Declaration_phase_1A" />
-
-            <TextView
-                android:id="@+id/txtSubSubHeaderDeclare02"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="@string/phase_1b"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/txtDeclareContent03"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:inputType="textMultiLine"
-                android:text="@string/Declaration_phase_1B" />
-
-
-
+            </TextView>
         </LinearLayout>
+
+
     </ScrollView>
 
 
