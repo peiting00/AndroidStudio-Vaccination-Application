@@ -21,7 +21,7 @@ public class CovidWebsite extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_covid_website);
 
-        toolbar=findViewById(R.id.toolbar);
+        toolbar=findViewById(R.id.toolbar_CovidWebsite);
 
         // set back button
         setSupportActionBar(toolbar);
@@ -41,10 +41,12 @@ public class CovidWebsite extends AppCompatActivity {
 
 
     public void openWebsiteJKJAV(View view) {
-        mWebsite1=findViewById(R.id.label_vaccine_1);
+        // get website url
+        mWebsite1=findViewById(R.id.label_website_jkjav);
         String url = mWebsite1.getText().toString();
+
         Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
-        intent.putExtra(SearchManager.QUERY,url); // url is the query
+        intent.putExtra(SearchManager.QUERY,url); // 'url' is the query
         if(intent.resolveActivity(getPackageManager())!=null){
             startActivity(intent);
         }
@@ -52,10 +54,12 @@ public class CovidWebsite extends AppCompatActivity {
     }
 
     public void openWebsiteMOH(View view) {
-        mWebsite2=findViewById(R.id.label_vaccine_1);
+        //get website url
+        mWebsite2=findViewById(R.id.label_website_moh);
         String url2 = mWebsite2.getText().toString();
+
         Intent intent2 = new Intent(Intent.ACTION_WEB_SEARCH);
-        intent2.putExtra(SearchManager.QUERY,url2); // url is the query
+        intent2.putExtra(SearchManager.QUERY,url2); // 'url' is the query
         if(intent2.resolveActivity(getPackageManager())!=null){
             startActivity(intent2);
         }

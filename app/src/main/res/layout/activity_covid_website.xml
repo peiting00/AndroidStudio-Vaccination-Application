@@ -8,7 +8,7 @@
 
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar_CovidWebsite"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -30,12 +30,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:layout_constraintTop_toBottomOf="@id/label_covidwebsite">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -43,8 +43,8 @@
 
             <ImageView
                 android:id="@+id/icon_vaccine_1"
-                android:layout_width="59dp"
-                android:layout_height="56dp"
+                android:layout_width="52dp"
+                android:layout_height="50dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:contentDescription="@string/web_icon"
@@ -54,7 +54,7 @@
                 app:srcCompat="@drawable/website" />
 
             <TextView
-                android:id="@+id/label_vaccine_1"
+                android:id="@+id/label_website_jkjav"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginStart="8dp"
@@ -62,7 +62,7 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/www_vaksincovid_gov_my"
                 android:textColor="#000000"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toEndOf="@+id/icon_vaccine_1"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -78,11 +78,11 @@
                 android:layout_marginBottom="8dp"
                 android:onClick="openWebsiteJKJAV"
                 android:text="@string/click_to_know_the_latest_updates_on_malaysia_s_vaccination_program"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/icon_vaccine_1"
-                app:layout_constraintTop_toBottomOf="@+id/label_vaccine_1" />
+                app:layout_constraintTop_toBottomOf="@id/label_website_jkjav" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -107,8 +107,8 @@
 
             <ImageView
                 android:id="@+id/icon_vaccine_3"
-                android:layout_width="54dp"
-                android:layout_height="53dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:contentDescription="@string/web_icon"
@@ -118,7 +118,7 @@
                 app:srcCompat="@drawable/website" />
 
             <TextView
-                android:id="@+id/label_vaccine_sinovac"
+                android:id="@+id/label_website_moh"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginStart="8dp"
@@ -126,7 +126,7 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/www_moh_gov_my"
                 android:textColor="#000000"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toEndOf="@+id/icon_vaccine_3"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -142,15 +142,26 @@
                 android:layout_marginBottom="8dp"
                 android:onClick="openWebsiteMOH"
                 android:text="@string/click_to_know_the_latest_health_updates_from_the_ministry_of_health_moh"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@id/icon_vaccine_3"
-                app:layout_constraintTop_toBottomOf="@+id/label_vaccine_sinovac" />
+                app:layout_constraintTop_toBottomOf="@id/label_website_moh" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/label_covidwebsite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:text="@string/latest_information_about_covid_19"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_CovidWebsite" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
