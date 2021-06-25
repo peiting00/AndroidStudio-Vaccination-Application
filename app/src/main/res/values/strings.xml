@@ -121,6 +121,8 @@
     <string name="label_register_hint_postalcode">Postal code</string>
     <string name="label_register_hint_state">State</string>
     <string name="label_register_hint_vaccinepreference">Vaccine Preference</string>
+    <string name="padding" > \n\n </string>
+    <string name="agreement">I confirm that I have read, consent ans agree to the agreement of COVID-19 vaccination.\nI understand the risk and side effects of vaccines</string>
     <!-- End    -->
 
 </resources>
