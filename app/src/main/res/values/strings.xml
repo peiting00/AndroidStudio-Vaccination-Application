@@ -109,16 +109,17 @@
     <!-- String for registration page    -->
     <string name="registration_topInfo">Please ensure that all information provided is complete and accurate for a smooth and fuss-free registration.</string>
     <string name="registration_label_fullname">Full Name</string>
-    <string name="registration_label_email">Email</string>
+    <string name="registration_label_phone">Contact Number</string>
     <string name="registration_label_NRIC">NRIC / Passport No</string>
     <string name="registration_label_NRIC_confirm">Confirm NRIC / Passport No</string>
     <string name="label_registration_personalinfoTitle">Personal Information</string>
     <string name="label_registration_Title">VACCINE NOW\nREGISTER FOR YOU VACCINATION NOW</string>
     <string name="contentDesc_register_icon">registration_icon</string>
     <string name="label_register_currentAdd">Current Address</string>
-    <string name="label_register_hint_address">Address</string>
-    <string name="label_register_hint_area">Area</string>
-    <string name="label_register_hint_postalcode">Postal code</string>
+    <string name="label_register_hint_address">Address Line 1</string>
+    <string name="label_register_hint_address2">Address Line 2</string>
+    <string name="label_register_hint_city">City</string>
+    <string name="label_register_hint_postalcode">ZIP</string>
     <string name="label_register_hint_state">State</string>
     <string name="label_register_hint_vaccinepreference">Vaccine Preference</string>
     <string name="padding" > \n\n </string>
