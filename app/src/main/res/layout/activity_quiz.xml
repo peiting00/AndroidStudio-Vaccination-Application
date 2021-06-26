@@ -4,6 +4,480 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Quiz">
+    tools:context=".Quiz"
+    android:background="#F2FAF9">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarQuiz"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#00a9b0"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:theme="@style/Toolbar_back_button_style"
+        app:title="Questions From Us"
+        app:titleMargin="2dp"
+        app:titleTextColor="#FFFFFF"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarQuiz">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_10dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="7dp"
+                app:cardUseCompatPadding="true">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/conCardQues01"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:id="@+id/txtQues1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:inputType="textMultiLine"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="8dp"
+                        android:textSize="15dp"
+                        android:fontFamily="@font/nunito_sans"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:text="@string/ques1"/>
+
+                    <RadioGroup
+                        android:id="@+id/rdGroup1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtQues1">
+
+                        <RadioButton
+                            android:id="@+id/rdBtnQues1Yes"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Yes"
+                            android:onClick="onCheckQues1"/>
+
+                        <RadioButton
+                            android:id="@+id/rdBtnQues1No"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="No"
+                            android:onClick="onCheckQues1"/>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cvQues1Expand"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="7dp"
+                            app:cardUseCompatPadding="true"
+                            android:visibility="gone">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/conCardQues01Expand"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:padding="20dp">
+
+
+                                <TextView
+                                    android:id="@+id/txtQues1Expand"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="textMultiLine"
+                                    android:paddingTop="5dp"
+                                    android:paddingBottom="8dp"
+                                    android:textSize="15dp"
+                                    android:text="@string/ques1Expand"
+                                    android:fontFamily="@font/nunito_sans"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <CheckBox
+                                    android:id="@+id/cbxQues1Reason1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="8dp"
+                                    android:fontFamily="@font/nunito_sans"
+                                    android:gravity="clip_vertical"
+                                    android:text="@string/cbx1Ques1"
+                                    app:layout_constraintBottom_toTopOf="@+id/cbxQues1Reason2"
+                                    app:layout_constraintTop_toBottomOf="@+id/txtQues1Expand"
+                                    tools:layout_editor_absoluteX="21dp" />
+
+                                <CheckBox
+                                    android:id="@+id/cbxQues1Reason2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="8dp"
+                                    android:fontFamily="@font/nunito_sans"
+                                    android:gravity="clip_vertical"
+                                    android:text="@string/cbx2Ques1"
+                                    app:layout_constraintBottom_toTopOf="@+id/cbxQues1Reason3"
+                                    app:layout_constraintTop_toBottomOf="@+id/cbxQues1Reason1"
+                                    tools:layout_editor_absoluteX="21dp" />
+
+
+                                <CheckBox
+                                    android:id="@+id/cbxQues1Reason3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="8dp"
+                                    android:fontFamily="@font/nunito_sans"
+                                    android:gravity="clip_vertical"
+                                    android:text="@string/cbx3Ques1"
+                                    app:layout_constraintBottom_toTopOf="@+id/cbxQues1Reason4"
+                                    app:layout_constraintTop_toBottomOf="@+id/cbxQues1Reason2"
+                                    tools:layout_editor_absoluteX="21dp" />
+
+                                <CheckBox
+                                    android:id="@+id/cbxQues1Reason4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="8dp"
+                                    android:fontFamily="@font/nunito_sans"
+                                    android:gravity="clip_vertical"
+                                    android:text="@string/cbx4ques1"
+                                    app:layout_constraintBottom_toTopOf="@+id/cbxQues1Reason5"
+                                    app:layout_constraintTop_toBottomOf="@+id/cbxQues1Reason3"
+                                    tools:layout_editor_absoluteX="21dp" />
+
+                                <CheckBox
+                                    android:id="@+id/cbxQues1Reason5"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/nunito_sans"
+                                    android:gravity="clip_vertical"
+                                    android:text="@string/cbx5ques1"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/cbxQues1Reason4"
+                                    tools:layout_editor_absoluteX="21dp" />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.cardview.widget.CardView>
+                    </RadioGroup>
+
+                    <TextView
+                        android:id="@+id/txtErrorMsgQ1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_sans"
+                        android:gravity="right"
+                        android:textColor="#db4442"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/rdGroup1" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="7dp"
+                app:cardUseCompatPadding="true">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/conCardQues2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:id="@+id/txtQues2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:inputType="textMultiLine"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="8dp"
+                        android:textSize="15dp"
+                        android:fontFamily="@font/nunito_sans"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:text="@string/ques2"/>
+
+                    <RadioGroup
+                        android:id="@+id/rdGroup2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtQues2">
+
+                        <RadioButton
+                            android:id="@+id/rdBtnQues2Yes"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:onClick="onCheckQues2"
+                            android:text="Yes" />
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cvQues2Expand"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="7dp"
+                            app:cardUseCompatPadding="true"
+                            android:visibility="gone">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/conCardQues02Expand"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:padding="20dp">
+
+                                <TextView
+                                    android:id="@+id/txtQues2Expand"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="textMultiLine"
+                                    android:paddingTop="5dp"
+                                    android:paddingBottom="8dp"
+                                    android:textSize="15dp"
+                                    android:text="Please select your present comorbidities (You may choose more than one): "
+                                    android:fontFamily="@font/nunito_sans"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <CheckBox
+                                    android:id="@+id/cbxQues2illness1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="8dp"
+                                    android:fontFamily="@font/nunito_sans"
+                                    android:text="Diabetes Mellitus"
+                                    app:layout_constraintBottom_toTopOf="@+id/cbxQues2illness2"
+                                    app:layout_constraintTop_toBottomOf="@+id/txtQues2Expand"
+                                    tools:layout_editor_absoluteX="21dp" />
+
+                                <CheckBox
+                                    android:id="@+id/cbxQues2illness2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="8dp"
+                                    android:fontFamily="@font/nunito_sans"
+                                    android:text="Hypertension"
+                                    app:layout_constraintBottom_toTopOf="@+id/cbxQues2illness3"
+                                    app:layout_constraintTop_toBottomOf="@+id/cbxQues2illness1"
+                                    tools:layout_editor_absoluteX="21dp" />
+
+
+                                <CheckBox
+                                    android:id="@+id/cbxQues2illness3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="8dp"
+                                    android:fontFamily="@font/nunito_sans"
+                                    android:text="Heart Disease"
+                                    app:layout_constraintBottom_toTopOf="@+id/cbxQues2illness4"
+                                    app:layout_constraintTop_toBottomOf="@+id/cbxQues2illness2"
+                                    tools:layout_editor_absoluteX="21dp" />
+
+                                <CheckBox
+                                    android:id="@+id/cbxQues2illness4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="8dp"
+                                    android:fontFamily="@font/nunito_sans"
+                                    android:text="Asthma"
+                                    app:layout_constraintBottom_toTopOf="@+id/cbxQues2illness5"
+                                    app:layout_constraintTop_toBottomOf="@+id/cbxQues2illness3"
+                                    tools:layout_editor_absoluteX="21dp" />
+
+                                <CheckBox
+                                    android:id="@+id/cbxQues2illness5"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/nunito_sans"
+                                    android:text="Cancer"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/cbxQues2illness4"
+                                    tools:layout_editor_absoluteX="21dp" />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <RadioButton
+                            android:id="@+id/rdBtnQues2No"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:onClick="onCheckQues2"
+                            android:text="No" />
+                    </RadioGroup>
+
+                    <TextView
+                        android:id="@+id/txtErrorMsgQ2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_sans"
+                        android:gravity="right"
+                        android:textColor="#db4442"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/rdGroup2"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="7dp"
+                app:cardUseCompatPadding="true">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/conCardQues3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:id="@+id/txtQues3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:inputType="textMultiLine"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="8dp"
+                        android:textSize="15dp"
+                        android:fontFamily="@font/nunito_sans"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:text="@string/ques3"/>
+
+                    <RadioGroup
+                        android:id="@+id/rdGroup3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtQues3">
+
+                        <RadioButton
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Yes" />
+
+                        <RadioButton
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="No" />
+                    </RadioGroup>
+                    <TextView
+                        android:id="@+id/txtErrorMsgQ3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_sans"
+                        android:gravity="right"
+                        android:textColor="#db4442"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/rdGroup3"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="7dp"
+                app:cardUseCompatPadding="true">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/conCardQues4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:id="@+id/txtQues4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:inputType="textMultiLine"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="8dp"
+                        android:textSize="15dp"
+                        android:fontFamily="@font/nunito_sans"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:text=""/>
+
+                    <RadioGroup
+                        android:id="@+id/rdGroup4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtQues4">
+
+                        <RadioButton
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Yes" />
+
+                        <RadioButton
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="No" />
+                    </RadioGroup>
+                    <TextView
+                        android:id="@+id/txtErrorMsgQ4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_sans"
+                        android:gravity="right"
+                        android:textColor="#db4442"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/rdGroup4"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/btnNextToRegis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:onClick="toVaccineRegis"
+                android:text="Next" />
+        </LinearLayout>
+    </ScrollView>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

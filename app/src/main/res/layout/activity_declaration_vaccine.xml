@@ -53,12 +53,11 @@
             android:layout_height="0dp"
             android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                card_view:cardCornerRadius="7dp"
-                card_view:cardUseCompatPadding="true">
+                app:cardCornerRadius="7dp"
+                app:cardUseCompatPadding="true">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/conCard01"
@@ -75,7 +74,7 @@
                         android:layout_margin="10dp"
                         android:inputType="textMultiLine"
                         android:text="@string/declaration"
-
+                        android:fontFamily="@font/nunito_sans"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
 
@@ -88,19 +87,22 @@
                         android:layout_margin="10dp"
                         android:text="@string/SubheadingDeclare"
                         android:textSize="15sp"
-
+                        android:fontFamily="@font/nunito_sans"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/txtDeclareContent" />
 
                     <TextView
                         android:id="@+id/txtSubSubHeaderDeclare"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
+
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/nunito_sans"
                         android:text="@string/phase_1a"
                         android:textSize="15sp"
-
+                        app:layout_constraintBottom_toTopOf="@+id/txtDeclareContent02"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/txtSubHeaderDeclare" />
 
@@ -109,20 +111,22 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:fontFamily="@font/nunito_sans"
                         android:inputType="textMultiLine"
                         android:text="@string/Declaration_phase_1A"
-
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/txtSubSubHeaderDeclare" />
 
                     <TextView
                         android:id="@+id/txtSubSubHeaderDeclare02"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
+
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/nunito_sans"
                         android:text="@string/phase_1b"
                         android:textSize="15sp"
-
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/txtDeclareContent02" />
 
@@ -130,10 +134,11 @@
                         android:id="@+id/txtDeclareContent03"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
+
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/nunito_sans"
                         android:inputType="textMultiLine"
                         android:text="@string/Declaration_phase_1B"
-
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/txtSubSubHeaderDeclare02" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -159,7 +164,7 @@
                         android:gravity="clip_vertical"
                         android:padding="5dp"
                         android:text="@string/agreement"
-                        android:fontFamily="@font/roboto"
+                        android:fontFamily="@font/nunito_sans"
                         android:textSize="17sp"
 
                         app:layout_constraintEnd_toEndOf="parent"
@@ -176,14 +181,14 @@
                         android:layout_marginRight="8dp"
                         android:enabled="false"
                         android:fontFamily="@font/roboto"
-                        android:shadowColor="#FFFFFF"
+                        android:onClick="toQuiz"
                         android:text="Next"
+
                         android:textAllCaps="false"
                         android:textSize="16sp"
                         app:backgroundTint="#B5009385"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/cbxAgreement"
-                        android:onClick="toQuiz"/>
+                        app:layout_constraintTop_toBottomOf="@+id/cbxAgreement" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

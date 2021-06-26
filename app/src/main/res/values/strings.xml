@@ -122,7 +122,16 @@
     <string name="label_register_hint_state">State</string>
     <string name="label_register_hint_vaccinepreference">Vaccine Preference</string>
     <string name="padding" > \n\n </string>
-    <string name="agreement">I confirm that I have read, consent ans agree to the agreement of COVID-19 vaccination.\nI understand the risk and side effects of vaccines</string>
+    <string name="agreement">I confirm that I have read, consent and agree to the agreement of COVID-19 vaccination.\nI understand the risk and side effects of vaccines</string>
+    <string name="ques1">Are you interested to take the COVID-19 vaccine?</string>
+    <string name="ques2">Do you have any comorbidities?</string>
+    <string name="ques3">Have you registered with the Department of Social Welfare Malaysia as a Disabled Person (OKU)?</string>
+    <string name="ques1Expand">What is/are your reason(s) of not agreeing to receive COVID-19 vaccine (Your may select more than one reasons):</string>
+    <string name="cbx1Ques1">Unsure of vaccine safety</string>
+    <string name="cbx2Ques1">Unsure that the vaccine can protect me from the infection of COVID-19 pandemic</string>
+    <string name="cbx3Ques1">Vaccine is not required for me as COVID-19 is not dangerous</string>
+    <string name="cbx4ques1">Insufficient information for COVID-19 vaccine</string>
+    <string name="cbx5ques1">I have some health problems (e.g. allergy, high blood pressure, diabetes, heart diseases, cancer, etc.)</string>
     <!-- End    -->
 
 </resources>

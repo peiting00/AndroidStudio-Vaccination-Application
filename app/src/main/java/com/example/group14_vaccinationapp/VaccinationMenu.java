@@ -31,8 +31,8 @@ public class VaccinationMenu extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void toVaccinationRegisDeclare(View view) {
-        Intent intent = new Intent(this, Registration.class);
+    public void toDeclarationVaccine(View view) {
+        Intent intent = new Intent(this, DeclarationVaccine.class);
         startActivity(intent);
     }
 
