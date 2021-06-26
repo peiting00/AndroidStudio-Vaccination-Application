@@ -10,6 +10,7 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.location.LocationProvider;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -56,7 +57,7 @@ public class Registration extends AppCompatActivity {
         EditText_postcode = findViewById(R.id.et_register_postcode);
         EditText_state = findViewById(R.id.et_register_state);
         btnLocation = findViewById(R.id.imgBtn_register_location);
-        fusedLocationProviderClient= LocationServices.getFusedLocationProviderClient(this);
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
 
 

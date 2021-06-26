@@ -71,7 +71,6 @@
                 app:icon="@drawable/syringe"
                 android:text="@string/vaccination"
                 android:textSize="20sp"
-
                 app:iconGravity="textTop"
                 app:iconPadding="10dp" />
 
