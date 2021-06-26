@@ -4,13 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
-import java.util.List;
+
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.location.LocationProvider;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,11 +21,9 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Locale;
 
 import static android.text.TextUtils.split;
@@ -38,7 +35,6 @@ public class Registration extends AppCompatActivity {
     //FusedLocationProviderClient
     FusedLocationProviderClient fusedLocationProviderClient;
     String addressArea;
-    TextInputLayout textInputLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,11 +54,6 @@ public class Registration extends AppCompatActivity {
         EditText_state = findViewById(R.id.et_register_state);
         btnLocation = findViewById(R.id.imgBtn_register_location);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-
-
-
-
-
     }
 
     @Override //when back button clicked
@@ -75,10 +66,10 @@ public class Registration extends AppCompatActivity {
 
     public void getLocation(View view) {
         //check if user have Location Permission
-        if (ActivityCompat.checkSelfPermission(Registration.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(Registration.this, Manifest.permission.ACCESS_COARSE_LOCATION)==PackageManager.PERMISSION_GRANTED ) {
+        if (ActivityCompat.checkSelfPermission(Registration.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
             fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
                 @Override
-                public void onComplete(@NonNull @NotNull Task<Location> task) {
+                public void onComplete(@NonNull Task<Location> task) {
                     //get result in a Location variable
                     Location location = task.getResult();
                     if(location!=null){
@@ -125,6 +116,5 @@ public class Registration extends AppCompatActivity {
             ActivityCompat.requestPermissions(Registration.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 100);
         }
     }
-
 
 }

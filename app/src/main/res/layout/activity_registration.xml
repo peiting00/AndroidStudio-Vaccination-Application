@@ -19,7 +19,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:theme="@style/Toolbar_back_button_style"
         app:title="COVID-19 Vaccine Registration"
-        app:titleMargin="2dp"
         app:titleTextColor="#FFFFFF" />
 
     <ImageView
@@ -50,9 +49,7 @@
         android:lineSpacingExtra="5sp"
         android:text="@string/label_registration_Title"
         android:textColor="#000000"
-        android:textColorHighlight="#000000"
         android:textStyle="bold"
-        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toBottomOf="@+id/toolbarRegistration" />
@@ -87,8 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:orientation="vertical"
-            android:padding="20dp"
-            android:visibility="visible">
+            android:padding="20dp">
 
             <TextView
                 android:id="@+id/textView7"
@@ -147,6 +143,15 @@
                 app:boxCornerRadiusTopStart="10dp"
                 app:startIconDrawable="@drawable/ic_phone">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_register_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/comfortaa"
+                    android:inputType="number"
+                    android:paddingTop="@dimen/padding_10dp"
+                    android:paddingBottom="@dimen/padding_10dp"
+                    android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -199,24 +204,13 @@
                     android:paddingTop="@dimen/padding_10dp"
                     android:paddingBottom="@dimen/padding_10dp"
                     android:textSize="14sp" />
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_register_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/comfortaa"
-                    android:inputType="textEmailAddress"
-                    android:paddingTop="@dimen/padding_10dp"
-                    android:paddingBottom="@dimen/padding_10dp"
-                    android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
+                android:id="@+id/register_innerBox"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
-
                 <TextView
                     android:id="@+id/label_register_address"
                     android:layout_width="0dp"
@@ -228,16 +222,14 @@
                     android:textColor="#000000"
                     android:textSize="16sp"
                     android:textStyle="bold" />
-
-                <ImageButton
-                    android:id="@+id/imgBtn_register_location"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
-                    android:onClick="getLocation"
-                    app:srcCompat="@android:drawable/ic_menu_mylocation"
-                    app:tint="#00a9b0 " />
-
+                    <ImageButton
+                        android:id="@+id/imgBtn_register_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#FFFFFF"
+                        android:onClick="getLocation"
+                        app:srcCompat="@android:drawable/ic_menu_mylocation"
+                        app:tint="#00a9b0 " />
             </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -260,7 +252,6 @@
                     android:paddingTop="@dimen/padding_10dp"
                     android:paddingBottom="@dimen/padding_10dp"
                     android:textSize="14sp" />
-
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -283,10 +274,10 @@
                     android:paddingTop="@dimen/padding_10dp"
                     android:paddingBottom="@dimen/padding_10dp"
                     android:textSize="14sp" />
-
             </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
+                android:id="@+id/register_innerAddressBox"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginBottom="@dimen/padding_10dp"
@@ -365,9 +356,7 @@
                         android:paddingTop="@dimen/padding_10dp"
                         android:paddingBottom="@dimen/padding_10dp"
                         android:textSize="14sp" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
+                    </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
             <TextView
@@ -380,45 +369,35 @@
                 android:textColor="#000000"
                 android:textSize="16sp"
                 android:textStyle="bold" />
-
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <RadioButton
-                    android:id="@+id/radioButton3"
-                    android:layout_width="wrap_content"
+                <RadioGroup
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:fontFamily="@font/comfortaa"
-                    android:text="@string/text_pfizer_biontech"
-                    android:textSize="12sp" />
+                    android:orientation="vertical">
+                        <RadioButton
+                            android:id="@+id/radioButton3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:fontFamily="@font/comfortaa"
+                            android:text="@string/text_pfizer_biontech"
+                            android:textSize="12sp" />
 
-                <RadioButton
-                    android:id="@+id/radioButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/comfortaa"
-                    android:text="@string/text_sinovac_coronavac"
-                    android:textSize="12sp" />
+                        <RadioButton
+                            android:id="@+id/radioButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/comfortaa"
+                            android:text="@string/text_sinovac_coronavac"
+                            android:textSize="12sp" />
 
-                <RadioButton
-                    android:id="@+id/radioButton2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/comfortaa"
-                    android:text="@string/text_astra_zeneca"
-                    android:textSize="12sp" />
-            </RadioGroup>
-
-            <Button
-                android:id="@+id/button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Button" />
-
-        </LinearLayout>
+                        <RadioButton
+                            android:id="@+id/radioButton2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/comfortaa"
+                            android:text="@string/text_astra_zeneca"
+                            android:textSize="12sp" />
+                </RadioGroup>
+            </LinearLayout>
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
