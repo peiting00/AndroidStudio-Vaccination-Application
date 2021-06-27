@@ -20,10 +20,13 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.io.IOException;
 import java.util.List;
@@ -32,8 +35,16 @@ import java.util.Locale;
 public class Registration extends AppCompatActivity implements LocationListener{
 
     TextInputEditText EditText_address1,EditText_area, EditText_postcode, EditText_state;
+    TextInputLayout textInputLayout_name,textInputLayout_phone,textInputLayout_nric,
+            textInputLayout_nric_confirm,textInputLayout_addressLine,textInputLayout_city,
+            textInputLayout_postcode,textInputLayout_state;
+    TextInputEditText textInputEditText_name,textInputEditText_phone,textInputEditText_nric,
+            textInputEditText_nric_confirm,textInputEditText_addressLine,
+            textInputEditText_city,textInputEditText_postcode,textInputEditText_state;
     ImageButton btnLocation;
     LocationManager locationManager;
+    ImageButton imageButtonGetLocation;
+    Button buttonNext,buttonCancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +57,35 @@ public class Registration extends AppCompatActivity implements LocationListener{
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        //for location
         EditText_address1 = findViewById(R.id.et_register_address);
-        EditText_area = findViewById(R.id.et_register_area);
+        EditText_area = findViewById(R.id.et_register_city);
         EditText_postcode = findViewById(R.id.et_register_postcode);
         EditText_state = findViewById(R.id.et_register_state);
         btnLocation = findViewById(R.id.imgBtn_register_location);
+
+        //for validation
+        textInputEditText_name=findViewById(R.id.et_register_name);
+        textInputEditText_phone=findViewById(R.id.et_register_phone);
+        textInputEditText_nric=findViewById(R.id.et_register_NRIC);
+        textInputEditText_nric_confirm=findViewById(R.id.et_register_NRIC_confirm);
+        textInputEditText_addressLine=findViewById(R.id.et_register_address);
+        textInputEditText_city=findViewById(R.id.et_register_city);
+        textInputEditText_postcode=findViewById(R.id.et_register_postcode);
+        textInputEditText_state=findViewById(R.id.et_register_state);
+
+        textInputLayout_name=findViewById(R.id.textInputLayout_register_name);
+        textInputLayout_phone=findViewById(R.id.textInputLayout_register_phone);
+        textInputLayout_nric=findViewById(R.id.textInputLayout_register_nric);
+        textInputLayout_nric_confirm=findViewById(R.id.textInputLayout_register_nric_confirm);
+        textInputLayout_addressLine=findViewById(R.id.textInputLayout_register_addressLine);
+        textInputLayout_city=findViewById(R.id.textInputLayout_register_city);
+        textInputLayout_postcode=findViewById(R.id.textInputLayout_register_postcode);
+        textInputLayout_state=findViewById(R.id.textInputLayout_register_state);
+
+        imageButtonGetLocation=findViewById(R.id.imgBtn_register_location);
+        buttonNext=findViewById(R.id.btnNext);
+        buttonCancel=findViewById(R.id.btnCancel_register);
     }
 
     @Override //when back button clicked
@@ -154,5 +189,151 @@ public class Registration extends AppCompatActivity implements LocationListener{
     @Override
     public void onProviderDisabled(@NonNull String provider) {
 
+    }
+
+    /**
+     * input validation
+     */
+    public void next(View view) {
+        boolean isValid=true;
+
+        //required field validator for all input field
+        if(textInputEditText_name.getText().toString().isEmpty()){ //if field is empty
+            textInputEditText_name.setError("Full Name cannot be empty!");//set error message
+            textInputEditText_name.setFocusable(true);
+            isValid=false; //validation is false
+        }else if(textInputEditText_name.getText().toString().contentEquals(" ")){
+            //validate white space
+            textInputEditText_name.setError("No white space allowed.");
+        }else{ textInputLayout_name.setErrorEnabled(false); } //validation correct,disable error msg
+
+        if(textInputEditText_phone.getText().toString().isEmpty()){
+            textInputEditText_phone.setError("Contact Number cannot be empty!");
+            textInputEditText_phone.setFocusable(true);
+            isValid=false;
+        }else{ textInputLayout_phone.setErrorEnabled(false); }
+
+        if(textInputEditText_nric.getText().toString().isEmpty()){
+            textInputEditText_nric.setError("NRIC cannot be empty!");
+            textInputEditText_nric.setFocusable(true);
+            isValid=false;
+        }else{ textInputLayout_nric.setErrorEnabled(false); }
+
+        if(textInputEditText_nric_confirm.getText().toString().isEmpty()){
+            textInputEditText_nric_confirm.setError("NRIC confirm cannot be empty!");
+            textInputEditText_nric_confirm.setFocusable(true);
+            isValid=false;
+        }else{ textInputLayout_nric_confirm.setErrorEnabled(false); }
+
+        if(textInputEditText_addressLine.getText().toString().isEmpty()){
+            textInputEditText_addressLine.setError("Address Line cannot be empty!");
+            textInputEditText_addressLine.setFocusable(true);
+            isValid=false;
+        }else{ textInputLayout_addressLine.setErrorEnabled(false); }
+
+        if(textInputEditText_city.getText().toString().isEmpty()){
+            textInputEditText_city.setError("City cannot be empty!");
+            textInputEditText_city.setFocusable(true);
+            isValid=false;
+        }else{ textInputLayout_city.setErrorEnabled(false); }
+
+        if(textInputEditText_postcode.getText().toString().isEmpty()){
+            textInputEditText_postcode.setError("Postcode cannot be empty!");
+            textInputEditText_postcode.setFocusable(true);
+            isValid=false;
+        }else{ textInputLayout_postcode.setErrorEnabled(false); }
+
+        if(textInputEditText_state.getText().toString().isEmpty()){
+            textInputEditText_state.setError("State cannot be empty!");
+            textInputEditText_state.setFocusable(true);
+            isValid=false;
+        }else{ textInputLayout_state.setErrorEnabled(false); }
+
+        //NRIC length validation
+        if(textInputEditText_nric.getText().toString().trim().length()<12){
+            textInputEditText_nric.setError("Your NRIC should be 12-digit!");
+            textInputEditText_nric.setFocusable(true);
+            isValid=false;
+        }else{textInputLayout_nric.setErrorEnabled(false); }
+
+        //NRIC confirm same value with NRIC
+        if(textInputEditText_nric_confirm.getText().toString().
+                contentEquals(textInputEditText_nric.getText().toString())) {
+            //if both NRIC are same
+            textInputLayout_nric_confirm.setErrorEnabled(false);
+        }else{
+            textInputEditText_nric_confirm.setError("NRIC mismatch!");
+            textInputEditText_nric_confirm.setFocusable(true);
+            isValid=false;
+        }
+
+        if(isValid){ //when passed validation
+            //confirm information is all correct.
+            //set all the input field not editable
+            textInputEditText_name.setFocusable(false);
+            textInputEditText_name.setFocusableInTouchMode(false);
+            textInputEditText_name.setTextIsSelectable(false);
+            textInputEditText_phone.setFocusable(false);
+            textInputEditText_phone.setFocusableInTouchMode(false);
+            textInputEditText_phone.setTextIsSelectable(false);
+            textInputEditText_nric.setFocusable(false);
+            textInputEditText_nric.setFocusableInTouchMode(false);
+            textInputEditText_nric.setTextIsSelectable(false);
+            textInputEditText_nric_confirm.setFocusable(false);
+            textInputEditText_nric_confirm.setFocusableInTouchMode(false);
+            textInputEditText_nric_confirm.setTextIsSelectable(false);
+            textInputEditText_addressLine.setFocusable(false);
+            textInputEditText_addressLine.setFocusableInTouchMode(false);
+            textInputEditText_addressLine.setTextIsSelectable(false);
+            textInputEditText_city.setFocusable(false);
+            textInputEditText_city.setFocusableInTouchMode(false);
+            textInputEditText_city.setTextIsSelectable(false);
+            textInputEditText_postcode.setFocusable(false);
+            textInputEditText_postcode.setFocusableInTouchMode(false);
+            textInputEditText_postcode.setTextIsSelectable(false);
+            textInputEditText_state.setFocusable(false);
+            textInputEditText_state.setFocusableInTouchMode(false);
+            textInputEditText_state.setTextIsSelectable(false);
+            // If you have not set a click event before, you can omit it here
+            imageButtonGetLocation.setOnClickListener(null);
+            buttonNext.setText("Confirm");
+            buttonCancel.setVisibility(View.VISIBLE);
+        }
+    }
+
+
+
+    public void onRadioButtonClicked(View view) {
+        boolean checked = ((RadioButton)view).isChecked();
+        switch(view.getId()){
+            case R.id.radioBtn_register_pfizer:
+                if(checked)
+                    //display chosen vaccine
+                    displayToast(getString(R.string.text_pfizer_biontech));
+                    //delivery = getString(R.string.text_sameday);
+                break;
+            case R.id.radioBtn_register_sinovac:
+                if(checked)
+                    //display chosen vaccine
+                    displayToast(getString(R.string.text_sinovac_coronavac));
+                    //delivery = getString(R.string.text_sameday);
+                break;
+            case R.id.radioBtn_register_AZ:
+                if(checked)
+                    //display chosen vaccine
+                    displayToast(getString(R.string.text_astra_zeneca));
+                    //delivery=getString(R.string.text_pickup);
+                break;
+            default:
+                //do nothing
+                break;
+        }
+    }
+
+    public void displayToast(String message){
+        Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
+    }
+
+    public void confirmation_cancel(View view) {
     }
 }

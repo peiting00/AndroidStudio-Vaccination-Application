@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="next"
     tools:context=".Registration">
 
     <androidx.appcompat.widget.Toolbar
@@ -100,13 +101,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:fontFamily="@font/comfortaa"
+                android:fontFamily="@font/roboto"
                 android:text="@string/label_registration_personalinfoTitle"
                 android:textColor="#000000"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_register_name"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="49dp"
@@ -116,9 +118,9 @@
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
                 app:boxCornerRadiusTopStart="10dp"
-                app:errorEnabled="true"
                 app:errorIconDrawable="@drawable/ic_error"
-                app:startIconDrawable="@drawable/ic_user_icon">
+                app:startIconDrawable="@drawable/ic_user_icon"
+                app:startIconTint="@color/vaccine_color">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_register_name"
@@ -132,6 +134,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_register_phone"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -141,20 +144,25 @@
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
                 app:boxCornerRadiusTopStart="10dp"
-                app:startIconDrawable="@drawable/ic_phone">
+                app:counterMaxLength="10"
+                app:errorIconDrawable="@drawable/ic_error"
+                app:startIconDrawable="@drawable/ic_phone"
+                app:startIconTint="@color/vaccine_color"
+                app:prefixText="+60">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_register_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/comfortaa"
+                    android:fontFamily="@font/roboto"
                     android:inputType="number"
                     android:paddingTop="@dimen/padding_10dp"
                     android:paddingBottom="@dimen/padding_10dp"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_register_nric"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -166,14 +174,18 @@
                 app:boxCornerRadiusTopStart="10dp"
                 app:counterEnabled="true"
                 app:counterMaxLength="12"
-                app:startIconDrawable="@drawable/ic_nric">
+                app:helperText="Enter your NRIC without '-'"
+                app:helperTextTextColor="#716161"
+                app:errorIconDrawable="@drawable/ic_error"
+                app:startIconDrawable="@drawable/ic_nric"
+                app:startIconTint="@color/vaccine_color">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_register_NRIC"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:fontFamily="@font/comfortaa"
+                    android:fontFamily="@font/roboto"
                     android:inputType="number"
                     android:paddingTop="@dimen/padding_10dp"
                     android:paddingBottom="@dimen/padding_10dp"
@@ -181,6 +193,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_register_nric_confirm"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -192,14 +205,18 @@
                 app:boxCornerRadiusTopStart="10dp"
                 app:counterEnabled="true"
                 app:counterMaxLength="12"
-                app:startIconDrawable="@drawable/ic_nric">
+                app:helperText="Confirm your NRIC again."
+                app:helperTextTextColor="#716161"
+                app:errorIconDrawable="@drawable/ic_error"
+                app:startIconDrawable="@drawable/ic_nric"
+                app:startIconTint="@color/vaccine_color">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_register_NRIC_confirm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:fontFamily="@font/comfortaa"
+                    android:fontFamily="@font/roboto"
                     android:inputType="number"
                     android:paddingTop="@dimen/padding_10dp"
                     android:paddingBottom="@dimen/padding_10dp"
@@ -211,28 +228,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
+
                 <TextView
                     android:id="@+id/label_register_address"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:layout_weight="1"
-                    android:fontFamily="@font/comfortaa"
+                    android:fontFamily="@font/roboto"
                     android:text="@string/label_register_currentAdd"
                     android:textColor="#000000"
                     android:textSize="16sp"
-                    android:textStyle="bold" />
-                    <ImageButton
-                        android:id="@+id/imgBtn_register_location"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#FFFFFF"
-                        android:onClick="getLocation"
-                        app:srcCompat="@android:drawable/ic_menu_mylocation"
-                        app:tint="#00a9b0 " />
+                    android:textStyle="bold"
+                    />
+
+                <ImageButton
+                    android:id="@+id/imgBtn_register_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:onClick="getLocation"
+                    app:srcCompat="@android:drawable/ic_menu_mylocation"
+                    app:tint="#00a9b0 " />
             </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_register_addressLine"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -241,13 +262,14 @@
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
-                app:boxCornerRadiusTopStart="10dp">
+                app:boxCornerRadiusTopStart="10dp"
+                app:errorIconDrawable="@drawable/ic_error">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_register_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/comfortaa"
+                    android:fontFamily="@font/roboto"
                     android:inputType="textLongMessage"
                     android:paddingTop="@dimen/padding_10dp"
                     android:paddingBottom="@dimen/padding_10dp"
@@ -262,6 +284,7 @@
                 android:layout_weight="1">
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout_register_city"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
@@ -272,14 +295,15 @@
                     app:boxCornerRadiusBottomEnd="10dp"
                     app:boxCornerRadiusBottomStart="10dp"
                     app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusTopStart="10dp">
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:errorIconDrawable="@drawable/ic_error">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_register_area"
+                        android:id="@+id/et_register_city"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/comfortaa"
+                        android:fontFamily="@font/roboto"
                         android:inputType="text"
                         android:paddingTop="@dimen/padding_10dp"
                         android:paddingBottom="@dimen/padding_10dp"
@@ -287,6 +311,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout_register_postcode"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
@@ -298,14 +323,15 @@
                     app:boxCornerRadiusBottomStart="10dp"
                     app:boxCornerRadiusTopEnd="10dp"
                     app:boxCornerRadiusTopStart="10dp"
-                    app:counterMaxLength="5">
+                    app:counterMaxLength="5"
+                    app:errorIconDrawable="@drawable/ic_error">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_register_postcode"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/comfortaa"
+                        android:fontFamily="@font/roboto"
                         android:inputType="number"
                         android:maxLength="5"
                         android:paddingTop="@dimen/padding_10dp"
@@ -314,6 +340,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout_register_state"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
@@ -322,19 +349,20 @@
                     app:boxCornerRadiusBottomEnd="10dp"
                     app:boxCornerRadiusBottomStart="10dp"
                     app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusTopStart="10dp">
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:errorIconDrawable="@drawable/ic_error">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_register_state"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/comfortaa"
+                        android:fontFamily="@font/roboto"
                         android:inputType="textLongMessage"
                         android:paddingTop="@dimen/padding_10dp"
                         android:paddingBottom="@dimen/padding_10dp"
                         android:textSize="14sp" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
             <TextView
@@ -342,40 +370,66 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:fontFamily="@font/comfortaa"
+                android:fontFamily="@font/roboto"
                 android:text="@string/label_register_hint_vaccinepreference"
                 android:textColor="#000000"
                 android:textSize="16sp"
                 android:textStyle="bold" />
-                <RadioGroup
-                    android:layout_width="match_parent"
+
+            <RadioGroup
+                android:id="@+id/radioGroup_register_vaccine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/radioBtn_register_pfizer"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                        <RadioButton
-                            android:id="@+id/radioButton3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:checked="true"
-                            android:fontFamily="@font/comfortaa"
-                            android:text="@string/text_pfizer_biontech"
-                            android:textSize="12sp" />
+                    android:checked="true"
+                    android:fontFamily="@font/roboto"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/text_pfizer_biontech"
+                    android:textSize="12sp" />
 
-                        <RadioButton
-                            android:id="@+id/radioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/comfortaa"
-                            android:text="@string/text_sinovac_coronavac"
-                            android:textSize="12sp" />
+                <RadioButton
+                    android:id="@+id/radioBtn_register_sinovac"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/text_sinovac_coronavac"
+                    android:textSize="12sp" />
 
-                        <RadioButton
-                            android:id="@+id/radioButton2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/comfortaa"
-                            android:text="@string/text_astra_zeneca"
-                            android:textSize="12sp" />
-                </RadioGroup>
-            </LinearLayout>
+                <RadioButton
+                    android:id="@+id/radioBtn_register_AZ"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/text_astra_zeneca"
+                    android:textSize="12sp" />
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/btnNext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="next"
+                android:text="Next" />
+
+            <Button
+                android:id="@+id/btnCancel_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="#FFFFFF"
+                android:onClick="confirmation_cancel"
+                android:text="@string/label_button_register_cancel"
+                android:textColor="#EA0D0D"
+                android:visibility="gone"
+                app:backgroundTint="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
