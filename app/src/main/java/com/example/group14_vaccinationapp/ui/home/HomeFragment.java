@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.group14_vaccinationapp.CovidWebsite;
+import com.example.group14_vaccinationapp.FAQs;
 import com.example.group14_vaccinationapp.R;
 import com.example.group14_vaccinationapp.VaccinationMenu;
 import com.example.group14_vaccinationapp.databinding.FragmentHomeBinding;
@@ -55,7 +56,8 @@ public class HomeFragment extends Fragment {
         view.findViewById(R.id.btnFaq).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "HIHI", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity().getApplicationContext(), FAQs.class);
+                getActivity().startActivity(intent);
             }
         });
 

@@ -130,7 +130,8 @@
                                     android:text="@string/cbx1Ques1"
                                     app:layout_constraintBottom_toTopOf="@+id/cbxQues1Reason2"
                                     app:layout_constraintTop_toBottomOf="@+id/txtQues1Expand"
-                                    tools:layout_editor_absoluteX="21dp" />
+                                    tools:layout_editor_absoluteX="21dp"
+                                    android:onClick="onCheckQues1Expand"/>
 
                                 <CheckBox
                                     android:id="@+id/cbxQues1Reason2"
@@ -142,8 +143,8 @@
                                     android:text="@string/cbx2Ques1"
                                     app:layout_constraintBottom_toTopOf="@+id/cbxQues1Reason3"
                                     app:layout_constraintTop_toBottomOf="@+id/cbxQues1Reason1"
-                                    tools:layout_editor_absoluteX="21dp" />
-
+                                    tools:layout_editor_absoluteX="21dp"
+                                    android:onClick="onCheckQues1Expand"/>
 
                                 <CheckBox
                                     android:id="@+id/cbxQues1Reason3"
@@ -155,7 +156,8 @@
                                     android:text="@string/cbx3Ques1"
                                     app:layout_constraintBottom_toTopOf="@+id/cbxQues1Reason4"
                                     app:layout_constraintTop_toBottomOf="@+id/cbxQues1Reason2"
-                                    tools:layout_editor_absoluteX="21dp" />
+                                    tools:layout_editor_absoluteX="21dp"
+                                    android:onClick="onCheckQues1Expand"/>
 
                                 <CheckBox
                                     android:id="@+id/cbxQues1Reason4"
@@ -167,7 +169,8 @@
                                     android:text="@string/cbx4ques1"
                                     app:layout_constraintBottom_toTopOf="@+id/cbxQues1Reason5"
                                     app:layout_constraintTop_toBottomOf="@+id/cbxQues1Reason3"
-                                    tools:layout_editor_absoluteX="21dp" />
+                                    tools:layout_editor_absoluteX="21dp"
+                                    android:onClick="onCheckQues1Expand"/>
 
                                 <CheckBox
                                     android:id="@+id/cbxQues1Reason5"
@@ -178,7 +181,8 @@
                                     android:text="@string/cbx5ques1"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/cbxQues1Reason4"
-                                    tools:layout_editor_absoluteX="21dp" />
+                                    tools:layout_editor_absoluteX="21dp"
+                                    android:onClick="onCheckQues1Expand"/>
                             </androidx.constraintlayout.widget.ConstraintLayout>
                         </androidx.cardview.widget.CardView>
                     </RadioGroup>
@@ -191,7 +195,8 @@
                         android:gravity="right"
                         android:textColor="#db4442"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/rdGroup1" />
+                        app:layout_constraintTop_toBottomOf="@+id/rdGroup1"
+                        android:text="@string/required"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
@@ -273,46 +278,45 @@
                                     android:id="@+id/cbxQues2illness1"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginBottom="8dp"
                                     android:fontFamily="@font/nunito_sans"
                                     android:text="Diabetes Mellitus"
                                     app:layout_constraintBottom_toTopOf="@+id/cbxQues2illness2"
                                     app:layout_constraintTop_toBottomOf="@+id/txtQues2Expand"
-                                    tools:layout_editor_absoluteX="21dp" />
+                                    tools:layout_editor_absoluteX="21dp"
+                                    android:onClick="onCheckQues2Expand"/>
 
                                 <CheckBox
                                     android:id="@+id/cbxQues2illness2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginBottom="8dp"
                                     android:fontFamily="@font/nunito_sans"
                                     android:text="Hypertension"
                                     app:layout_constraintBottom_toTopOf="@+id/cbxQues2illness3"
                                     app:layout_constraintTop_toBottomOf="@+id/cbxQues2illness1"
-                                    tools:layout_editor_absoluteX="21dp" />
-
+                                    tools:layout_editor_absoluteX="21dp"
+                                    android:onClick="onCheckQues2Expand"/>
 
                                 <CheckBox
                                     android:id="@+id/cbxQues2illness3"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginBottom="8dp"
                                     android:fontFamily="@font/nunito_sans"
                                     android:text="Heart Disease"
                                     app:layout_constraintBottom_toTopOf="@+id/cbxQues2illness4"
                                     app:layout_constraintTop_toBottomOf="@+id/cbxQues2illness2"
-                                    tools:layout_editor_absoluteX="21dp" />
+                                    tools:layout_editor_absoluteX="21dp"
+                                    android:onClick="onCheckQues2Expand"/>
 
                                 <CheckBox
                                     android:id="@+id/cbxQues2illness4"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginBottom="8dp"
                                     android:fontFamily="@font/nunito_sans"
                                     android:text="Asthma"
                                     app:layout_constraintBottom_toTopOf="@+id/cbxQues2illness5"
                                     app:layout_constraintTop_toBottomOf="@+id/cbxQues2illness3"
-                                    tools:layout_editor_absoluteX="21dp" />
+                                    tools:layout_editor_absoluteX="21dp"
+                                    android:onClick="onCheckQues2Expand"/>
 
                                 <CheckBox
                                     android:id="@+id/cbxQues2illness5"
@@ -320,9 +324,23 @@
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/nunito_sans"
                                     android:text="Cancer"
-                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="@+id/cbxQues2illness6"
                                     app:layout_constraintTop_toBottomOf="@+id/cbxQues2illness4"
-                                    tools:layout_editor_absoluteX="21dp" />
+                                    tools:layout_editor_absoluteX="21dp"
+                                    android:onClick="onCheckQues2Expand"/>
+
+                                <CheckBox
+                                    android:id="@+id/cbxQues2illness6"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/nunito_sans"
+                                    android:text="Others"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/cbxQues2illness5"
+                                    tools:layout_editor_absoluteX="21dp"
+                                    android:onClick="onCheckQues2Expand"/>
+
+
                             </androidx.constraintlayout.widget.ConstraintLayout>
                         </androidx.cardview.widget.CardView>
 
@@ -342,7 +360,8 @@
                         android:gravity="right"
                         android:textColor="#db4442"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/rdGroup2"/>
+                        app:layout_constraintTop_toBottomOf="@+id/rdGroup2"
+                        android:text="@string/required"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
@@ -384,14 +403,18 @@
                         app:layout_constraintTop_toBottomOf="@+id/txtQues3">
 
                         <RadioButton
+                            android:id="@+id/rdBtnQues3Yes"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Yes" />
+                            android:text="Yes"
+                            android:onClick="onCheckQues3"/>
 
                         <RadioButton
+                            android:id="@+id/rdBtnQues3No"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="No" />
+                            android:text="No"
+                            android:onClick="onCheckQues3"/>
                     </RadioGroup>
                     <TextView
                         android:id="@+id/txtErrorMsgQ3"
@@ -401,7 +424,8 @@
                         android:gravity="right"
                         android:textColor="#db4442"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/rdGroup3"/>
+                        app:layout_constraintTop_toBottomOf="@+id/rdGroup3"
+                        android:text="@string/required"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -434,7 +458,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        android:text=""/>
+                        android:text="Are you pregnant or breastfeeding? "/>
 
                     <RadioGroup
                         android:id="@+id/rdGroup4"
@@ -444,14 +468,18 @@
                         app:layout_constraintTop_toBottomOf="@+id/txtQues4">
 
                         <RadioButton
+                            android:id="@+id/rdBtnQues4Yes"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Yes" />
+                            android:text="Yes"
+                            android:onClick="onCheckQues4"/>
 
                         <RadioButton
+                            android:id="@+id/rdBtnQues4No"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="No" />
+                            android:text="No"
+                            android:onClick="onCheckQues4"/>
                     </RadioGroup>
                     <TextView
                         android:id="@+id/txtErrorMsgQ4"
@@ -461,7 +489,74 @@
                         android:gravity="right"
                         android:textColor="#db4442"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/rdGroup4"/>
+                        app:layout_constraintTop_toBottomOf="@+id/rdGroup4"
+                        android:text="@string/required"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="7dp"
+                app:cardUseCompatPadding="true">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/conCardQues5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:id="@+id/txtQues5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:inputType="textMultiLine"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="8dp"
+                        android:textSize="15dp"
+                        android:fontFamily="@font/nunito_sans"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:text="@string/ques5"/>
+
+                    <RadioGroup
+                        android:id="@+id/rdGroup5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtQues5">
+
+                        <RadioButton
+                            android:id="@+id/rdBtnQues5Yes"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Yes"
+                            android:onClick="onCheckQues5"/>
+
+                        <RadioButton
+                            android:id="@+id/rdBtnQues5No"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="No"
+                            android:onClick="onCheckQues5"/>
+                    </RadioGroup>
+
+                    <TextView
+                        android:id="@+id/txtErrorMsgQ5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_sans"
+                        android:gravity="right"
+                        android:textColor="#db4442"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/rdGroup5"
+                        android:text="@string/required"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -469,11 +564,16 @@
 
             <Button
                 android:id="@+id/btnNextToRegis"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:textAllCaps="false"
+                android:layout_gravity="right"
+                android:fontFamily="@font/nunito_sans"
                 android:onClick="toVaccineRegis"
-                android:text="Next" />
+                android:padding="15dp"
+                android:paddingRight="20dp"
+                android:text="Next"
+                android:textAllCaps="false"
+                android:textSize="18dp" />
         </LinearLayout>
     </ScrollView>
 
