@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.SearchManager;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -27,8 +29,6 @@ public class CovidWebsite extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        mWebsite1=findViewById(R.id.web_desc);
-        mWebsite2=findViewById(R.id.web_desc_2);
     }
 
     @Override //when back button clicked
@@ -44,11 +44,12 @@ public class CovidWebsite extends AppCompatActivity {
         // get website url
         mWebsite1=findViewById(R.id.label_website_jkjav);
         String url = mWebsite1.getText().toString();
-
-        Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
-        intent.putExtra(SearchManager.QUERY,url); // 'url' is the query
+        Uri webpage = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW,webpage);
         if(intent.resolveActivity(getPackageManager())!=null){
             startActivity(intent);
+        }else{
+            Log.d("Implicit Intent","Can't handle this!");
         }
 
     }
@@ -57,11 +58,12 @@ public class CovidWebsite extends AppCompatActivity {
         //get website url
         mWebsite2=findViewById(R.id.label_website_moh);
         String url2 = mWebsite2.getText().toString();
-
-        Intent intent2 = new Intent(Intent.ACTION_WEB_SEARCH);
-        intent2.putExtra(SearchManager.QUERY,url2); // 'url' is the query
+        Uri webpage2 = Uri.parse(url2);
+        Intent intent2 = new Intent(Intent.ACTION_VIEW,webpage2);
         if(intent2.resolveActivity(getPackageManager())!=null){
             startActivity(intent2);
+        }else{
+            Log.d("Implicit Intent","Can't handle this!");
         }
 
     }

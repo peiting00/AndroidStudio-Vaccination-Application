@@ -17,8 +17,8 @@
     <string name="menu_slideshow">Slideshow</string>
     <string name="web_icon">web icon</string>
     <string name="click_to_know_the_latest_updates_on_malaysia_s_vaccination_program">Click to know the latest updates on Malaysia\'s vaccination program</string>
-    <string name="www_vaksincovid_gov_my">www.vaksincovid.gov.my</string>
-    <string name="www_moh_gov_my">www.moh.gov.my</string>
+    <string name="www_vaksincovid_gov_my">http://www.vaksincovid.gov.my</string>
+    <string name="www_moh_gov_my">http://www.moh.gov.my</string>
     <string name="click_to_know_the_latest_health_updates_from_the_ministry_of_health_moh">Click to know the latest health updates from The Ministry of Health (MOH)</string>
 
     <string name="get_your_vaccine_now">Get your vaccine now!</string>
