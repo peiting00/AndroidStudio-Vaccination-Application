@@ -23,26 +23,17 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-import static android.text.TextUtils.split;
-
 public class Registration extends AppCompatActivity implements LocationListener{
 
-    TextInputEditText EditText_address1, EditText_address2,EditText_area, EditText_postcode, EditText_state;
+    TextInputEditText EditText_address1,EditText_area, EditText_postcode, EditText_state;
     ImageButton btnLocation;
-    //FusedLocationProviderClient
-    FusedLocationProviderClient fusedLocationProviderClient;
     LocationManager locationManager;
-    String addressArea;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +51,6 @@ public class Registration extends AppCompatActivity implements LocationListener{
         EditText_postcode = findViewById(R.id.et_register_postcode);
         EditText_state = findViewById(R.id.et_register_state);
         btnLocation = findViewById(R.id.imgBtn_register_location);
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-
     }
 
     @Override //when back button clicked
@@ -145,9 +134,10 @@ public class Registration extends AppCompatActivity implements LocationListener{
             EditText_address1.setText(addressList.get(0).getAddressLine(0));
             EditText_area.setText(addressList.get(0).getLocality());
             EditText_state.setText(addressList.get(0).getAdminArea());
-            EditText_postcode.setText(""+addressList.get(0).getPostalCode());
+            EditText_postcode.setText(addressList.get(0).getPostalCode());
         }catch(IOException e){
             e.printStackTrace();
+            Toast.makeText(this,"Unable to detect your location.",Toast.LENGTH_SHORT).show();
         }
     }
 
