@@ -1,16 +1,23 @@
 package com.example.group14_vaccinationapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -28,12 +35,13 @@ import java.util.Locale;
 
 import static android.text.TextUtils.split;
 
-public class Registration extends AppCompatActivity {
+public class Registration extends AppCompatActivity implements LocationListener{
 
     TextInputEditText EditText_address1, EditText_address2,EditText_area, EditText_postcode, EditText_state;
     ImageButton btnLocation;
     //FusedLocationProviderClient
     FusedLocationProviderClient fusedLocationProviderClient;
+    LocationManager locationManager;
     String addressArea;
 
     @Override
@@ -48,12 +56,12 @@ public class Registration extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         EditText_address1 = findViewById(R.id.et_register_address);
-        EditText_address2=findViewById(R.id.et_register_address2);
         EditText_area = findViewById(R.id.et_register_area);
         EditText_postcode = findViewById(R.id.et_register_postcode);
         EditText_state = findViewById(R.id.et_register_state);
         btnLocation = findViewById(R.id.imgBtn_register_location);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
     }
 
     @Override //when back button clicked
@@ -66,55 +74,95 @@ public class Registration extends AppCompatActivity {
 
     public void getLocation(View view) {
         //check if user have Location Permission
-        if (ActivityCompat.checkSelfPermission(Registration.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
-            fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
-                @Override
-                public void onComplete(@NonNull Task<Location> task) {
-                    //get result in a Location variable
-                    Location location = task.getResult();
-                    if(location!=null){
-                        Geocoder geocoder = new Geocoder(Registration.this, Locale.getDefault());
-                        try{
-                            //get location by using latitude and longitude
-                            List<Address> addressList = geocoder.getFromLocation(location.getLatitude(),
-                                    location.getLongitude(), 1);
-                            // split the full address by ,
-                            String[] addressSplitList = split(addressList.get(0).getAddressLine(0),",");
-                            // split again the address with only postcode and area using space
-                            String[] addressSplitList2 = split(addressSplitList[3]," "); //eg:83000 batu pahat
+        grantPermission();
+        checkLocationIsEnabled(); // redirect user to location setting
+        getLocation();
 
-                            String addressLine = addressSplitList[0]+addressSplitList[1]; //house no,street name
-                            String addressLine2=addressSplitList[2];//taman xxx
-                            String addressState=addressSplitList[4];//state
+    }
 
-                            if(addressSplitList2[3]!=null){
-                                //addressSplitList2[0] will be empty
-                                //addressSplitList[1] will be postcode
-                                //if area/city is two name
-                                addressArea=addressSplitList2[2]+" "+addressSplitList2[3];
-                            }else{
-                                //if area/city is single name
-                                addressArea=addressSplitList2[2];
-                            }
-                            // set the geographical address to the textInputLayout
-                            EditText_address1.setText(addressLine);
-                            EditText_address2.setText(addressLine2);
-                            EditText_area.setText(addressArea);
-                            EditText_state.setText(addressState);
-                            EditText_postcode.setText(""+addressList.get(0).getPostalCode());
-                        }catch(IOException e){
-                            e.printStackTrace();
-                        }
-                    }else{
-                        //if unable to detect location
-                        Toast.makeText(Registration.this,"No location detected",Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-        } else {
-            //request Location permission
-            ActivityCompat.requestPermissions(Registration.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 100);
+    private void getLocation() {
+        try{
+            locationManager=(LocationManager)getSystemService(Context.LOCATION_SERVICE);
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,500,5, (LocationListener) this);
+        }catch(SecurityException e){
+            e.printStackTrace();
         }
     }
 
+    private void checkLocationIsEnabled() {
+        LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        boolean gpsEnabled = false; //initialization
+        boolean networkEnabled = false; //initialization
+        //check if location is enabled
+        try{
+            gpsEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        //check if network is enabled
+        try{
+            networkEnabled=lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        if(!gpsEnabled && !networkEnabled){ //if GPS is disabled
+            new AlertDialog.Builder(Registration.this)
+                    .setTitle("Enable GPS Service")
+                    .setCancelable(false)
+                    .setPositiveButton("Enable", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //Intent is used to redirect to GPS setting
+                            startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                        }
+                    }).setNegativeButton("Cancel",null).show();
+        }
+    }
+
+    private void grantPermission() {
+        if (ActivityCompat.checkSelfPermission(Registration.this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(Registration.this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED){
+
+            //grant permission
+            ActivityCompat.requestPermissions(Registration.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION},100);
+        }
+    }
+
+
+    @Override
+    public void onLocationChanged(@NonNull Location location) {
+        try{
+            Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
+            //get location by using latitude and longitude
+            List<Address> addressList = geocoder.getFromLocation(location.getLatitude(),
+                    location.getLongitude(), 1);
+
+            EditText_address1.setText(addressList.get(0).getAddressLine(0));
+            EditText_area.setText(addressList.get(0).getLocality());
+            EditText_state.setText(addressList.get(0).getAdminArea());
+            EditText_postcode.setText(""+addressList.get(0).getPostalCode());
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(@NonNull String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(@NonNull String provider) {
+
+    }
 }
