@@ -133,6 +133,22 @@
     <string name="cbx3Ques1">Vaccine is not required for me as COVID-19 is not dangerous</string>
     <string name="cbx4ques1">Insufficient information for COVID-19 vaccine</string>
     <string name="cbx5ques1">I have some health problems (e.g. allergy, high blood pressure, diabetes, heart diseases, cancer, etc.)</string>
+    <string name="required">Required</string>
+    <string name="ques5">Are you with underlying medical conditions?</string>
+    <string name="faqQ1"><b>What is COVID-19?</b></string>
+    <string name="faqA1">COVID-19 is a disease caused by a virus called SARS-CoV-2. Most people with COVID-19 have mild symptoms, but some people can become severely ill. Although most people with COVID-19 get better within weeks of illness, some people experience <b>post-COVID conditions</b>. Post-COVID conditions are a wide range of new, returning, or ongoing health problems people can experience <b>more than four weeks</b> after first being infected with the virus that causes COVID-19. Older people and those who have certain underlying medical conditions are more likely to get severely ill from COVID-19. Vaccines against COVID-19 are safe and effective.</string>
+    <string name="faqQ2"><b>Why is the disease being called Coronovirus disease 2019, COVID-19</b></string>
+    <string name="faqA2">On February 11, 2020 the World Health Organization announced an official name for the disease that is causing the 2019 novel coronavirus pandemic, first identified in Wuhan China. The new name of this disease is coronavirus disease 2019, abbreviated as COVID-19. In COVID-19, “CO” stands for corona, “VI” for virus, and ”D” for disease. Formerly, this disease was referred to as “2019 novel coronavirus” or “2019-nCoV.”</string>
+    <string name="faqQ3"><b>How does the viruses spread</b></string>
+    <string name="faqQ4"><b>How to protect myself from COVID-19?</b></string>
+    <string name="faqQ5"><b>How many and where are KKM Hospital?</b></string>
+    <string name="hospital1">Hospital Tuanku Fauziah</string>
+    <string name="hospital2">Hospital Sultanah Bahiyah</string>
+    <string name="hospital3">Hospital Sultan Abdul Halim</string>
+    <string name="hospital4">Hospital Kulim</string>
+    <string name="hospital5">Hospital Sultanah Maliha</string>
+    <string name="hospital6">Hospital Pulau Pinang</string>
+
     <!-- End    -->
 
 </resources>
