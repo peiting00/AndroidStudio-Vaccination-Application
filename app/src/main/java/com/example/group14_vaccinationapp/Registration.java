@@ -22,6 +22,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
@@ -32,19 +33,21 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
+import static android.text.TextUtils.split;
+
 public class Registration extends AppCompatActivity implements LocationListener{
 
-    TextInputEditText EditText_address1,EditText_area, EditText_postcode, EditText_state;
     TextInputLayout textInputLayout_name,textInputLayout_phone,textInputLayout_nric,
             textInputLayout_nric_confirm,textInputLayout_addressLine,textInputLayout_city,
             textInputLayout_postcode,textInputLayout_state;
     TextInputEditText textInputEditText_name,textInputEditText_phone,textInputEditText_nric,
             textInputEditText_nric_confirm,textInputEditText_addressLine,
             textInputEditText_city,textInputEditText_postcode,textInputEditText_state;
-    ImageButton btnLocation;
     LocationManager locationManager;
     ImageButton imageButtonGetLocation;
-    Button buttonNext,buttonCancel;
+    Button buttonNext,buttonCancel,buttonConfirm;
+    RadioButton radioButton_pfizer,radioButton_sinovac,radioButton_AZ;
+    LinearLayout linearLayout_confirm,linearLayout_form;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,13 +59,6 @@ public class Registration extends AppCompatActivity implements LocationListener{
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        //for location
-        EditText_address1 = findViewById(R.id.et_register_address);
-        EditText_area = findViewById(R.id.et_register_city);
-        EditText_postcode = findViewById(R.id.et_register_postcode);
-        EditText_state = findViewById(R.id.et_register_state);
-        btnLocation = findViewById(R.id.imgBtn_register_location);
 
         //for validation
         textInputEditText_name=findViewById(R.id.et_register_name);
@@ -86,6 +82,12 @@ public class Registration extends AppCompatActivity implements LocationListener{
         imageButtonGetLocation=findViewById(R.id.imgBtn_register_location);
         buttonNext=findViewById(R.id.btnNext);
         buttonCancel=findViewById(R.id.btnCancel_register);
+        buttonConfirm=findViewById(R.id.btnConfirmForm);
+        radioButton_pfizer=findViewById(R.id.radioBtn_register_pfizer);
+        radioButton_sinovac=findViewById(R.id.radioBtn_register_sinovac);
+        radioButton_AZ=findViewById(R.id.radioBtn_register_AZ);
+        linearLayout_confirm=findViewById(R.id.register_confirmationLayout);
+        linearLayout_form=findViewById(R.id.register_form_linearLayout);
     }
 
     @Override //when back button clicked
@@ -165,11 +167,13 @@ public class Registration extends AppCompatActivity implements LocationListener{
             //get location by using latitude and longitude
             List<Address> addressList = geocoder.getFromLocation(location.getLatitude(),
                     location.getLongitude(), 1);
+            // split the full address by ,
+            String[] addressSplitList = split(addressList.get(0).getAddressLine(0),",");
+            textInputEditText_addressLine.setText(addressSplitList[0]+addressSplitList[1]+addressSplitList[2]);
+            textInputEditText_city.setText(addressList.get(0).getLocality());
+            textInputEditText_state.setText(addressList.get(0).getAdminArea());
+            textInputEditText_postcode.setText(addressList.get(0).getPostalCode());
 
-            EditText_address1.setText(addressList.get(0).getAddressLine(0));
-            EditText_area.setText(addressList.get(0).getLocality());
-            EditText_state.setText(addressList.get(0).getAdminArea());
-            EditText_postcode.setText(addressList.get(0).getPostalCode());
         }catch(IOException e){
             e.printStackTrace();
             Toast.makeText(this,"Unable to detect your location.",Toast.LENGTH_SHORT).show();
@@ -235,19 +239,22 @@ public class Registration extends AppCompatActivity implements LocationListener{
             textInputEditText_city.setError("City cannot be empty!");
             textInputEditText_city.setFocusable(true);
             isValid=false;
-        }else{ textInputLayout_city.setErrorEnabled(false); }
+        }else{ textInputLayout_city.setError(null); }
 
         if(textInputEditText_postcode.getText().toString().isEmpty()){
+            String abc= textInputEditText_addressLine.getText().toString();
             textInputEditText_postcode.setError("Postcode cannot be empty!");
             textInputEditText_postcode.setFocusable(true);
             isValid=false;
-        }else{ textInputLayout_postcode.setErrorEnabled(false); }
+        }else{ textInputLayout_postcode.setError(null);
+        }
 
         if(textInputEditText_state.getText().toString().isEmpty()){
             textInputEditText_state.setError("State cannot be empty!");
             textInputEditText_state.setFocusable(true);
             isValid=false;
         }else{ textInputLayout_state.setErrorEnabled(false); }
+
 
         //NRIC length validation
         if(textInputEditText_nric.getText().toString().trim().length()<12){
@@ -262,7 +269,7 @@ public class Registration extends AppCompatActivity implements LocationListener{
             //if both NRIC are same
             textInputLayout_nric_confirm.setErrorEnabled(false);
         }else{
-            textInputEditText_nric_confirm.setError("NRIC mismatch!");
+            textInputEditText_nric_confirm.setError("confirm NRIC mismatched!");
             textInputEditText_nric_confirm.setFocusable(true);
             isValid=false;
         }
@@ -270,34 +277,23 @@ public class Registration extends AppCompatActivity implements LocationListener{
         if(isValid){ //when passed validation
             //confirm information is all correct.
             //set all the input field not editable
-            textInputEditText_name.setFocusable(false);
-            textInputEditText_name.setFocusableInTouchMode(false);
-            textInputEditText_name.setTextIsSelectable(false);
-            textInputEditText_phone.setFocusable(false);
-            textInputEditText_phone.setFocusableInTouchMode(false);
-            textInputEditText_phone.setTextIsSelectable(false);
-            textInputEditText_nric.setFocusable(false);
-            textInputEditText_nric.setFocusableInTouchMode(false);
-            textInputEditText_nric.setTextIsSelectable(false);
-            textInputEditText_nric_confirm.setFocusable(false);
-            textInputEditText_nric_confirm.setFocusableInTouchMode(false);
-            textInputEditText_nric_confirm.setTextIsSelectable(false);
-            textInputEditText_addressLine.setFocusable(false);
-            textInputEditText_addressLine.setFocusableInTouchMode(false);
-            textInputEditText_addressLine.setTextIsSelectable(false);
-            textInputEditText_city.setFocusable(false);
-            textInputEditText_city.setFocusableInTouchMode(false);
-            textInputEditText_city.setTextIsSelectable(false);
-            textInputEditText_postcode.setFocusable(false);
-            textInputEditText_postcode.setFocusableInTouchMode(false);
-            textInputEditText_postcode.setTextIsSelectable(false);
-            textInputEditText_state.setFocusable(false);
-            textInputEditText_state.setFocusableInTouchMode(false);
-            textInputEditText_state.setTextIsSelectable(false);
+            textInputEditText_name.setEnabled(false);
+            textInputEditText_phone.setEnabled(false);
+            textInputEditText_nric.setEnabled(false);
+            textInputEditText_nric_confirm.setEnabled(false);
+            textInputEditText_addressLine.setEnabled(false);
+            textInputEditText_state.setEnabled(false);
+            textInputEditText_postcode.setEnabled(false);
+            textInputEditText_city.setEnabled(false);
             // If you have not set a click event before, you can omit it here
             imageButtonGetLocation.setOnClickListener(null);
-            buttonNext.setText("Confirm");
-            buttonCancel.setVisibility(View.VISIBLE);
+            radioButton_pfizer.setEnabled(false);
+            radioButton_sinovac.setEnabled(false);
+            radioButton_AZ.setEnabled(false);
+            buttonNext.setVisibility(View.GONE);
+            //set Confirmation buttons visible
+            linearLayout_confirm.setVisibility(View.VISIBLE);
+
         }
     }
 
@@ -335,5 +331,22 @@ public class Registration extends AppCompatActivity implements LocationListener{
     }
 
     public void confirmation_cancel(View view) {
+        textInputEditText_name.setEnabled(true);
+        textInputEditText_phone.setEnabled(true);
+        textInputEditText_nric.setEnabled(true);
+        textInputEditText_nric_confirm.setEnabled(true);
+        textInputEditText_addressLine.setEnabled(true);
+        textInputEditText_state.setEnabled(true);
+        textInputEditText_postcode.setEnabled(true);
+        textInputEditText_city.setEnabled(true);
+        // If you have not set a click event before, you can omit it here
+        imageButtonGetLocation.setOnClickListener(this::getLocation);
+        radioButton_pfizer.setEnabled(true);
+        radioButton_sinovac.setEnabled(true);
+        radioButton_AZ.setEnabled(true);
+        buttonNext.setVisibility(View.VISIBLE);
+        //set Confirmation buttons visible
+        linearLayout_confirm.setVisibility(View.GONE);
     }
+
 }

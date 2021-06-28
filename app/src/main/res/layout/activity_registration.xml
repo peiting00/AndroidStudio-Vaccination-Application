@@ -9,13 +9,12 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarRegistration"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#00a9b0 "
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:theme="@style/Toolbar_back_button_style"
@@ -71,17 +70,18 @@
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <ScrollView
+        android:id="@+id/register_scrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/register_confirmationLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/progressBar_Registration"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@id/progressBar_Registration">
 
         <LinearLayout
+            android:id="@+id/register_form_linearLayout"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:orientation="vertical"
@@ -126,11 +126,11 @@
                     android:id="@+id/et_register_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/comfortaa"
+                    android:fontFamily="@font/roboto"
                     android:inputType="textPersonName"
                     android:paddingTop="@dimen/padding_10dp"
                     android:paddingBottom="@dimen/padding_10dp"
-                    android:textSize="14sp" />
+                    android:textSize="15sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -147,8 +147,7 @@
                 app:counterMaxLength="10"
                 app:errorIconDrawable="@drawable/ic_error"
                 app:startIconDrawable="@drawable/ic_phone"
-                app:startIconTint="@color/vaccine_color"
-                app:prefixText="+60">
+                app:startIconTint="@color/vaccine_color">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_register_phone"
@@ -158,7 +157,7 @@
                     android:inputType="number"
                     android:paddingTop="@dimen/padding_10dp"
                     android:paddingBottom="@dimen/padding_10dp"
-                    android:textSize="14sp"/>
+                    android:textSize="15sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -174,9 +173,9 @@
                 app:boxCornerRadiusTopStart="10dp"
                 app:counterEnabled="true"
                 app:counterMaxLength="12"
+                app:errorIconDrawable="@drawable/ic_error"
                 app:helperText="Enter your NRIC without '-'"
                 app:helperTextTextColor="#716161"
-                app:errorIconDrawable="@drawable/ic_error"
                 app:startIconDrawable="@drawable/ic_nric"
                 app:startIconTint="@color/vaccine_color">
 
@@ -189,7 +188,7 @@
                     android:inputType="number"
                     android:paddingTop="@dimen/padding_10dp"
                     android:paddingBottom="@dimen/padding_10dp"
-                    android:textSize="14sp" />
+                    android:textSize="15sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -205,9 +204,9 @@
                 app:boxCornerRadiusTopStart="10dp"
                 app:counterEnabled="true"
                 app:counterMaxLength="12"
+                app:errorIconDrawable="@drawable/ic_error"
                 app:helperText="Confirm your NRIC again."
                 app:helperTextTextColor="#716161"
-                app:errorIconDrawable="@drawable/ic_error"
                 app:startIconDrawable="@drawable/ic_nric"
                 app:startIconTint="@color/vaccine_color">
 
@@ -220,7 +219,7 @@
                     android:inputType="number"
                     android:paddingTop="@dimen/padding_10dp"
                     android:paddingBottom="@dimen/padding_10dp"
-                    android:textSize="14sp" />
+                    android:textSize="15sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
@@ -239,8 +238,7 @@
                     android:text="@string/label_register_currentAdd"
                     android:textColor="#000000"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
 
                 <ImageButton
                     android:id="@+id/imgBtn_register_location"
@@ -390,7 +388,7 @@
                     android:fontFamily="@font/roboto"
                     android:onClick="onRadioButtonClicked"
                     android:text="@string/text_pfizer_biontech"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
 
                 <RadioButton
                     android:id="@+id/radioBtn_register_sinovac"
@@ -399,7 +397,7 @@
                     android:fontFamily="@font/roboto"
                     android:onClick="onRadioButtonClicked"
                     android:text="@string/text_sinovac_coronavac"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
 
                 <RadioButton
                     android:id="@+id/radioBtn_register_AZ"
@@ -408,7 +406,7 @@
                     android:fontFamily="@font/roboto"
                     android:onClick="onRadioButtonClicked"
                     android:text="@string/text_astra_zeneca"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
             </RadioGroup>
 
             <Button
@@ -418,18 +416,40 @@
                 android:onClick="next"
                 android:text="Next" />
 
-            <Button
-                android:id="@+id/btnCancel_register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:background="#FFFFFF"
-                android:onClick="confirmation_cancel"
-                android:text="@string/label_button_register_cancel"
-                android:textColor="#EA0D0D"
-                android:visibility="gone"
-                app:backgroundTint="#FFFFFF"
-                app:layout_constraintBottom_toBottomOf="parent" />
         </LinearLayout>
     </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/register_confirmationLayout"
+        android:layout_width="410dp"
+        android:layout_height="47dp"
+        android:background="#FFFFFF"
+        android:orientation="horizontal"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register_scrollView">
+
+        <Button
+            android:id="@+id/btnCancel_register"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="confirmation_cancel"
+            android:text="@string/label_button_register_cancel"
+            android:textColor="#EA0D0D" />
+
+        <Button
+            android:id="@+id/btnConfirmForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Confirm" />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
