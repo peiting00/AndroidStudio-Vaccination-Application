@@ -1,11 +1,5 @@
 package com.example.group14_vaccinationapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -26,7 +20,13 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
-import java.util.regex.Pattern;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -289,4 +289,10 @@ public class Registration extends AppCompatActivity implements LocationListener{
         confirmationInfo.setVisibility(View.GONE);
     }
 
+    public void confirm(View view) {
+        Intent intent=new Intent(getApplicationContext(),getOTP.class);
+        intent.putExtra("phone",textInputEditText_phone.getText().toString());
+        startActivity(intent);
+        finish();//cannot switch back to previous screen
+    }
 }
