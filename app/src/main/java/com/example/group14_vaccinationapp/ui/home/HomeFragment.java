@@ -17,6 +17,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.group14_vaccinationapp.CovidWebsite;
 import com.example.group14_vaccinationapp.FAQs;
+import com.example.group14_vaccinationapp.PersonalHealthcare;
 import com.example.group14_vaccinationapp.R;
 import com.example.group14_vaccinationapp.UserInfo;
 import com.example.group14_vaccinationapp.VaccinationMenu;
@@ -73,7 +74,8 @@ public class HomeFragment extends Fragment {
         view.findViewById(R.id.btnThingsToDo).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getActivity().getApplicationContext(), PersonalHealthcare.class);
+                getActivity().startActivity(intent);
             }
         });
     }

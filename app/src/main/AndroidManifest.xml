@@ -11,7 +11,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Group14_VaccinationApp">
-        <activity android:name=".PersonalHealthcare"></activity>
+        <activity android:name=".VaccineRegisStatus"></activity>
+        <activity android:name=".PersonalHealthcare" />
         <activity android:name=".RegistrationSuccess" />
         <activity android:name=".FAQs" />
         <activity android:name=".Registration" />

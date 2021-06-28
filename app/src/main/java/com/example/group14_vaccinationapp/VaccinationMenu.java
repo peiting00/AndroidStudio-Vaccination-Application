@@ -43,6 +43,11 @@ public class VaccinationMenu extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void toVaccineStatus(View view) {
+        Intent intent = new Intent(this, VaccineRegisStatus.class);
+        startActivity(intent);
+    }
+
     public void setUserInfo() {
         userInfo = (UserInfo) getIntent().getSerializableExtra("userInfo");
     }

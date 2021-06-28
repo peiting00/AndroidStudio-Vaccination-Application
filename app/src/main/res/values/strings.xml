@@ -151,6 +151,21 @@
     <string name="regisSuccess">Registration Successful!</string>
     <string name="skip">Skip for now</string>
     <string name="invite">Invite friends to join</string>
+    <string name="vaccination_status">Vaccination Status</string>
+    <string name="vaccine_preference">Vaccine Preference</string>
+    <string name="notes">Notes</string>
+    <string name="address">Address</string>
+    <string name="phone">Phone</string>
+    <string name="age">Age</string>
+    <string name="ic">IC</string>
+    <string name="name">Name</string>
+    <string name="personal_health">
+        1. \t\tGet a COVID-19 vaccine as soon as you can.
+        \n\n 2. \t\tWear a mask that covers your nose and mouth to help protect yourself and others.
+        \n\n 3. \t\tStay 6 feet apart from others who don’t live with you.
+        \n\n 4. \t\tAvoid crowds and poorly ventilated indoor spaces.
+        \n\n 5. \t\tWash your hands often with soap and water. Use hand sanitizer if soap and water aren’t available.
+    </string>
 
     <!-- End    -->
 

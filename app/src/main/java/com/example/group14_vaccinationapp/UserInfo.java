@@ -21,7 +21,7 @@ public class UserInfo implements Serializable {
         address = "";
         vaccinePrefer = "";
         notes = "";
-        regisStatus = "You have not registered for your vaccination yet";
+        regisStatus = "";
         vaccinationStatus = "";
     }
 

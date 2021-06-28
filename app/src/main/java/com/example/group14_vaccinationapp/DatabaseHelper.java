@@ -18,7 +18,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db){
-        db.execSQL("CREATE TABLE user (ID INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, IC INTEGER, age INTEGER, phone INTEGER, address TEXT, notes TEXT, vaccinePrefer TEXT, regisStatus, TEXT, vaccinationStatus TEXT )");
+        db.execSQL("CREATE TABLE user (ID INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, IC INTEGER, age INTEGER, phone INTEGER, address TEXT, notes TEXT, vaccinePrefer TEXT)");
     }
 
     @Override
@@ -26,7 +26,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS user");
     }
 
-    public Boolean insert (String name, int IC, int age, int phone, String address, String notes, String vaccinePrefer, String regisStatus, String vaccinationStatus){
+    public Boolean insert (String name, int IC, int age, int phone, String address, String notes, String vaccinePrefer){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues conVal = new ContentValues();
@@ -37,8 +37,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         conVal.put("address", address);
         conVal.put("notes", notes);
         conVal.put("vaccinePrefer", vaccinePrefer);
-        conVal.put("regisStatus", regisStatus);
-        conVal.put("vaccinationStatus", vaccinationStatus);
 
         long result = db.insert("user", null, conVal);
 
@@ -48,9 +46,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor readInfo(){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM user", null);
-        cursor.moveToFirst();
+        if(cursor.getCount() != 0)
+            cursor.moveToFirst();
 //query return as Cursor pointer
         return cursor;
     }
 
+    public Boolean isBlank(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM user", null);
+        return (cursor.getCount() < 1);
+    }
 }
