@@ -10,11 +10,13 @@ import android.view.MenuItem;
 import android.view.View;
 
 public class VaccinationMenu extends AppCompatActivity {
-
+    private UserInfo userInfo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vaccination_menu);
+
+        setUserInfo();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarVaccination);
         setSupportActionBar(toolbar);
@@ -39,5 +41,9 @@ public class VaccinationMenu extends AppCompatActivity {
     public void toVaccineInfo(View view) {
         Intent intent = new Intent(getApplicationContext(),SelectVaccine.class);
         startActivity(intent);
+    }
+
+    public void setUserInfo() {
+        userInfo = (UserInfo) getIntent().getSerializableExtra("userInfo");
     }
 }

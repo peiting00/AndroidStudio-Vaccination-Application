@@ -148,6 +148,9 @@
     <string name="hospital5">Hospital Sultanah Maliha</string>
     <string name="hospital6">Hospital Pulau Pinang</string>
     <string name="label_button_register_cancel"><u>CANCEL</u></string>
+    <string name="regisSuccess">Registration Successful!</string>
+    <string name="skip">Skip for now</string>
+    <string name="invite">Invite friends to join</string>
 
     <!-- End    -->
 

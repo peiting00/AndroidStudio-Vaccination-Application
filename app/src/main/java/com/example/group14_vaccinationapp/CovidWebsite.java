@@ -14,7 +14,6 @@ import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
 public class CovidWebsite extends AppCompatActivity {
-
     Toolbar toolbar;
     private TextView mWebsite1,mWebsite2;
 
@@ -51,7 +50,6 @@ public class CovidWebsite extends AppCompatActivity {
         }else{
             Log.d("Implicit Intent","Can't handle this!");
         }
-
     }
 
     public void openWebsiteMOH(View view) {
@@ -65,6 +63,5 @@ public class CovidWebsite extends AppCompatActivity {
         }else{
             Log.d("Implicit Intent","Can't handle this!");
         }
-
     }
 }

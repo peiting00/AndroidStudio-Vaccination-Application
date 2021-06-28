@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.group14_vaccinationapp.R;
 import com.example.group14_vaccinationapp.Registration;
+import com.example.group14_vaccinationapp.RegistrationSuccess;
 import com.example.group14_vaccinationapp.databinding.FragmentGalleryBinding;
 
 public class GalleryFragment extends Fragment {
@@ -48,6 +49,14 @@ public class GalleryFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity().getApplicationContext(), Registration.class);
+                getActivity().startActivity(intent);
+            }
+        });
+
+        view.findViewById(R.id.btnToMsg).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity().getApplicationContext(), RegistrationSuccess.class);
                 getActivity().startActivity(intent);
             }
         });

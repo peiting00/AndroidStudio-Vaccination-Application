@@ -79,12 +79,4 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-
-    public void toVaccinationMenu(View view) {
-        Intent intent = new Intent(this, VaccinationMenu.class);
-    }
-
-    public void dial(View view) {
-
-    }
 }

@@ -15,7 +15,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class FAQs extends AppCompatActivity {
-
+    private UserInfo userInfo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

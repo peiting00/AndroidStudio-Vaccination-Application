@@ -8,13 +8,16 @@ import android.os.Handler;
 import android.os.Bundle;
 import android.os.HandlerThread;
 import android.os.Looper;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
 
-public class SplashScreen extends AppCompatActivity {
+import java.io.Serializable;
+
+public class SplashScreen extends AppCompatActivity{
 
     ImageView logo;
     TextView appname;
@@ -39,16 +42,15 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 // if you are redirecting from a fragment then use getActivity() as the context.
-                startActivity(new Intent(SplashScreen.this, MainActivity.class));
+                Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+                startActivity(intent);
                 finish();//user cannot switch back to splash screen
             }
         };
 
-
         Handler h = new Handler();
         // The Runnable will be executed after the given delay time
         h.postDelayed(r, 2000); // delay 3 sec
-
     }
 
     /**
@@ -80,6 +82,4 @@ public class SplashScreen extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_FULLSCREEN);
     }
-
-
 }
