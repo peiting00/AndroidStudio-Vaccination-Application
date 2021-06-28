@@ -24,8 +24,9 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
-
+import java.util.regex.Pattern;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -44,6 +45,7 @@ public class Registration extends AppCompatActivity implements LocationListener{
             textInputEditText_nric_confirm,textInputEditText_addressLine,
             textInputEditText_city,textInputEditText_postcode,textInputEditText_state;
     LocationManager locationManager;
+    TextView confirmationInfo;
     ImageButton imageButtonGetLocation;
     Button buttonNext,buttonCancel,buttonConfirm;
     RadioButton radioButton_pfizer,radioButton_sinovac,radioButton_AZ;
@@ -88,6 +90,7 @@ public class Registration extends AppCompatActivity implements LocationListener{
         radioButton_AZ=findViewById(R.id.radioBtn_register_AZ);
         linearLayout_confirm=findViewById(R.id.register_confirmationLayout);
         linearLayout_form=findViewById(R.id.register_form_linearLayout);
+        confirmationInfo=findViewById(R.id.label_register_confirmationInfo);
     }
 
     @Override //when back button clicked
@@ -181,123 +184,59 @@ public class Registration extends AppCompatActivity implements LocationListener{
     }
 
     @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
-
-    }
+    public void onStatusChanged(String provider, int status, Bundle extras) { }
 
     @Override
-    public void onProviderEnabled(@NonNull String provider) {
-
-    }
+    public void onProviderEnabled(@NonNull String provider) { }
 
     @Override
-    public void onProviderDisabled(@NonNull String provider) {
+    public void onProviderDisabled(@NonNull String provider) { }
 
-    }
 
-    /**
-     * input validation
-     */
     public void next(View view) {
-        boolean isValid=true;
+        //call validation object
+        validation validation = new validation();
 
-        //required field validator for all input field
-        if(textInputEditText_name.getText().toString().isEmpty()){ //if field is empty
-            textInputEditText_name.setError("Full Name cannot be empty!");//set error message
-            textInputEditText_name.setFocusable(true);
-            isValid=false; //validation is false
-        }else if(textInputEditText_name.getText().toString().contentEquals(" ")){
-            //validate white space
-            textInputEditText_name.setError("No white space allowed.");
-        }else{ textInputLayout_name.setErrorEnabled(false); } //validation correct,disable error msg
-
-        if(textInputEditText_phone.getText().toString().isEmpty()){
-            textInputEditText_phone.setError("Contact Number cannot be empty!");
-            textInputEditText_phone.setFocusable(true);
-            isValid=false;
-        }else{ textInputLayout_phone.setErrorEnabled(false); }
-
-        if(textInputEditText_nric.getText().toString().isEmpty()){
-            textInputEditText_nric.setError("NRIC cannot be empty!");
-            textInputEditText_nric.setFocusable(true);
-            isValid=false;
-        }else{ textInputLayout_nric.setErrorEnabled(false); }
-
-        if(textInputEditText_nric_confirm.getText().toString().isEmpty()){
-            textInputEditText_nric_confirm.setError("NRIC confirm cannot be empty!");
-            textInputEditText_nric_confirm.setFocusable(true);
-            isValid=false;
-        }else{ textInputLayout_nric_confirm.setErrorEnabled(false); }
-
-        if(textInputEditText_addressLine.getText().toString().isEmpty()){
-            textInputEditText_addressLine.setError("Address Line cannot be empty!");
-            textInputEditText_addressLine.setFocusable(true);
-            isValid=false;
-        }else{ textInputLayout_addressLine.setErrorEnabled(false); }
-
-        if(textInputEditText_city.getText().toString().isEmpty()){
-            textInputEditText_city.setError("City cannot be empty!");
-            textInputEditText_city.setFocusable(true);
-            isValid=false;
-        }else{ textInputLayout_city.setError(null); }
-
-        if(textInputEditText_postcode.getText().toString().isEmpty()){
-            String abc= textInputEditText_addressLine.getText().toString();
-            textInputEditText_postcode.setError("Postcode cannot be empty!");
-            textInputEditText_postcode.setFocusable(true);
-            isValid=false;
-        }else{ textInputLayout_postcode.setError(null);
+        if(validation.requiredFieldValidation(textInputEditText_name,textInputLayout_name)&&
+        validation.requiredFieldValidation(textInputEditText_phone,textInputLayout_phone)&&
+        validation.phoneRegexValidate(textInputEditText_phone,textInputLayout_phone)&&
+        validation.requiredFieldValidation(textInputEditText_nric,textInputLayout_nric)&&
+        validation.requiredFieldValidation(textInputEditText_nric_confirm,textInputLayout_nric_confirm)&&
+        validation.lengthValidate(textInputEditText_nric,textInputLayout_nric)&&
+        validation.lengthValidate(textInputEditText_nric_confirm,textInputLayout_nric_confirm)&&
+        validation.matchValidate(textInputEditText_nric,textInputEditText_nric_confirm,textInputLayout_nric_confirm)&&
+        validation.requiredFieldValidation(textInputEditText_addressLine,textInputLayout_addressLine)&&
+        validation.requiredFieldValidation(textInputEditText_city,textInputLayout_city)&&
+        validation.requiredFieldValidation(textInputEditText_postcode,textInputLayout_postcode)&&
+        validation.requiredFieldValidation(textInputEditText_state,textInputLayout_state)){
+            intoConfirmationState();//validation passed
         }
 
-        if(textInputEditText_state.getText().toString().isEmpty()){
-            textInputEditText_state.setError("State cannot be empty!");
-            textInputEditText_state.setFocusable(true);
-            isValid=false;
-        }else{ textInputLayout_state.setErrorEnabled(false); }
-
-
-        //NRIC length validation
-        if(textInputEditText_nric.getText().toString().trim().length()<12){
-            textInputEditText_nric.setError("Your NRIC should be 12-digit!");
-            textInputEditText_nric.setFocusable(true);
-            isValid=false;
-        }else{textInputLayout_nric.setErrorEnabled(false); }
-
-        //NRIC confirm same value with NRIC
-        if(textInputEditText_nric_confirm.getText().toString().
-                contentEquals(textInputEditText_nric.getText().toString())) {
-            //if both NRIC are same
-            textInputLayout_nric_confirm.setErrorEnabled(false);
-        }else{
-            textInputEditText_nric_confirm.setError("confirm NRIC mismatched!");
-            textInputEditText_nric_confirm.setFocusable(true);
-            isValid=false;
-        }
-
-        if(isValid){ //when passed validation
-            //confirm information is all correct.
-            //set all the input field not editable
-            textInputEditText_name.setEnabled(false);
-            textInputEditText_phone.setEnabled(false);
-            textInputEditText_nric.setEnabled(false);
-            textInputEditText_nric_confirm.setEnabled(false);
-            textInputEditText_addressLine.setEnabled(false);
-            textInputEditText_state.setEnabled(false);
-            textInputEditText_postcode.setEnabled(false);
-            textInputEditText_city.setEnabled(false);
-            // If you have not set a click event before, you can omit it here
-            imageButtonGetLocation.setOnClickListener(null);
-            radioButton_pfizer.setEnabled(false);
-            radioButton_sinovac.setEnabled(false);
-            radioButton_AZ.setEnabled(false);
-            buttonNext.setVisibility(View.GONE);
-            //set Confirmation buttons visible
-            linearLayout_confirm.setVisibility(View.VISIBLE);
-
-        }
     }
 
-
+    public void intoConfirmationState(){
+        //when passed validation
+        //confirm information is all correct.
+        //set all the input field not editable
+        textInputEditText_name.setEnabled(false);
+        textInputEditText_phone.setEnabled(false);
+        textInputEditText_nric.setEnabled(false);
+        textInputEditText_nric_confirm.setEnabled(false);
+        textInputEditText_addressLine.setEnabled(false);
+        textInputEditText_state.setEnabled(false);
+        textInputEditText_postcode.setEnabled(false);
+        textInputEditText_city.setEnabled(false);
+        radioButton_pfizer.setEnabled(false);
+        radioButton_sinovac.setEnabled(false);
+        radioButton_AZ.setEnabled(false);
+        // unable onClickEvent
+        imageButtonGetLocation.setOnClickListener(null);
+        //set Next button not visible
+        buttonNext.setVisibility(View.GONE);
+        //set Confirmation buttons visible
+        linearLayout_confirm.setVisibility(View.VISIBLE);
+        confirmationInfo.setVisibility(View.VISIBLE);
+    }
 
     public void onRadioButtonClicked(View view) {
         boolean checked = ((RadioButton)view).isChecked();
@@ -347,6 +286,7 @@ public class Registration extends AppCompatActivity implements LocationListener{
         buttonNext.setVisibility(View.VISIBLE);
         //set Confirmation buttons visible
         linearLayout_confirm.setVisibility(View.GONE);
+        confirmationInfo.setVisibility(View.GONE);
     }
 
 }
