@@ -8,8 +8,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class VaccineRegisStatus extends AppCompatActivity {
+import android.database.sqlite.SQLiteDatabase;
 
+public class VaccineRegisStatus extends AppCompatActivity {
     private DatabaseHelper dbHelper;
     private TextView txtName, txtIC, txtAge, txtPhone, txtAddress, txtNotes, txtVaccinePrefer, txtVaccineStatus;
     @Override
@@ -31,14 +32,41 @@ public class VaccineRegisStatus extends AppCompatActivity {
         txtNotes = findViewById(R.id.txtReadNotes);
         txtVaccinePrefer = findViewById(R.id.txtReadVaccinePrefer);
         txtVaccineStatus = findViewById(R.id.txtReadVaccineStatus);
+        try{
+            dbHelper = new DatabaseHelper(this);
+            String name = "", IC = "", age = "", phone = "", address = "", notes = "", vaccinePrefer = "";
+            if(!dbHelper.isBlank()){
+                Cursor cursor = dbHelper.readInfo();
 
-        dbHelper = new DatabaseHelper(this);
-        String name = "";
-        if(!dbHelper.isBlank()){
-            Cursor cursor = dbHelper.readInfo();
-            name = cursor.getString(cursor.getColumnIndex("name"));
-        }else{
-            txtVaccineStatus.setText("You have not registered for your vaccine yet");
+                name = cursor.getString(cursor.getColumnIndex("name"));
+                txtName.setText(name);
+
+                IC = cursor.getString(cursor.getColumnIndex("IC"));
+                txtIC.setText(IC);
+
+                age = cursor.getString(cursor.getColumnIndex("age"));
+                txtAge.setText(age);
+
+                phone = cursor.getString(cursor.getColumnIndex("phone"));
+                txtPhone.setText(phone);
+
+                address = cursor.getString(cursor.getColumnIndex("address"));
+                txtAddress.setText(address);
+
+                notes = cursor.getString(cursor.getColumnIndex("notes"));
+                txtNotes.setText(notes);
+
+                vaccinePrefer = cursor.getString(cursor.getColumnIndex("vaccinePrefer"));
+                txtVaccinePrefer.setText(vaccinePrefer);
+
+                txtVaccineStatus.setText("Pending");
+            }else{
+                txtVaccineStatus.setText("You have not registered for your vaccine yet");
+            }
+        }catch(Exception e){
+            txtVaccineStatus.setText(e.toString());
+
+            //db.execSQL("CREATE TABLE user (ID INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, IC INTEGER, age INTEGER, phone TEXT, address TEXT, notes TEXT, vaccinePrefer TEXT)");
         }
     }
 

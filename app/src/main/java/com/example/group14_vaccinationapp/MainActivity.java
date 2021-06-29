@@ -1,5 +1,7 @@
 package com.example.group14_vaccinationapp;
 
+import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;

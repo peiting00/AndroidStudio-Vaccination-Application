@@ -8,15 +8,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 public class VaccinationMenu extends AppCompatActivity {
-    private UserInfo userInfo;
+    private DatabaseHelper dbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vaccination_menu);
-
-        setUserInfo();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarVaccination);
         setSupportActionBar(toolbar);
@@ -34,8 +34,13 @@ public class VaccinationMenu extends AppCompatActivity {
     }
 
     public void toDeclarationVaccine(View view) {
-        Intent intent = new Intent(this, DeclarationVaccine.class);
-        startActivity(intent);
+        dbHelper = new DatabaseHelper(this);
+        if(!dbHelper.isBlank()) {
+            Toast.makeText(getApplicationContext(),"You have already registered for vaccination",Toast.LENGTH_SHORT).show();
+        }else {
+            Intent intent = new Intent(this, DeclarationVaccine.class);
+            startActivity(intent);
+        }
     }
 
     public void toVaccineInfo(View view) {
@@ -46,9 +51,5 @@ public class VaccinationMenu extends AppCompatActivity {
     public void toVaccineStatus(View view) {
         Intent intent = new Intent(this, VaccineRegisStatus.class);
         startActivity(intent);
-    }
-
-    public void setUserInfo() {
-        userInfo = (UserInfo) getIntent().getSerializableExtra("userInfo");
     }
 }

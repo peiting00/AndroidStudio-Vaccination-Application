@@ -6,21 +6,26 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class Quiz extends AppCompatActivity {
+    public static final String EXTRA_MESSAGE = "com.example.android.twoactivities.extra.MESSAGE";
     private CardView cvQues1Expand;
     private CardView cvQues2Expand;
     //private RadioGroup rdGroup1;
-    private TextView txtErrorQ1, txtErrorQ2, txtErrorQ3, txtErrorQ4, txtErrorQ5;
+    private TextView txtErrorQ1, txtErrorQ2, txtErrorQ3, txtErrorQ4, txtErrorQ5, txtErrorQ6;
     private int cbxQ1CheckedAmount, cbxQ2CheckedAmount;
+    private EditText edAgeQuiz;
 
-    Boolean q1Valid = false, q2Valid = false, q3Valid = false, q4Valid = false, q5Valid = false;
+    Boolean q1Valid = false, q2Valid = false, q3Valid = false, q4Valid = false, q5Valid = false, q6Valid = false;
 
     int q2Result = 0, q4Result = 0, q5Result = 0;
     @Override
@@ -42,8 +47,41 @@ public class Quiz extends AppCompatActivity {
         txtErrorQ3 = findViewById(R.id.txtErrorMsgQ3);
         txtErrorQ4 = findViewById(R.id.txtErrorMsgQ4);
         txtErrorQ5 = findViewById(R.id.txtErrorMsgQ5);
+        txtErrorQ6 = findViewById(R.id.txtErrorMsgQ6);
 
         cbxQ1CheckedAmount = 0; cbxQ2CheckedAmount = 0;
+
+        edAgeQuiz = findViewById(R.id.edAgeQuiz);
+        edAgeQuiz.addTextChangedListener(new TextWatcher() {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                try{
+                    String ageCheck = "";
+                    ageCheck = edAgeQuiz.getText().toString();
+                    if(ageCheck.isEmpty()){
+                        txtErrorQ6.setText("Required");
+                        q6Valid = false;
+                    }
+                    else{
+                        if(Integer.parseInt(ageCheck) < 0 || Integer.parseInt(ageCheck) > 130){
+                            txtErrorQ6.setText("Invalid age");
+                            q6Valid = false;
+                        }else{
+                            txtErrorQ6.setText("");
+                            q6Valid = true;
+                        }
+                    }
+                }catch(Exception e) {
+                    txtErrorQ6.setText(e.toString());
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
 
@@ -66,7 +104,7 @@ public class Quiz extends AppCompatActivity {
 
 
     public Boolean getFinalValidationQuiz(){
-        return q1Valid && q2Valid && q3Valid && q4Valid && q5Valid;
+        return q1Valid && q2Valid && q3Valid && q4Valid && q5Valid && q6Valid;
     }
 
     @Override //when back button clicked
@@ -185,6 +223,8 @@ public class Quiz extends AppCompatActivity {
             Toast.makeText(Quiz.this,msgUnsuitableStatus,Toast.LENGTH_SHORT).show();
 
             Intent intent = new Intent(this, Registration.class);
+            intent.putExtra("age", edAgeQuiz.getText().toString());
+            intent.putExtra("notes", msgUnsuitableStatus);
             startActivity(intent);
         }else{
             Toast.makeText(Quiz.this,"Please make sure every question is answered correctly",Toast.LENGTH_SHORT).show();

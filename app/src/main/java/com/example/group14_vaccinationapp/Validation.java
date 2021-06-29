@@ -5,7 +5,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.regex.Pattern;
 
-public class validation extends Registration{
+public class Validation extends Registration{
 
     TextInputEditText textInputEditText;
     TextInputLayout textInputLayout;
@@ -13,7 +13,7 @@ public class validation extends Registration{
     private static final Pattern phone_pattern=
             Pattern.compile("^(01)[0-46-9][0-9]{7,8}$");
 
-    public validation(){//constructor
+    public Validation(){//constructor
 //        this.textInputEditText=textInputEditText;
 //        this.textInputLayout=textInputLayout;
     }

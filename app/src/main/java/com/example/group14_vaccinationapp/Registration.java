@@ -26,7 +26,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
-import java.util.regex.Pattern;
+
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -50,6 +50,10 @@ public class Registration extends AppCompatActivity implements LocationListener{
     Button buttonNext,buttonCancel,buttonConfirm;
     RadioButton radioButton_pfizer,radioButton_sinovac,radioButton_AZ;
     LinearLayout linearLayout_confirm,linearLayout_form;
+
+    private String vaccinePrefer;
+    private String age;
+    private String notes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +95,10 @@ public class Registration extends AppCompatActivity implements LocationListener{
         linearLayout_confirm=findViewById(R.id.register_confirmationLayout);
         linearLayout_form=findViewById(R.id.register_form_linearLayout);
         confirmationInfo=findViewById(R.id.label_register_confirmationInfo);
+
+        Intent intent = getIntent();
+        age = intent.getStringExtra("age");
+        notes = intent.getStringExtra("notes");
     }
 
     @Override //when back button clicked
@@ -195,7 +203,7 @@ public class Registration extends AppCompatActivity implements LocationListener{
 
     public void next(View view) {
         //call validation object
-        validation validation = new validation();
+        Validation validation = new Validation();
 
         if(validation.requiredFieldValidation(textInputEditText_name,textInputLayout_name)&&
         validation.requiredFieldValidation(textInputEditText_phone,textInputLayout_phone)&&
@@ -236,6 +244,8 @@ public class Registration extends AppCompatActivity implements LocationListener{
         //set Confirmation buttons visible
         linearLayout_confirm.setVisibility(View.VISIBLE);
         confirmationInfo.setVisibility(View.VISIBLE);
+
+
     }
 
     public void onRadioButtonClicked(View view) {
@@ -245,18 +255,21 @@ public class Registration extends AppCompatActivity implements LocationListener{
                 if(checked)
                     //display chosen vaccine
                     displayToast(getString(R.string.text_pfizer_biontech));
+                    vaccinePrefer = getString(R.string.text_pfizer_biontech);
                     //delivery = getString(R.string.text_sameday);
                 break;
             case R.id.radioBtn_register_sinovac:
                 if(checked)
                     //display chosen vaccine
                     displayToast(getString(R.string.text_sinovac_coronavac));
+                    vaccinePrefer = getString(R.string.text_sinovac_coronavac);
                     //delivery = getString(R.string.text_sameday);
                 break;
             case R.id.radioBtn_register_AZ:
                 if(checked)
                     //display chosen vaccine
                     displayToast(getString(R.string.text_astra_zeneca));
+                    vaccinePrefer = getString(R.string.text_astra_zeneca);
                     //delivery=getString(R.string.text_pickup);
                 break;
             default:
@@ -288,5 +301,4 @@ public class Registration extends AppCompatActivity implements LocationListener{
         linearLayout_confirm.setVisibility(View.GONE);
         confirmationInfo.setVisibility(View.GONE);
     }
-
 }
