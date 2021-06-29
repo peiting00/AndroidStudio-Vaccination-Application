@@ -27,6 +27,12 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -244,8 +250,6 @@ public class Registration extends AppCompatActivity implements LocationListener{
         //set Confirmation buttons visible
         linearLayout_confirm.setVisibility(View.VISIBLE);
         confirmationInfo.setVisibility(View.VISIBLE);
-
-
     }
 
     public void onRadioButtonClicked(View view) {
@@ -300,5 +304,12 @@ public class Registration extends AppCompatActivity implements LocationListener{
         //set Confirmation buttons visible
         linearLayout_confirm.setVisibility(View.GONE);
         confirmationInfo.setVisibility(View.GONE);
+    }
+
+    public void confirm(View view) {
+        Intent intent=new Intent(getApplicationContext(),getOTP.class);
+        intent.putExtra("phone",textInputEditText_phone.getText().toString());
+        startActivity(intent);
+        finish();//cannot switch back to previous screen
     }
 }

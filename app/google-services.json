@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "270806482165",
+    "project_id": "otpverification-dd3f8",
+    "storage_bucket": "otpverification-dd3f8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:270806482165:android:f30fd36852e52d7973d9bc",
+        "android_client_info": {
+          "package_name": "com.example.group14_vaccinationapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "270806482165-uic6pu14pmjvt1iv2rjo7cfk68sb8gfm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7h4tqrTUAO7ddonxd9ckrC_P6vkUSXZ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "270806482165-uic6pu14pmjvt1iv2rjo7cfk68sb8gfm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:270806482165:android:137dead24ec1b61773d9bc",
+        "android_client_info": {
+          "package_name": "com.example.groupassignment_testing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "270806482165-uic6pu14pmjvt1iv2rjo7cfk68sb8gfm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7h4tqrTUAO7ddonxd9ckrC_P6vkUSXZ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "270806482165-uic6pu14pmjvt1iv2rjo7cfk68sb8gfm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
