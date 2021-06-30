@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.group14_vaccinationapp.R;
 import com.example.group14_vaccinationapp.databinding.FragmentSlideshowBinding;
 
 public class SlideshowFragment extends Fragment {
@@ -32,7 +31,7 @@ public class SlideshowFragment extends Fragment {
         slideshowViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(s);
+                textView.setText("");
             }
         });
         return root;

@@ -16,7 +16,6 @@
         <activity android:name=".VaccineRegisStatus"></activity>
         <activity android:name=".PersonalHealthcare" />
         <activity android:name=".RegistrationSuccess" />
-        <activity android:name=".FAQs" />
         <activity android:name=".Registration" />
         <activity android:name=".Quiz" />
         <activity android:name=".DeclarationVaccine" />

@@ -1,17 +1,15 @@
 package com.example.group14_vaccinationapp;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ShareCompat;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.view.MenuItem;
-import android.view.View;
-
 import com.airbnb.lottie.LottieAnimationView;
-import com.example.group14_vaccinationapp.ui.home.HomeFragment;
 
 public class RegistrationSuccess extends AppCompatActivity {
     LottieAnimationView lottieAnimationView;
@@ -44,7 +42,8 @@ public class RegistrationSuccess extends AppCompatActivity {
     }
 
     public void inviteFriends(View view) {
-        String txt = "Hello friends! \n\nYou may download this app: \"Vaccine Now\" on Play Store to register for your vaccine conveniently";
+        String txt = "Hello friends! \n\nYou may download this app: \"Vaccine Now\" on " +
+                "Play Store to register for your vaccine conveniently";
         String mimeType = "text/plain";
 
         ShareCompat.IntentBuilder

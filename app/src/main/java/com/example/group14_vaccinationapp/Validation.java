@@ -48,7 +48,6 @@ public class Validation extends Registration{
             textInputLayout.setErrorEnabled(false);
             return true;
         }
-
     }
 
     public boolean matchValidate(TextInputEditText textInputEditText, TextInputEditText textInputEditTextConfirm,TextInputLayout textInputLayout){

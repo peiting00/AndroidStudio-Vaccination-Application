@@ -1,9 +1,5 @@
 package com.example.group14_vaccinationapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -12,9 +8,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 
 public class Quiz extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.android.twoactivities.extra.MESSAGE";
@@ -226,6 +225,7 @@ public class Quiz extends AppCompatActivity {
             intent.putExtra("age", edAgeQuiz.getText().toString());
             intent.putExtra("notes", msgUnsuitableStatus);
             startActivity(intent);
+            finish();
         }else{
             Toast.makeText(Quiz.this,"Please make sure every question is answered correctly",Toast.LENGTH_SHORT).show();
         }

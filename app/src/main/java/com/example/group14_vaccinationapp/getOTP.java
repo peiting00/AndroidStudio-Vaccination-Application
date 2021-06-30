@@ -22,11 +22,9 @@ import java.util.concurrent.TimeUnit;
 
 
 public class getOTP extends AppCompatActivity {
-
-
     ProgressBar progressBar;
     String verificationOTPBySystem;
-
+    private DatabaseHelper dbHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,9 +34,7 @@ public class getOTP extends AppCompatActivity {
         sendOTPtoUser(phone);
     }
 
-
     public void sendOTPtoUser(String phone){
-
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
              "+6"+phone,     // Phone number to verify
              60,            //Timeout duration
@@ -81,7 +77,6 @@ public class getOTP extends AppCompatActivity {
                 progressBar.setVisibility(View.VISIBLE);
                 verifyOTP(code);
             }
-
         }
 
         @Override

@@ -1,11 +1,5 @@
 package com.example.group14_vaccinationapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -51,6 +45,7 @@ public class Registration extends AppCompatActivity implements LocationListener{
             textInputEditText_nric_confirm,textInputEditText_addressLine,
             textInputEditText_city,textInputEditText_postcode,textInputEditText_state;
     LocationManager locationManager;
+
     TextView confirmationInfo;
     ImageButton imageButtonGetLocation;
     Button buttonNext,buttonCancel,buttonConfirm;
@@ -307,9 +302,30 @@ public class Registration extends AppCompatActivity implements LocationListener{
     }
 
     public void confirm(View view) {
-        Intent intent=new Intent(getApplicationContext(),getOTP.class);
-        intent.putExtra("phone",textInputEditText_phone.getText().toString());
-        startActivity(intent);
-        finish();//cannot switch back to previous screen
+        try{
+            DatabaseHelper dbHelper = new DatabaseHelper(this);
+            String name = textInputEditText_name.getText().toString(),
+
+                    address = textInputEditText_addressLine.getText().toString() +", " +
+                            textInputEditText_city.getText().toString() + ", " +
+                            textInputEditText_postcode.getText().toString() + ", " +
+                            textInputEditText_state.getText().toString(),
+
+                    phone = textInputEditText_phone.getText().toString(),
+                    IC = textInputEditText_nric_confirm.getText().toString();
+            int ageParse = Integer.parseInt(age);
+
+            if(dbHelper.insert(name, IC, ageParse, phone, address, notes, vaccinePrefer)) {
+                Intent intent=new Intent(getApplicationContext(),getOTP.class);
+                intent.putExtra("phone",textInputEditText_phone.getText().toString());
+                intent.putExtra("name", name);
+                startActivity(intent);
+                finish();//cannot switch back to previous screen
+            }else{
+                displayToast("Something went wrong, please try again later");
+            }
+        }catch(Exception e){
+            displayToast(e.toString());
+        }
     }
 }
