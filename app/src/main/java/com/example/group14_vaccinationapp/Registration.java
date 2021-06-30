@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,12 +46,12 @@ public class Registration extends AppCompatActivity implements LocationListener{
             textInputEditText_nric_confirm,textInputEditText_addressLine,
             textInputEditText_city,textInputEditText_postcode,textInputEditText_state;
     LocationManager locationManager;
-
     TextView confirmationInfo;
     ImageButton imageButtonGetLocation;
     Button buttonNext,buttonCancel,buttonConfirm;
     RadioButton radioButton_pfizer,radioButton_sinovac,radioButton_AZ;
     LinearLayout linearLayout_confirm,linearLayout_form;
+    ProgressBar progressBar;
 
     private String vaccinePrefer;
     private String age;
@@ -96,6 +97,7 @@ public class Registration extends AppCompatActivity implements LocationListener{
         linearLayout_confirm=findViewById(R.id.register_confirmationLayout);
         linearLayout_form=findViewById(R.id.register_form_linearLayout);
         confirmationInfo=findViewById(R.id.label_register_confirmationInfo);
+        progressBar=findViewById(R.id.progressBar_register_getLocation);
 
         Intent intent = getIntent();
         age = intent.getStringExtra("age");
@@ -110,18 +112,18 @@ public class Registration extends AppCompatActivity implements LocationListener{
         return super.onOptionsItemSelected(item);
     }
 
-    public void getLocation(View view) {
-        //check if user have Location Permission
-        grantPermission();
+    public void getLocation(View view) { // WHEN USER CLICK ON 'location' ICON
+        progressBar.setVisibility(View.VISIBLE);//enable the progressbar
+        grantPermission();//check if user have permission
         checkLocationIsEnabled(); // redirect user to location setting
-        getLocation();
-
+        getLocation();//get the exact location
     }
 
     private void getLocation() {
         try{
             locationManager=(LocationManager)getSystemService(Context.LOCATION_SERVICE);
-            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,500,5, (LocationListener) this);
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,
+                    500,5, (LocationListener) this);
         }catch(SecurityException e){
             e.printStackTrace();
         }
@@ -146,7 +148,7 @@ public class Registration extends AppCompatActivity implements LocationListener{
         }
 
         if(!gpsEnabled && !networkEnabled){ //if GPS is disabled
-            new AlertDialog.Builder(Registration.this)
+            new AlertDialog.Builder(Registration.this) //create Dialog box
                     .setTitle("Enable GPS Service")
                     .setCancelable(false)
                     .setPositiveButton("Enable", new DialogInterface.OnClickListener() {
@@ -166,7 +168,8 @@ public class Registration extends AppCompatActivity implements LocationListener{
                 != PackageManager.PERMISSION_GRANTED){
 
             //grant permission
-            ActivityCompat.requestPermissions(Registration.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+            ActivityCompat.requestPermissions(Registration.this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
                     Manifest.permission.ACCESS_COARSE_LOCATION},100);
         }
     }
@@ -175,6 +178,7 @@ public class Registration extends AppCompatActivity implements LocationListener{
     @Override
     public void onLocationChanged(@NonNull Location location) {
         try{
+            displayToast("GPS is locating your current position");
             Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
             //get location by using latitude and longitude
             List<Address> addressList = geocoder.getFromLocation(location.getLatitude(),
@@ -185,7 +189,7 @@ public class Registration extends AppCompatActivity implements LocationListener{
             textInputEditText_city.setText(addressList.get(0).getLocality());
             textInputEditText_state.setText(addressList.get(0).getAdminArea());
             textInputEditText_postcode.setText(addressList.get(0).getPostalCode());
-
+            progressBar.setVisibility(View.GONE);
         }catch(IOException e){
             e.printStackTrace();
             Toast.makeText(this,"Unable to detect your location.",Toast.LENGTH_SHORT).show();
@@ -213,19 +217,19 @@ public class Registration extends AppCompatActivity implements LocationListener{
         validation.requiredFieldValidation(textInputEditText_nric_confirm,textInputLayout_nric_confirm)&&
         validation.lengthValidate(textInputEditText_nric,textInputLayout_nric)&&
         validation.lengthValidate(textInputEditText_nric_confirm,textInputLayout_nric_confirm)&&
-        validation.matchValidate(textInputEditText_nric,textInputEditText_nric_confirm,textInputLayout_nric_confirm)&&
+        validation.matchValidate(textInputEditText_nric,textInputEditText_nric_confirm, textInputLayout_nric_confirm)&&
         validation.requiredFieldValidation(textInputEditText_addressLine,textInputLayout_addressLine)&&
         validation.requiredFieldValidation(textInputEditText_city,textInputLayout_city)&&
         validation.requiredFieldValidation(textInputEditText_postcode,textInputLayout_postcode)&&
         validation.requiredFieldValidation(textInputEditText_state,textInputLayout_state)){
-            intoConfirmationState();//validation passed
+            intoConfirmationState();//if validation passed
         }
 
     }
 
     public void intoConfirmationState(){
         //when passed validation
-        //confirm information is all correct.
+        //prompt user to confirm information is all correct.
         //set all the input field not editable
         textInputEditText_name.setEnabled(false);
         textInputEditText_phone.setEnabled(false);
@@ -277,10 +281,15 @@ public class Registration extends AppCompatActivity implements LocationListener{
         }
     }
 
+    //make Toast message
     public void displayToast(String message){
         Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * When user clicked on 'cancel' button on confirmation state
+     * make all the input field available to edit - enabled
+     */
     public void confirmation_cancel(View view) {
         textInputEditText_name.setEnabled(true);
         textInputEditText_phone.setEnabled(true);
@@ -290,7 +299,7 @@ public class Registration extends AppCompatActivity implements LocationListener{
         textInputEditText_state.setEnabled(true);
         textInputEditText_postcode.setEnabled(true);
         textInputEditText_city.setEnabled(true);
-        // If you have not set a click event before, you can omit it here
+        // enable the onclick listener with the local getLocation() function
         imageButtonGetLocation.setOnClickListener(this::getLocation);
         radioButton_pfizer.setEnabled(true);
         radioButton_sinovac.setEnabled(true);
@@ -301,6 +310,10 @@ public class Registration extends AppCompatActivity implements LocationListener{
         confirmationInfo.setVisibility(View.GONE);
     }
 
+    /**
+     * When user clicked on 'confirm'button on confirmation state
+     * @param view
+     */
     public void confirm(View view) {
         try{
             DatabaseHelper dbHelper = new DatabaseHelper(this);

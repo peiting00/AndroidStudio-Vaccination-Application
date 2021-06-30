@@ -6,25 +6,28 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.regex.Pattern;
 
 public class Validation extends Registration{
-
+    /**
+     * This object java file is an object of Registration class.
+     */
     TextInputEditText textInputEditText;
     TextInputLayout textInputLayout;
     boolean isValid=false;
+
+    //Phone regex for Malaysia phone number pattern validation
     private static final Pattern phone_pattern=
             Pattern.compile("^(01)[0-46-9][0-9]{7,8}$");
 
     public Validation(){//constructor
-//        this.textInputEditText=textInputEditText;
-//        this.textInputLayout=textInputLayout;
+        //empty
     }
 
-    public boolean requiredFieldValidation(TextInputEditText textInputEditText, TextInputLayout textInputLayout) {
+    public boolean requiredFieldValidation(TextInputEditText textInputEditText,
+                                           TextInputLayout textInputLayout) {
 
         //validate empty field
         if (textInputEditText.getText().toString().isEmpty()) {
             textInputEditText.setError("This field cannot be empty!");//set error message
             textInputEditText.setFocusable(true);
-
             return false; //validation is false
         } // validate white space
         else if (textInputEditText.getText().toString().contentEquals(" ")) {
@@ -32,44 +35,48 @@ public class Validation extends Registration{
             textInputEditText.setFocusable(true);
             return false; //validation is false
         }
-        else{
+        else{//no error occur
             textInputLayout.setErrorEnabled(false);
             return true;
         }
     }
 
-    public boolean phoneRegexValidate(TextInputEditText textInputEditText, TextInputLayout textInputLayout){
+    public boolean phoneRegexValidate(TextInputEditText textInputEditText,
+                                      TextInputLayout textInputLayout){
+        //validate phone number follow the required pattern
         if(!phone_pattern.matcher(textInputEditText.getText().toString()).matches()){
             textInputEditText.setError("Contact Number is not valid!");
             textInputEditText.setFocusable(true);
-            return false;
+            return false; //validation false
         }
-        else{
+        else{ // no error
             textInputLayout.setErrorEnabled(false);
             return true;
         }
     }
 
-    public boolean matchValidate(TextInputEditText textInputEditText, TextInputEditText textInputEditTextConfirm,TextInputLayout textInputLayout){
+    public boolean matchValidate(TextInputEditText textInputEditText,
+            TextInputEditText textInputEditTextConfirm,TextInputLayout textInputLayoutConfirm){
         if(textInputEditTextConfirm.getText().toString().
                 contentEquals(textInputEditText.getText().toString())) {
             //if both NRIC are same
-            textInputLayout.setErrorEnabled(false);
+            textInputLayoutConfirm.setErrorEnabled(false);
             return true;
         }else{
-            textInputEditText.setError("confirm NRIC mismatched!");
+            textInputEditTextConfirm.setError("confirm NRIC mismatched!");//set error message
             textInputEditText.setFocusable(true);
             return false;
         }
     }
 
-    public boolean lengthValidate(TextInputEditText textInputEditText, TextInputLayout textInputLayout){
+    public boolean lengthValidate(TextInputEditText textInputEditText,
+                                  TextInputLayout textInputLayout){
         //NRIC length validation
-        if(textInputEditText.getText().toString().trim().length()<12){
-            textInputEditText.setError("Your NRIC should be 12-digit!");
+        if(textInputEditText.getText().toString().trim().length()<12){ //less than 12 digit
+            textInputEditText.setError("Your NRIC should be 12-digit!"); //set error
             textInputEditText.setFocusable(true);
             return false;
-        }else{
+        }else{//no error
             textInputLayout.setErrorEnabled(false);
             return true;
         }

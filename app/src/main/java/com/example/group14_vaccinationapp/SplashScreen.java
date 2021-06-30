@@ -1,21 +1,15 @@
 package com.example.group14_vaccinationapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Handler;
 import android.os.Bundle;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Parcelable;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.airbnb.lottie.LottieAnimationView;
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.Serializable;
+import com.airbnb.lottie.LottieAnimationView;
 
 public class SplashScreen extends AppCompatActivity{
 
@@ -50,7 +44,7 @@ public class SplashScreen extends AppCompatActivity{
 
         Handler h = new Handler();
         // The Runnable will be executed after the given delay time
-        h.postDelayed(r, 2000); // delay 3 sec
+        h.postDelayed(r, 2000); // delay 2 sec
     }
 
     /**
