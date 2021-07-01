@@ -27,9 +27,9 @@ public class SplashScreen extends AppCompatActivity{
         lottieAnimationView=findViewById(R.id.lottie);
 
         //duration 1000=1sec
-        logo.animate().setDuration(1000).setDuration(4000);
-        appname.animate().setDuration(1000).setDuration(4000);
-        lottieAnimationView.animate().setDuration(1000).setDuration(4000);
+        logo.animate().setDuration(4000);
+        appname.animate().setDuration(4000);
+        lottieAnimationView.animate().setDuration(4000);
 
         Runnable r = new Runnable() {
 
@@ -44,7 +44,7 @@ public class SplashScreen extends AppCompatActivity{
 
         Handler h = new Handler();
         // The Runnable will be executed after the given delay time
-        h.postDelayed(r, 2000); // delay 2 sec
+        h.postDelayed(r, 4000); // delay 4 sec
     }
 
     /**

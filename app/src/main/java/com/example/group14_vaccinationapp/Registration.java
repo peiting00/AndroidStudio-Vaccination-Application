@@ -259,21 +259,21 @@ public class Registration extends AppCompatActivity implements LocationListener{
                     //display chosen vaccine
                     displayToast(getString(R.string.text_pfizer_biontech));
                     vaccinePrefer = getString(R.string.text_pfizer_biontech);
-                    //delivery = getString(R.string.text_sameday);
+
                 break;
             case R.id.radioBtn_register_sinovac:
                 if(checked)
                     //display chosen vaccine
                     displayToast(getString(R.string.text_sinovac_coronavac));
                     vaccinePrefer = getString(R.string.text_sinovac_coronavac);
-                    //delivery = getString(R.string.text_sameday);
+
                 break;
             case R.id.radioBtn_register_AZ:
                 if(checked)
                     //display chosen vaccine
                     displayToast(getString(R.string.text_astra_zeneca));
                     vaccinePrefer = getString(R.string.text_astra_zeneca);
-                    //delivery=getString(R.string.text_pickup);
+
                 break;
             default:
                 //do nothing
@@ -312,7 +312,6 @@ public class Registration extends AppCompatActivity implements LocationListener{
 
     /**
      * When user clicked on 'confirm'button on confirmation state
-     * @param view
      */
     public void confirm(View view) {
         try{
