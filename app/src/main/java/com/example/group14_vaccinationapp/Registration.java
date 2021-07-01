@@ -259,21 +259,18 @@ public class Registration extends AppCompatActivity implements LocationListener{
                     //display chosen vaccine
                     displayToast(getString(R.string.text_pfizer_biontech));
                     vaccinePrefer = getString(R.string.text_pfizer_biontech);
-
                 break;
             case R.id.radioBtn_register_sinovac:
                 if(checked)
                     //display chosen vaccine
                     displayToast(getString(R.string.text_sinovac_coronavac));
                     vaccinePrefer = getString(R.string.text_sinovac_coronavac);
-
                 break;
             case R.id.radioBtn_register_AZ:
                 if(checked)
                     //display chosen vaccine
                     displayToast(getString(R.string.text_astra_zeneca));
                     vaccinePrefer = getString(R.string.text_astra_zeneca);
-
                 break;
             default:
                 //do nothing
@@ -328,11 +325,15 @@ public class Registration extends AppCompatActivity implements LocationListener{
             int ageParse = Integer.parseInt(age);
 
             if(dbHelper.insert(name, IC, ageParse, phone, address, notes, vaccinePrefer)) {
-                Intent intent=new Intent(getApplicationContext(),getOTP.class);
-                intent.putExtra("phone",textInputEditText_phone.getText().toString());
-                intent.putExtra("name", name);
+                Intent intent= new Intent(this,getOTP.class);
+                Bundle confirmInfo= new Bundle();
+                confirmInfo.putString("name",name);
+                confirmInfo.putString("phone",textInputEditText_phone.getText().toString());
+                confirmInfo.putString("NRIC",textInputEditText_nric.getText().toString());
+                confirmInfo.putString("address",address);
+                confirmInfo.putString("vaccine",vaccinePrefer);
+                intent.putExtras(confirmInfo);
                 startActivity(intent);
-                finish();//cannot switch back to previous screen
             }else{
                 displayToast("Something went wrong, please try again later");
             }

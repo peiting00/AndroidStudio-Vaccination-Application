@@ -25,12 +25,16 @@ public class getOTP extends AppCompatActivity {
     ProgressBar progressBar;
     String verificationOTPBySystem;
     private DatabaseHelper dbHelper;
+    Bundle GetconfirmInfo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_otp);
         progressBar=findViewById(R.id.progressbar_verify_otp);
-        String phone = getIntent().getStringExtra("phone");
+
+        GetconfirmInfo = getIntent().getExtras();
+        String phone=GetconfirmInfo.getString("phone");
         sendOTPtoUser(phone);
     }
 
@@ -58,7 +62,8 @@ public class getOTP extends AppCompatActivity {
                 @Override
                 public void run() {
                     // if you are redirecting from a fragment then use getActivity() as the context.
-                    Intent intent = new Intent(getOTP.this, RegistrationSuccess.class);
+                    Intent intent = new Intent(getOTP.this, VaccinationConfirmed.class);
+                    intent.putExtras(GetconfirmInfo);
                     startActivity(intent);
                     finish();//user cannot switch back
                 }
@@ -66,7 +71,7 @@ public class getOTP extends AppCompatActivity {
 
             Handler h = new Handler();
             // The Runnable will be executed after the given delay time
-            h.postDelayed(r, 2000); // delay 3 sec
+            h.postDelayed(r, 2000); // delay 2 sec
         }
 
         @Override
