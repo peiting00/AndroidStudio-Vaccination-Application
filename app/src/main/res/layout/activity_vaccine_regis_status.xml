@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/nunito_sans"
         android:text="@string/name"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +45,7 @@
         android:layout_marginRight="24dp"
         android:fontFamily="@font/nunito_sans"
         android:text=""
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,9 +57,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/ic"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
         android:fontFamily="@font/nunito_sans"
+        android:text="@string/ic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtReadName" />
 
@@ -73,7 +75,7 @@
         android:layout_marginRight="24dp"
         android:fontFamily="@font/nunito_sans"
         android:text=""
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtIC" />
@@ -83,11 +85,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/age"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/nunito_sans"
+        android:text="@string/age"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtReadIC" />
+        app:layout_constraintTop_toBottomOf="@+id/txtReadIC"
+        android:layout_marginStart="24dp" />
 
     <TextView
         android:id="@+id/txtReadAge"
@@ -96,9 +99,10 @@
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
         android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
         android:fontFamily="@font/nunito_sans"
         android:text=""
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtAge" />
@@ -109,9 +113,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/phone"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/nunito_sans"
+        android:text="@string/phone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtReadAge" />
 
@@ -125,7 +129,7 @@
         android:layout_marginRight="24dp"
         android:fontFamily="@font/nunito_sans"
         android:text=""
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPhone" />
@@ -136,9 +140,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/address"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/nunito_sans"
+        android:text="@string/address"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtReadPhone" />
 
@@ -162,9 +166,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/notes"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/nunito_sans"
+        android:text="@string/notes"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtReadAddress" />
 
@@ -188,9 +192,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/vaccine_preference"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/nunito_sans"
+        android:text="@string/vaccine_preference"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtReadNotes" />
 
@@ -204,7 +208,7 @@
         android:layout_marginRight="24dp"
         android:fontFamily="@font/nunito_sans"
         android:text=""
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtVaccinePrefer" />
@@ -215,9 +219,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/vaccination_status"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/nunito_sans"
+        android:text="@string/vaccination_status"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtReadVaccinePrefer" />
 
@@ -231,7 +235,7 @@
         android:layout_marginRight="24dp"
         android:fontFamily="@font/nunito_sans"
         android:text=""
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtVaccineStatus" />
