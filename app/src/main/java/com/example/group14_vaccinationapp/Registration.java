@@ -334,6 +334,7 @@ public class Registration extends AppCompatActivity implements LocationListener{
                 confirmInfo.putString("vaccine",vaccinePrefer);
                 intent.putExtras(confirmInfo);
                 startActivity(intent);
+                finish();
             }else{
                 displayToast("Something went wrong, please try again later");
             }

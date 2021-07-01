@@ -107,6 +107,7 @@ public class getOTP extends AppCompatActivity {
                             Intent intent = new Intent(getApplicationContext(),RegistrationSuccess.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
+                            finish();
                         }else{
                             //if OTP is entered wrongly
                             Toast.makeText(getOTP.this,task.getException().getMessage(),Toast.LENGTH_SHORT).show();
