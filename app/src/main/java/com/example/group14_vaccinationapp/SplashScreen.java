@@ -36,7 +36,7 @@ public class SplashScreen extends AppCompatActivity{
             @Override
             public void run() {
                 // if you are redirecting from a fragment then use getActivity() as the context.
-                Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+                Intent intent = new Intent(SplashScreen.this, Videos.class);
                 startActivity(intent);
                 finish();//user cannot switch back to splash screen
             }
