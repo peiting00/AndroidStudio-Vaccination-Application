@@ -63,6 +63,8 @@
 • had a severe allergic reaction after a previous dose of this vaccine\n
 • had a severe allergic reaction to any ingredient of this vaccine\n
     </string>
+    <!--Vaccine Info END-->
+
     <string name="expandbutton">expandButton</string>
     <string name="personal_nhealthcare"><![CDATA[Personal Healthcare]]></string>
     <string name="latest_information_about_covid_19">Latest information about COVID-19</string>
@@ -105,6 +107,7 @@
         \n\n 5. \t\t People who have either undergone or are undergoing one or more of the following treatments or procedures.
         \n\n 6. \t\t People who have been diagnosed by a medical practitioner with one or more of the following edical conditions (this eligibility criteria applies to people aged 69 years and under)
     </string>
+    <!-- Declaration End   -->
 
     <!-- String for registration page    -->
     <string name="registration_topInfo">Please ensure that all information provided is complete and accurate for a smooth and fuss-free registration.</string>
@@ -121,6 +124,7 @@
     <string name="label_register_hint_postalcode">ZIP</string>
     <string name="label_register_hint_state">State</string>
     <string name="label_register_hint_vaccinepreference">Vaccine Preference</string>
+
     <string name="padding"> \n\n </string>
     <string name="agreement">I confirm that I have read, consent and agree to the agreement of COVID-19 vaccination.\nI understand the risk and side effects of vaccines</string>
     <string name="ques1">Are you interested to take the COVID-19 vaccine?</string>
@@ -148,8 +152,6 @@
     <string name="hospital5">Hospital Sultanah Maliha</string>
     <string name="hospital6">Hospital Pulau Pinang</string>
     <string name="label_button_register_cancel"><u>CANCEL</u></string>
-    <string name="text_otpverfication">OTP Verification</string>
-    <string name="resend_otp"><u>Resend otp</u></string>
     <string name="regisSuccess">Registration Successful!</string>
     <string name="skip">Skip for now</string>
     <string name="invite">Invite friends to join</string>
@@ -170,13 +172,14 @@
     </string>
     <string name="ques6">Please enter your age</string>
     <string name="vaccinenow_email">No worries! Your may update your personal information \nby email to Vaccine Now customer service center \nvia vaccinenow@gmail.com</string>
-    <string name="video_title">Vaccine Video</string>
+
+    <!-- Video  -->
     <string name="txt_video_title"><u>Covid-19 Vaccination Programme</u></string>
     <string name="video1_desc">Residents unite to ferry seniors for Covid-19 jabs | The Star</string>
     <string name="video2_Desc">AstraZeneca recipients at PWTC share their innoculation experience | The Star</string>
     <string name="video3_Desc">KPJ personnel\'s human touch put vaccine recipients at ease | The Star</string>
     <string name="video_source_label">sources: The Star - YouTube</string>
+    <!-- Video END   -->
 
-    <!-- End    -->
 
 </resources>
