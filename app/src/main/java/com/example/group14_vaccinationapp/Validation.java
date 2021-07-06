@@ -1,5 +1,7 @@
 package com.example.group14_vaccinationapp;
 
+import android.content.Context;
+
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -12,13 +14,14 @@ public class Validation extends Registration{
     TextInputEditText textInputEditText;
     TextInputLayout textInputLayout;
     boolean isValid=false;
+    Context context;
 
     //Phone regex for Malaysia phone number pattern validation
     private static final Pattern phone_pattern=
             Pattern.compile("^(01)[0-46-9][0-9]{7,8}$");
 
-    public Validation(){//constructor
-        //empty
+    public Validation(Context context){//constructor
+        this.context=context;
     }
 
     public boolean requiredFieldValidation(TextInputEditText textInputEditText,
@@ -56,7 +59,7 @@ public class Validation extends Registration{
     }
 
     public boolean matchValidate(TextInputEditText textInputEditText,
-            TextInputEditText textInputEditTextConfirm,TextInputLayout textInputLayoutConfirm){
+                                 TextInputEditText textInputEditTextConfirm,TextInputLayout textInputLayoutConfirm){
         if(textInputEditTextConfirm.getText().toString().
                 contentEquals(textInputEditText.getText().toString())) {
             //if both NRIC and password are same
@@ -82,5 +85,16 @@ public class Validation extends Registration{
         }
     }
 
-
+    public boolean checkUserExist(TextInputEditText textInputEditText,TextInputLayout textInputLayout){
+        String ic = textInputEditText.getText().toString();
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
+        if(dbHelper.isIC_Exist(ic)) {
+            textInputLayout.setError("This NRIC has been registered.");
+            textInputEditText.setFocusable(true);
+            return true;//user exist
+        }else {
+            textInputLayout.setErrorEnabled(false); //new user
+            return false;
+        }
+    }
 }

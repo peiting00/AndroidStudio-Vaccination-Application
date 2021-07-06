@@ -12,28 +12,28 @@ import androidx.annotation.Nullable;
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "vaccination.db";
     //user table
-    private static final String TABLE_USER="user";
-    private static final String TABLE_VACCINE="vaccine";
-    private static final String COLUMN_IC ="ic";
-    private static final String COLUMN_NAME="name";
+    private static final String TABLE_USER = "user";
+    private static final String TABLE_VACCINE = "vaccine";
+    private static final String COLUMN_IC = "ic";
+    private static final String COLUMN_NAME = "name";
     private static final String COLUMN_PASSWORD = "password";
-    private static final String COLUMN_AGE="age";
-    private static final String COLUMN_PHONE="phone";
-    private static final String COLUMN_ADDRESS="address";
-    private static final String COLUMN_NOTES="note";
-    private static final String COLUMN_VACCINE_STATUS="status";
-    private static final String COLUMN_isADMIN="isAdmin";
+    private static final String COLUMN_AGE = "age";
+    private static final String COLUMN_PHONE = "phone";
+    private static final String COLUMN_ADDRESS = "address";
+    private static final String COLUMN_NOTES = "notes";
+    private static final String COLUMN_VACCINE_STATUS = "status";
+    private static final String COLUMN_isADMIN = "isAdmin";
     //vaccine table
-    private static final String COLUMN_VACCINE_ID="vaccineID";
-    private static final String COLUMN_VACCINE_NAME="vaccineName";
+    private static final String COLUMN_VACCINE_ID = "vaccineID";
+    private static final String COLUMN_VACCINE_NAME = "vaccineName";
 
 
-    public DatabaseHelper(@Nullable Context context){
+    public DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db){
+    public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TABLE_USER + " (" +
                 COLUMN_IC + " TEXT PRIMARY KEY , " +
                 COLUMN_NAME + " TEXT NOT NULL, " +
@@ -52,25 +52,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_VACCINE_ID + " TEXT PRIMARY KEY , " +
                 COLUMN_VACCINE_NAME + " TEXT NOT NULL );");
 
-        db.execSQL("INSERT INTO "+TABLE_VACCINE+ "(" +
-                COLUMN_VACCINE_ID+","+COLUMN_VACCINE_NAME+")" +
+        db.execSQL("INSERT INTO " + TABLE_VACCINE + "(" +
+                COLUMN_VACCINE_ID + "," + COLUMN_VACCINE_NAME + ")" +
                 "VALUES('1','PFIZER'),('2','SINOVAC'),('3','AZ');");
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int i, int i1){
-        db.execSQL("DROP TABLE IF EXISTS "+TABLE_USER+";");
-        db.execSQL("DROP TABLE IF EXISTS "+TABLE_VACCINE+";");
+    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER + ";");
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_VACCINE + ";");
         onCreate(db);
     }
 
-    Boolean addUser (String IC,String name, String password, String age, String phone, String address, String notes, String vaccineID){
+    Boolean addUser(String IC, String name, String password, String age, String phone, String address, String notes, String vaccineID) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues conVal = new ContentValues();
         conVal.put(COLUMN_IC, IC);
         conVal.put(COLUMN_NAME, name);
-        conVal.put(COLUMN_PASSWORD,password);
+        conVal.put(COLUMN_PASSWORD, password);
         conVal.put(COLUMN_AGE, age);
         conVal.put(COLUMN_PHONE, phone);
         conVal.put(COLUMN_ADDRESS, address);
@@ -78,25 +78,34 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         conVal.put(COLUMN_isADMIN, "0"); //default user as not admin
         conVal.put(COLUMN_VACCINE_ID, vaccineID); // before come to here need to speficy the id
 
-        return db.insert(TABLE_USER,null,conVal)!=-1;
+        return db.insert(TABLE_USER, null, conVal) != -1;
     }
 
-    public Cursor readInfo(){
+    public boolean isIC_Exist(String ic) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_USER + " WHERE " + COLUMN_IC + "=?", new String[]{ic});
+        if (cursor.getCount() > 0)
+            return true;//IC exist
+        else
+            return false;
+    }
+
+    public Cursor readInfo() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM user", null);
-        if(cursor.getCount() != 0)
+        if (cursor.getCount() != 0)
             cursor.moveToFirst();
         //query return as Cursor pointer
         return cursor;
     }
 
-    public Boolean isBlank(){
+    public Boolean isBlank() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM user", null);
         return (cursor.getCount() < 1);
     }
 
-    public void deleteRec(String name){
+    public void deleteRec(String name) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete("user", "name=?", new String[]{name});
     }
