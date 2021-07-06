@@ -41,10 +41,12 @@ public class Registration extends AppCompatActivity implements LocationListener{
 
     TextInputLayout textInputLayout_name,textInputLayout_phone,textInputLayout_nric,
             textInputLayout_nric_confirm,textInputLayout_addressLine,textInputLayout_city,
-            textInputLayout_postcode,textInputLayout_state;
+            textInputLayout_postcode,textInputLayout_state,textInputLayout_password,
+            textInputLayout_password_confirm;
     TextInputEditText textInputEditText_name,textInputEditText_phone,textInputEditText_nric,
             textInputEditText_nric_confirm,textInputEditText_addressLine,
-            textInputEditText_city,textInputEditText_postcode,textInputEditText_state;
+            textInputEditText_city,textInputEditText_postcode,textInputEditText_state,
+            textInputEditText_password, textInputEditText_password_confirm;
     LocationManager locationManager;
     TextView confirmationInfo;
     ImageButton imageButtonGetLocation;
@@ -53,7 +55,7 @@ public class Registration extends AppCompatActivity implements LocationListener{
     LinearLayout linearLayout_confirm,linearLayout_form;
     ProgressBar progressBar;
 
-    private String vaccinePrefer;
+    private String vaccinePrefer,vaccineID;
     private String age;
     private String notes;
 
@@ -77,6 +79,8 @@ public class Registration extends AppCompatActivity implements LocationListener{
         textInputEditText_city=findViewById(R.id.et_register_city);
         textInputEditText_postcode=findViewById(R.id.et_register_postcode);
         textInputEditText_state=findViewById(R.id.et_register_state);
+        textInputEditText_password=findViewById(R.id.et_register_password);
+        textInputEditText_password_confirm=findViewById(R.id.et_register_passwordConfirm);
 
         textInputLayout_name=findViewById(R.id.textInputLayout_register_name);
         textInputLayout_phone=findViewById(R.id.textInputLayout_register_phone);
@@ -86,6 +90,8 @@ public class Registration extends AppCompatActivity implements LocationListener{
         textInputLayout_city=findViewById(R.id.textInputLayout_register_city);
         textInputLayout_postcode=findViewById(R.id.textInputLayout_register_postcode);
         textInputLayout_state=findViewById(R.id.textInputLayout_register_state);
+        textInputLayout_password=findViewById(R.id.textInputLayout_register_password);
+        textInputLayout_password_confirm=findViewById(R.id.textInputLayout_register_passwordConfirm);
 
         imageButtonGetLocation=findViewById(R.id.imgBtn_register_location);
         buttonNext=findViewById(R.id.btnNext);
@@ -221,7 +227,9 @@ public class Registration extends AppCompatActivity implements LocationListener{
         validation.requiredFieldValidation(textInputEditText_addressLine,textInputLayout_addressLine)&&
         validation.requiredFieldValidation(textInputEditText_city,textInputLayout_city)&&
         validation.requiredFieldValidation(textInputEditText_postcode,textInputLayout_postcode)&&
-        validation.requiredFieldValidation(textInputEditText_state,textInputLayout_state)){
+        validation.requiredFieldValidation(textInputEditText_state,textInputLayout_state)&&
+        validation.requiredFieldValidation(textInputEditText_password,textInputLayout_password)&&
+        validation.matchValidate(textInputEditText_password,textInputEditText_password_confirm,textInputLayout_password_confirm)){
             intoConfirmationState();//if validation passed
         }
 
@@ -242,6 +250,8 @@ public class Registration extends AppCompatActivity implements LocationListener{
         radioButton_pfizer.setEnabled(false);
         radioButton_sinovac.setEnabled(false);
         radioButton_AZ.setEnabled(false);
+        textInputLayout_password.setEnabled(false);
+        textInputLayout_password_confirm.setEnabled(false);
         // unable onClickEvent
         imageButtonGetLocation.setOnClickListener(null);
         //set Next button not visible
@@ -259,21 +269,24 @@ public class Registration extends AppCompatActivity implements LocationListener{
                     //display chosen vaccine
                     displayToast(getString(R.string.text_pfizer_biontech));
                     vaccinePrefer = getString(R.string.text_pfizer_biontech);
+                    vaccineID="1";
                 break;
             case R.id.radioBtn_register_sinovac:
                 if(checked)
                     //display chosen vaccine
                     displayToast(getString(R.string.text_sinovac_coronavac));
                     vaccinePrefer = getString(R.string.text_sinovac_coronavac);
+                    vaccineID="2";
                 break;
             case R.id.radioBtn_register_AZ:
                 if(checked)
                     //display chosen vaccine
                     displayToast(getString(R.string.text_astra_zeneca));
                     vaccinePrefer = getString(R.string.text_astra_zeneca);
+                    vaccineID="3";
                 break;
             default:
-                //do nothing
+                displayToast("Please select a preferred vaccine!");
                 break;
         }
     }
@@ -296,6 +309,8 @@ public class Registration extends AppCompatActivity implements LocationListener{
         textInputEditText_state.setEnabled(true);
         textInputEditText_postcode.setEnabled(true);
         textInputEditText_city.setEnabled(true);
+        textInputLayout_password.setEnabled(true);
+        textInputLayout_password_confirm.setEnabled(true);
         // enable the onclick listener with the local getLocation() function
         imageButtonGetLocation.setOnClickListener(this::getLocation);
         radioButton_pfizer.setEnabled(true);
@@ -321,10 +336,11 @@ public class Registration extends AppCompatActivity implements LocationListener{
                             textInputEditText_state.getText().toString(),
 
                     phone = textInputEditText_phone.getText().toString(),
-                    IC = textInputEditText_nric_confirm.getText().toString();
-            int ageParse = Integer.parseInt(age);
+                    IC = textInputEditText_nric_confirm.getText().toString(),
+                    password=textInputEditText_password.getText().toString();
+            //int ageParse = Integer.parseInt(age);
 
-            if(dbHelper.insert(name, IC, ageParse, phone, address, notes, vaccinePrefer)) {
+            if(dbHelper.addUser(IC,name,password, age, phone, address, notes, vaccineID)) {
                 Intent intent= new Intent(this,getOTP.class);
                 Bundle confirmInfo= new Bundle();
                 confirmInfo.putString("name",name);

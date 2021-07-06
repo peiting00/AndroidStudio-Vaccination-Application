@@ -59,11 +59,11 @@ public class Validation extends Registration{
             TextInputEditText textInputEditTextConfirm,TextInputLayout textInputLayoutConfirm){
         if(textInputEditTextConfirm.getText().toString().
                 contentEquals(textInputEditText.getText().toString())) {
-            //if both NRIC are same
+            //if both NRIC and password are same
             textInputLayoutConfirm.setErrorEnabled(false);
             return true;
         }else{
-            textInputEditTextConfirm.setError("confirm NRIC mismatched!");//set error message
+            textInputEditTextConfirm.setError("This field mismatched!");//set error message
             textInputEditText.setFocusable(true);
             return false;
         }
