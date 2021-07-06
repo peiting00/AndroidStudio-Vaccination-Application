@@ -10,7 +10,23 @@ import androidx.annotation.Nullable;
 
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "vaccination.db";
+    private static final String DATABASE_NAME = "vaccination.db";
+    //user table
+    private static final String TABLE_USER="user";
+    private static final String TABLE_VACCINE="vaccine";
+    private static final String COLUMN_IC ="ic";
+    private static final String COLUMN_NAME="name";
+    private static final String COLUMN_PASSWORD = "password";
+    private static final String COLUMN_AGE="age";
+    private static final String COLUMN_PHONE="phone";
+    private static final String COLUMN_ADDRESS="address";
+    private static final String COLUMN_NOTES="note";
+    private static final String COLUMN_VACCINE_STATUS="status";
+    private static final String COLUMN_isADMIN="isAdmin";
+    //vaccine table
+    private static final String COLUMN_VACCINE_ID="vaccineID";
+    private static final String COLUMN_VACCINE_NAME="vaccineName";
+
 
     public DatabaseHelper(@Nullable Context context){
         super(context, DATABASE_NAME, null, 1);
@@ -18,30 +34,51 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db){
-        db.execSQL("CREATE TABLE user (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "name TEXT, IC TEXT, age INTEGER, phone TEXT, address TEXT, notes TEXT, vaccinePrefer TEXT)");
+        db.execSQL("CREATE TABLE " + TABLE_USER + " (" +
+                COLUMN_IC + " TEXT PRIMARY KEY , " +
+                COLUMN_NAME + " TEXT NOT NULL, " +
+                COLUMN_PASSWORD + " TEXT NOT NULL, " +
+                COLUMN_AGE + " TEXT NOT NULL, " +
+                COLUMN_PHONE + " TEXT NOT NULL, " +
+                COLUMN_ADDRESS + " TEXT NOT NULL, " +
+                COLUMN_NOTES + " TEXT NOT NULL, " +
+                //COLUMN_VACCINE_STATUS + "TEXT NOT NULL, " +
+                COLUMN_isADMIN + " TEXT NOT NULL, " +
+                COLUMN_VACCINE_ID + " TEXT NOT NULL," +
+                "CONSTRAINT fk_vaccine FOREIGN KEY (" + COLUMN_VACCINE_ID + ") " +
+                "REFERENCES " + TABLE_VACCINE + "(" + COLUMN_VACCINE_ID + "));");
+
+        db.execSQL("CREATE TABLE " + TABLE_VACCINE + " (" +
+                COLUMN_VACCINE_ID + " TEXT PRIMARY KEY , " +
+                COLUMN_VACCINE_NAME + " TEXT NOT NULL );");
+
+        db.execSQL("INSERT INTO "+TABLE_VACCINE+ "(" +
+                COLUMN_VACCINE_ID+","+COLUMN_VACCINE_NAME+")" +
+                "VALUES('1','PFIZER'),('2','SINOVAC'),('3','AZ');");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1){
-        db.execSQL("DROP TABLE IF EXISTS user");
+        db.execSQL("DROP TABLE IF EXISTS "+TABLE_USER+";");
+        db.execSQL("DROP TABLE IF EXISTS "+TABLE_VACCINE+";");
+        onCreate(db);
     }
 
-    public Boolean insert (String name, String IC, int age, String phone, String address, String notes, String vaccinePrefer){
+    Boolean addUser (String IC,String name, String password, String age, String phone, String address, String notes, String vaccineID){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues conVal = new ContentValues();
-        conVal.put("name", name);
-        conVal.put("IC", IC);
-        conVal.put("age", age);
-        conVal.put("phone", phone);
-        conVal.put("address", address);
-        conVal.put("notes", notes);
-        conVal.put("vaccinePrefer", vaccinePrefer);
+        conVal.put(COLUMN_IC, IC);
+        conVal.put(COLUMN_NAME, name);
+        conVal.put(COLUMN_PASSWORD,password);
+        conVal.put(COLUMN_AGE, age);
+        conVal.put(COLUMN_PHONE, phone);
+        conVal.put(COLUMN_ADDRESS, address);
+        conVal.put(COLUMN_NOTES, notes);
+        conVal.put(COLUMN_isADMIN, "0"); //default user as not admin
+        conVal.put(COLUMN_VACCINE_ID, vaccineID); // before come to here need to speficy the id
 
-        long result = db.insert("user", null, conVal);
-
-        return (result != -1);
+        return db.insert(TABLE_USER,null,conVal)!=-1;
     }
 
     public Cursor readInfo(){
