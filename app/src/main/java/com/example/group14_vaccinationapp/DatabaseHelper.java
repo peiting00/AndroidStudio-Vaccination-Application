@@ -42,7 +42,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_PHONE + " TEXT NOT NULL, " +
                 COLUMN_ADDRESS + " TEXT NOT NULL, " +
                 COLUMN_NOTES + " TEXT NOT NULL, " +
-                //COLUMN_VACCINE_STATUS + "TEXT NOT NULL, " +
+                COLUMN_VACCINE_STATUS + "TEXT NOT NULL, " +
                 COLUMN_isADMIN + " TEXT NOT NULL, " +
                 COLUMN_VACCINE_ID + " TEXT NOT NULL," +
                 "CONSTRAINT fk_vaccine FOREIGN KEY (" + COLUMN_VACCINE_ID + ") " +
@@ -64,19 +64,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    Boolean addUser(String IC, String name, String password, String age, String phone, String address, String notes, String vaccineID) {
+    public Boolean addUser(String IC, String name, String password, String age, String phone, String address, String notes, String vaccineID) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues conVal = new ContentValues();
-        conVal.put(COLUMN_IC, IC);
-        conVal.put(COLUMN_NAME, name);
-        conVal.put(COLUMN_PASSWORD, password);
-        conVal.put(COLUMN_AGE, age);
-        conVal.put(COLUMN_PHONE, phone);
-        conVal.put(COLUMN_ADDRESS, address);
-        conVal.put(COLUMN_NOTES, notes);
-        conVal.put(COLUMN_isADMIN, "0"); //default user as not admin
-        conVal.put(COLUMN_VACCINE_ID, vaccineID); // before come to here need to speficy the id
+        conVal.put(COLUMN_IC, IC); //0
+        conVal.put(COLUMN_NAME, name);//1
+        conVal.put(COLUMN_PASSWORD, password);//2
+        conVal.put(COLUMN_AGE, age);//3
+        conVal.put(COLUMN_PHONE, phone);//4
+        conVal.put(COLUMN_ADDRESS, address);//5
+        conVal.put(COLUMN_VACCINE_STATUS,"Pending");//default value is pending//6
+        conVal.put(COLUMN_NOTES, notes);//7
+        conVal.put(COLUMN_isADMIN, "0"); //default user as not admin//8
+        conVal.put(COLUMN_VACCINE_ID, vaccineID); // before come to here need to speficy the id//9
 
         return db.insert(TABLE_USER, null, conVal) != -1;
     }
@@ -105,8 +106,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return (cursor.getCount() < 1);
     }
 
-    public void deleteRec(String name) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete("user", "name=?", new String[]{name});
+    public boolean deleteUser(String ic){
+        //delete user by using NRIC (primary key)
+        SQLiteDatabase db = getWritableDatabase();
+        return db.delete(TABLE_USER,COLUMN_IC +"=?",new String[]{ic})==1;
     }
+
+    public Cursor getAllUser(){
+        SQLiteDatabase db = getReadableDatabase();
+        return db.rawQuery("SELECT * FROM "+TABLE_USER,null);
+    }
+
+
 }

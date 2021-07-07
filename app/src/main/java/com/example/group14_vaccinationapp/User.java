@@ -9,8 +9,8 @@ public class User {
         this.age=age;
         this.phone=phone;
         this.address=address;
-        this.notes=notes;
         this.status=status;
+        this.notes=notes;
         this.vaccineID=vaccineID;
     }
 
