@@ -7,21 +7,21 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.regex.Pattern;
 
-public class Validation extends Registration{
+public class Validation extends Registration {
     /**
      * This object java file is an object of Registration class.
      */
     TextInputEditText textInputEditText;
     TextInputLayout textInputLayout;
-    boolean isValid=false;
+    boolean isValid = false;
     Context context;
 
     //Phone regex for Malaysia phone number pattern validation
-    private static final Pattern phone_pattern=
+    private static final Pattern phone_pattern =
             Pattern.compile("^(01)[0-46-9][0-9]{7,8}$");
 
-    public Validation(Context context){//constructor
-        this.context=context;
+    public Validation(Context context) {//constructor
+        this.context = context;
     }
 
     public boolean requiredFieldValidation(TextInputEditText textInputEditText,
@@ -37,35 +37,33 @@ public class Validation extends Registration{
             textInputEditText.setError("No whitespace allowed!");//set error message
             textInputEditText.setFocusable(true);
             return false; //validation is false
-        }
-        else{//no error occur
+        } else {//no error occur
             textInputLayout.setErrorEnabled(false);
             return true;
         }
     }
 
     public boolean phoneRegexValidate(TextInputEditText textInputEditText,
-                                      TextInputLayout textInputLayout){
+                                      TextInputLayout textInputLayout) {
         //validate phone number follow the required pattern
-        if(!phone_pattern.matcher(textInputEditText.getText().toString()).matches()){
+        if (!phone_pattern.matcher(textInputEditText.getText().toString()).matches()) {
             textInputEditText.setError("Contact Number is not valid!");
             textInputEditText.setFocusable(true);
             return false; //validation false
-        }
-        else{ // no error
+        } else { // no error
             textInputLayout.setErrorEnabled(false);
             return true;
         }
     }
 
     public boolean matchValidate(TextInputEditText textInputEditText,
-                                 TextInputEditText textInputEditTextConfirm,TextInputLayout textInputLayoutConfirm){
-        if(textInputEditTextConfirm.getText().toString().
+                                 TextInputEditText textInputEditTextConfirm, TextInputLayout textInputLayoutConfirm) {
+        if (textInputEditTextConfirm.getText().toString().
                 contentEquals(textInputEditText.getText().toString())) {
             //if both NRIC and password are same
             textInputLayoutConfirm.setErrorEnabled(false);
             return true;
-        }else{
+        } else {
             textInputEditTextConfirm.setError("This field mismatched!");//set error message
             textInputEditText.setFocusable(true);
             return false;
@@ -73,26 +71,44 @@ public class Validation extends Registration{
     }
 
     public boolean lengthValidate(TextInputEditText textInputEditText,
-                                  TextInputLayout textInputLayout){
+                                  TextInputLayout textInputLayout) {
         //NRIC length validation
-        if(textInputEditText.getText().toString().trim().length()<12){ //less than 12 digit
+        if (textInputEditText.getText().toString().trim().length() < 12) { //less than 12 digit
             textInputEditText.setError("Your NRIC should be 12-digit!"); //set error
             textInputEditText.setFocusable(true);
             return false;
-        }else{//no error
+        } else {//no error
             textInputLayout.setErrorEnabled(false);
             return true;
         }
     }
 
-    public boolean checkUserExist(TextInputEditText textInputEditText,TextInputLayout textInputLayout){
+    public boolean ageValidate(TextInputEditText textInputEditText,
+                               TextInputLayout textInputLayout) {
+        //convert string age to int
+        int age = Integer.parseInt(textInputEditText.getText().toString());
+        if (age < 0) { //age less than 0
+            textInputEditText.setError("Age should not be less than 0"); //set error
+            textInputEditText.setFocusable(true);
+            return false; //validate fail
+        }else if(age>120){
+            textInputEditText.setError("Age should not be more than 120"); //set error
+            textInputEditText.setFocusable(true);
+            return false; //validate fail
+        }else {//no error
+            textInputLayout.setErrorEnabled(false);
+            return true;
+        }
+    }
+
+    public boolean checkUserExist(TextInputEditText textInputEditText, TextInputLayout textInputLayout) {
         String ic = textInputEditText.getText().toString();
         DatabaseHelper dbHelper = new DatabaseHelper(context);
-        if(dbHelper.isIC_Exist(ic)) {
-            textInputLayout.setError("This NRIC has been registered.");
+        if (dbHelper.isIC_Exist(ic)) {
+            textInputEditText.setError("Your NRIC has been registered.");
             textInputEditText.setFocusable(true);
             return true;//user exist
-        }else {
+        } else {
             textInputLayout.setErrorEnabled(false); //new user
             return false;
         }

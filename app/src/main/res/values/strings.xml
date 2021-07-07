@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Vaccine Now</string>
+    <string name="app_name">Vaccine Now 2.0</string>
     <string name="appname">Vaccine Now</string>
     <string name="content_desc_splash_screen_json">splash screen json</string>
     <string name="content_desc_logo">logo</string>
@@ -181,6 +181,12 @@
     <string name="video_source_label">sources: The Star - YouTube</string>
     <string name="click_me_to_login"><u>Click me to LOGIN</u></string>
     <!-- Video END   -->
+    <array name="vaccineType">
+        <item>Please select a vaccine</item>
+        <item>Pfizer</item>
+        <item>Sinovac</item>
+        <item>Astra Zeneca</item>
+    </array>
 
 
 </resources>

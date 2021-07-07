@@ -378,7 +378,7 @@ public class Registration extends AppCompatActivity implements LocationListener 
     }
 
     public void goLoginPage(View view) {
-//        Intent intent = new Intent(this,Login.class);
-//        startActivity(intent);
+        Intent intent = new Intent(this,Login.class);
+        startActivity(intent);
     }
 }
