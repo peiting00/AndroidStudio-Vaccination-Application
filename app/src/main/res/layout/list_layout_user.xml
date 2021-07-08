@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -25,7 +25,7 @@
                 android:paddingTop="@dimen/padding_10dp"
                 android:paddingRight="@dimen/padding_10dp"
                 android:text="Vaccine Now User's information"
-                android:textColor="#9C27B0"
+                android:textColor="#3F51B5"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -243,23 +243,20 @@
 
                     <ImageButton
                         android:id="@+id/btnEditUser"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="10dp"
                         android:layout_weight="0"
-                        android:background="#FFFFFF"
-                        android:paddingTop="@dimen/padding_10dp"
-                        android:paddingBottom="@dimen/padding_10dp"
-                        android:src="@drawable/ic_edit" />
+                        android:background="@drawable/ic_edit" />
 
                     <ImageButton
                         android:id="@+id/btnDeleteUser"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
                         android:layout_weight="0"
-                        android:background="#FFFFFF"
-                        android:paddingTop="@dimen/padding_10dp"
-                        android:paddingBottom="@dimen/padding_10dp"
-                        android:src="@drawable/ic_dustbin" />
+                        android:background="@drawable/ic_dustbin" />
 
                 </LinearLayout>
 

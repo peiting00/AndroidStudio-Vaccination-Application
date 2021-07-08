@@ -74,7 +74,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         conVal.put(COLUMN_AGE, age);//3
         conVal.put(COLUMN_PHONE, phone);//4
         conVal.put(COLUMN_ADDRESS, address);//5
-        conVal.put(COLUMN_VACCINE_STATUS,"Pending");//default value is pending//6
+        conVal.put(COLUMN_VACCINE_STATUS, "Pending");//default value is pending//6
         conVal.put(COLUMN_NOTES, notes);//7
         conVal.put(COLUMN_isADMIN, "0"); //default user as not admin//8
         conVal.put(COLUMN_VACCINE_ID, vaccineID); // before come to here need to speficy the id//9
@@ -91,33 +91,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
     }
 
-    public Cursor readInfo() {
+    // Registed user info
+    public Cursor readInfo(String ic) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM user", null);
-        if (cursor.getCount() != 0)
-            cursor.moveToFirst();
-        //query return as Cursor pointer
-        return cursor;
+        return db.rawQuery("SELECT * FROM "+TABLE_USER +" WHERE "+COLUMN_IC+"=?",new String[]{ic} );
     }
 
-    public Boolean isBlank() {
+    public boolean isBlank() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM user", null);
-        return (cursor.getCount() < 1);
+        return (cursor.getCount() <1);
     }
 
-    public boolean deleteUser(String ic){
+    public boolean deleteUser(String ic) {
         //delete user by using NRIC (primary key)
         SQLiteDatabase db = getWritableDatabase();
-        return db.delete(TABLE_USER,COLUMN_IC +"=?",new String[]{ic})==1;
+        return db.delete(TABLE_USER, COLUMN_IC + "=?", new String[]{ic}) == 1;
     }
 
-    public Cursor getAllUser(){
+    public Cursor getAllUser() {
         SQLiteDatabase db = getReadableDatabase();
-        return db.rawQuery("SELECT * FROM "+TABLE_USER,null);
+        return db.rawQuery("SELECT * FROM " + TABLE_USER, null);
     }
 
-    public boolean updateUser(String IC, String name, String age, String phone, String address, String status, String notes, String vaccineID){
+    public boolean updateUser(String IC, String name, String age, String phone, String address, String status, String notes, String vaccineID) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues conVal = new ContentValues();
         conVal.put(COLUMN_IC, IC); //0
@@ -125,11 +122,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         conVal.put(COLUMN_AGE, age);//3
         conVal.put(COLUMN_PHONE, phone);//4
         conVal.put(COLUMN_ADDRESS, address);//5
-        conVal.put(COLUMN_VACCINE_STATUS,status);//default value is pending//6
+        conVal.put(COLUMN_VACCINE_STATUS, status);//default value is pending//6
         conVal.put(COLUMN_NOTES, notes);//7
         conVal.put(COLUMN_VACCINE_ID, vaccineID); // before come to here need to speficy the id//9
 
-        return db.update(TABLE_USER,conVal,COLUMN_IC+"=?",new String[]{String.valueOf(IC)})==1;
+        return db.update(TABLE_USER, conVal, COLUMN_IC + "=?", new String[]{String.valueOf(IC)}) == 1;
     }
+
+    public Cursor searchUserBy(String clause) {
+        SQLiteDatabase db = getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + TABLE_USER + " WHERE " + COLUMN_IC + " LIKE '%"+clause+"%'",null);
+    }
+
+//    public Cursor filterUserBy(String IC){
+//        SQLiteDatabase db=getReadableDatabase();
+//        return db.rawQuery("SELECT * FROM "+TABLE_USER+" ORDER BY "+COLUMN_IC
+//    }
 
 }

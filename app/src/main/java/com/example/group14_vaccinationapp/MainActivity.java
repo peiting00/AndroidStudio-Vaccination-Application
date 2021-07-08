@@ -37,19 +37,15 @@ public class MainActivity extends AppCompatActivity {
         View headerView = navigationView1.getHeaderView(0);
         txtUserNameBar = (TextView) headerView.findViewById(R.id.txtUserNameBar);
 
-        DatabaseHelper dbHelper = new DatabaseHelper(this);
+        DatabaseHelper dbHelper ;
 
         try{
             dbHelper = new DatabaseHelper(this);
 
-            if(!dbHelper.isBlank()){
-                Cursor cursor = dbHelper.readInfo();
-
-                String name = cursor.getString(cursor.getColumnIndex("name"));
+                Cursor cursor = dbHelper.readInfo("000000000001");
+            if (cursor.moveToFirst()) {
+                String name = cursor.getString(1);
                 txtUserNameBar.setText(name);
-
-            }else{
-                txtUserNameBar.setText("User");
             }
         }catch(Exception e){
             txtUserNameBar.setText("User");

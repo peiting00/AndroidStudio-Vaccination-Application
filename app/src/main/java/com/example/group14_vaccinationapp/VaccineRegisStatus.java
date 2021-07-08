@@ -34,14 +34,14 @@ public class VaccineRegisStatus extends AppCompatActivity {
         txtVaccineStatus = findViewById(R.id.txtReadVaccineStatus);
         try{
             dbHelper = new DatabaseHelper(this);
-            String name = "", IC = "", age = "", phone = "", address = "", notes = "", vaccinePrefer = "";
-            if(!dbHelper.isBlank()){
-                Cursor cursor = dbHelper.readInfo();
+            String name = "", IC = "000000000001", age = "", phone = "", address = "", notes = "",status="";
 
+                Cursor cursor = dbHelper.readInfo(IC);
+                cursor.moveToFirst();
                 name = cursor.getString(cursor.getColumnIndex("name"));
                 txtName.setText(name);
 
-                IC = cursor.getString(cursor.getColumnIndex("IC"));
+                IC = cursor.getString(cursor.getColumnIndex("ic"));
                 txtIC.setText(IC);
 
                 age = cursor.getString(cursor.getColumnIndex("age"));
@@ -56,17 +56,24 @@ public class VaccineRegisStatus extends AppCompatActivity {
                 notes = cursor.getString(cursor.getColumnIndex("notes"));
                 txtNotes.setText(notes);
 
-                vaccinePrefer = cursor.getString(cursor.getColumnIndex("vaccinePrefer"));
-                txtVaccinePrefer.setText(vaccinePrefer);
+                int vaccineID = Integer.parseInt(cursor.getString(cursor.getColumnIndex("vaccineID")));
 
-                txtVaccineStatus.setText("Pending");
-            }else{
-                txtVaccineStatus.setText("You have not registered for your vaccine yet");
-            }
+                switch(vaccineID){
+                    case 1:
+                        txtVaccinePrefer.setText(getResources().getString(R.string.text_pfizer_biontech));
+                        break;
+                    case 2:
+                        txtVaccinePrefer.setText(getResources().getString(R.string.text_sinovac_coronavac));
+                        break;
+                    case 3:
+                        txtVaccinePrefer.setText(getResources().getString(R.string.text_astra_zeneca));
+                        break;
+                }
+                status = cursor.getString(cursor.getColumnIndex("status"));
+                txtVaccineStatus.setText(status);
+
         }catch(Exception e){
             txtVaccineStatus.setText(e.toString());
-
-            //db.execSQL("CREATE TABLE user (ID INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, IC INTEGER, age INTEGER, phone TEXT, address TEXT, notes TEXT, vaccinePrefer TEXT)");
         }
     }
 

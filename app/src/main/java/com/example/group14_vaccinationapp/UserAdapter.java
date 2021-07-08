@@ -5,11 +5,14 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.database.Cursor;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -81,6 +84,7 @@ public class UserAdapter extends ArrayAdapter<User> {
         });
 
         return view;
+
     }
 
     private void deleteUser(final User user) {
@@ -93,6 +97,7 @@ public class UserAdapter extends ArrayAdapter<User> {
                 //delete user from database
                 if (dbHelper.deleteUser(user.getIc()))
                     loadUserFromDatabaseAgain();
+                Toast.makeText(context.getApplicationContext(), "User Deleted",Toast.LENGTH_SHORT).show();
             }
         });
         builder.setNegativeButton("Cancel", null);
@@ -241,4 +246,6 @@ public class UserAdapter extends ArrayAdapter<User> {
         });
 
     }
+
+
 }
