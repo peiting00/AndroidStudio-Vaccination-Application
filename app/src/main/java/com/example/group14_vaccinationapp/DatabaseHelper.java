@@ -42,7 +42,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_PHONE + " TEXT NOT NULL, " +
                 COLUMN_ADDRESS + " TEXT NOT NULL, " +
                 COLUMN_NOTES + " TEXT NOT NULL, " +
-                COLUMN_VACCINE_STATUS + "TEXT NOT NULL, " +
+                COLUMN_VACCINE_STATUS + " TEXT NOT NULL, " +
                 COLUMN_isADMIN + " TEXT NOT NULL, " +
                 COLUMN_VACCINE_ID + " TEXT NOT NULL," +
                 "CONSTRAINT fk_vaccine FOREIGN KEY (" + COLUMN_VACCINE_ID + ") " +
@@ -117,5 +117,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.rawQuery("SELECT * FROM "+TABLE_USER,null);
     }
 
+    public boolean updateUser(String IC, String name, String age, String phone, String address, String status, String notes, String vaccineID){
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues conVal = new ContentValues();
+        conVal.put(COLUMN_IC, IC); //0
+        conVal.put(COLUMN_NAME, name);//1
+        conVal.put(COLUMN_AGE, age);//3
+        conVal.put(COLUMN_PHONE, phone);//4
+        conVal.put(COLUMN_ADDRESS, address);//5
+        conVal.put(COLUMN_VACCINE_STATUS,status);//default value is pending//6
+        conVal.put(COLUMN_NOTES, notes);//7
+        conVal.put(COLUMN_VACCINE_ID, vaccineID); // before come to here need to speficy the id//9
+
+        return db.update(TABLE_USER,conVal,COLUMN_IC+"=?",new String[]{String.valueOf(IC)})==1;
+    }
 
 }

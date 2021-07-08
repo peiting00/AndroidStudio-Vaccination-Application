@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -41,7 +42,7 @@ public class AdminCreateUser extends AppCompatActivity {
         setContentView(R.layout.activity_admin_create_user);
 
         //set back button
-        Toolbar toolbar = findViewById(R.id.toolbarRegistration);
+        Toolbar toolbar = findViewById(R.id.toolbar_adminCreate);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -73,7 +74,7 @@ public class AdminCreateUser extends AppCompatActivity {
         textInputLayout_notes=findViewById(R.id.Layout_adminCreate_notes);
 
         btnCreate = findViewById(R.id.btnCreate_adminCreate);
-        spinner = findViewById(R.id.spinner_Admin_vaccineType);
+        spinner = findViewById(R.id.spinnerVaccineType_adminCreate);
 
         textInputEditText_name.addTextChangedListener(new TextWatcher() {
             @Override
@@ -149,8 +150,14 @@ public class AdminCreateUser extends AppCompatActivity {
                 }
             }
         });
+    } //end of OnCreate
 
-
+    @Override //when back button clicked
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void addNewUser(View view) {
@@ -181,7 +188,7 @@ public class AdminCreateUser extends AppCompatActivity {
                 displayToast("pass validation");
                 intoConfirmationState();//if validation passed
             }
-        }
+        } // end Validation
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -193,6 +200,7 @@ public class AdminCreateUser extends AppCompatActivity {
                     progressBar.setProgress(80);
                 } else if (SelectedPosition == 1) {
                     vaccineID = "1";
+                    displayToast("1.pfiser");
                     vaccinePrefer="Pfizer";
                     progressBar.setProgress(100);
                     valid = true;
@@ -235,15 +243,15 @@ public class AdminCreateUser extends AppCompatActivity {
             if (dbHelper.addUser(IC, name, password, age, phone, address, notes, vaccineID)) {
 
                 new AlertDialog.Builder(AdminCreateUser.this)
-                        .setTitle("Attention: New User Created Successfully")
+                        .setTitle("New User Created Successfully")
                         .setMessage("Registered user information:\n\nFull Name: "+name+"\nNRIC: "+IC
-                        +"\nDefault Password: Please refer to user's NRIC.")
+                        +"\nDefault Password:refer to user's NRIC.")
                         .setCancelable(false)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-//                                Intent intent = new Intent(this,AdminHome.class);
-//                                startActivity(intent);
+                                Intent intent = new Intent(AdminCreateUser.this,AdminUpdateDelete.class);
+                                startActivity(intent);
                             }
                         }).show();
 

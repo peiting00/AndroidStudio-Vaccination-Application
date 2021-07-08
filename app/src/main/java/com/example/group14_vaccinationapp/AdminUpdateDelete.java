@@ -1,9 +1,11 @@
 package com.example.group14_vaccinationapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -25,6 +27,20 @@ public class AdminUpdateDelete extends AppCompatActivity {
         listView = (ListView)findViewById(R.id.listview_UserList);
         loadUserFromDatabase();
 
+        //set back button
+        Toolbar toolbar = findViewById(R.id.toolbar_adminUpdateDel);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+    }
+
+    @Override //when back button clicked
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void loadUserFromDatabase() {

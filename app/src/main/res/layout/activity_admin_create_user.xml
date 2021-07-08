@@ -7,7 +7,7 @@
     tools:context=".AdminCreateUser">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarRegistration"
+        android:id="@+id/toolbar_adminCreate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#00a9b0 "
@@ -31,7 +31,7 @@
         android:visibility="visible"
         app:layout_constraintEnd_toStartOf="@+id/tvTitle_registration_vaccinenow"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarRegistration"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_adminCreate"
         app:srcCompat="@drawable/vaccine_logo" />
 
     <TextView
@@ -51,7 +51,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imgView_register_vaccine"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarRegistration" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar_adminCreate" />
 
     <ProgressBar
         android:id="@+id/progressBar_Registration"
@@ -423,7 +423,7 @@
                 android:textStyle="bold" />
 
             <Spinner
-                android:id="@+id/spinner_Admin_vaccineType"
+                android:id="@+id/spinnerVaccineType_adminCreate"
                 style="@style/Widget.AppCompat.Spinner.Underlined"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
