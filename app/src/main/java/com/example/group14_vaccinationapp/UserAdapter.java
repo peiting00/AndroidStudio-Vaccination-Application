@@ -138,6 +138,7 @@ public class UserAdapter extends ArrayAdapter<User> {
 
     /*
      * List View -> Update icon button
+     * Display dialog_update_user
      * @param user array list
      */
     private void updateUser(final User user) {
@@ -175,22 +176,28 @@ public class UserAdapter extends ArrayAdapter<User> {
         et_status.setText(user.getStatus());
         et_notes.setText(user.getNotes());
 
+        //when user click the calender icon
         view.findViewById(R.id.iv_adminUpdate_calander).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Calendar calendar = Calendar.getInstance();
-                int year = calendar.get(Calendar.YEAR);
-                int month = calendar.get(Calendar.MONTH);
-                int day = calendar.get(Calendar.DAY_OF_MONTH);
+                final Calendar calendar = Calendar.getInstance(); //get Calendar instance according to TimeZone in Java runtime environment
+                int year = calendar.get(Calendar.YEAR); //get current Year
+                int month = calendar.get(Calendar.MONTH); // get current Month
+                int day = calendar.get(Calendar.DAY_OF_MONTH); //get current Day
 
+                //create a Date Picker Dialog (pop out)
                 DatePickerDialog picker = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        // When date set/selected
+                        //concat the selected year,month,dayofMonth into a string
                         String date = dayOfMonth + " / " + (month+1) + " / " + year;
-
+                        //set the selected date into the editText
                         et_status.setText(String.valueOf("First/Two dose: " + date));
                     }
-                }, year, month, day);
+                }, year, month, day); //A calendar with year,month and day
+                // System.currentTimeMillis() -> returns the current time in milliseconds
+                // '-1000'
                 picker.getDatePicker().setMinDate(System.currentTimeMillis()-1000);
                 picker.show();
             }
