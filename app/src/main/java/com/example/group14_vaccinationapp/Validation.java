@@ -84,8 +84,8 @@ public class Validation extends Registration {
     }
 
     public boolean ageValidate(TextInputEditText textInputEditText,
-                               TextInputLayout textInputLayout) {
-        //convert string age to int
+                                                    TextInputLayout textInputLayout) {
+        //Parse the string age to int
         int age = Integer.parseInt(textInputEditText.getText().toString());
         if (age < 0) { //age less than 0
             textInputEditText.setError("Age should not be less than 0"); //set error
@@ -96,20 +96,27 @@ public class Validation extends Registration {
             textInputEditText.setFocusable(true);
             return false; //validate fail
         }else {//no error
-            textInputLayout.setErrorEnabled(false);
+            textInputLayout.setErrorEnabled(false);//disable the error message
             return true;
         }
     }
 
-    public boolean checkUserExist(TextInputEditText textInputEditText, TextInputLayout textInputLayout) {
+    //check if the user is exist in the database
+    //pass the parameters editText and InputLayout into here
+    public boolean checkUserExist(TextInputEditText textInputEditText,
+                                                TextInputLayout textInputLayout) {
+        //convert the EditText to String
         String ic = textInputEditText.getText().toString();
+        //create a databaseHelper object
         DatabaseHelper dbHelper = new DatabaseHelper(context);
-        if (dbHelper.isIC_Exist(ic)) {
-            textInputEditText.setError("Your NRIC has been registered.");
+        //inherit DatabaseHelper's function -isIC_Exist
+        if (dbHelper.isIC_Exist(ic)) { //pass the IC to the function
+            //if the validation passed (user exist)
+            textInputEditText.setError("Your NRIC has been registered.");//set error
             textInputEditText.setFocusable(true);
             return true;//user exist
         } else {
-            textInputLayout.setErrorEnabled(false); //new user
+            textInputLayout.setErrorEnabled(false); //they are new user
             return false;
         }
     }
