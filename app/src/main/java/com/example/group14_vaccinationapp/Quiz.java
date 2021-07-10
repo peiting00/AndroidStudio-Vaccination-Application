@@ -50,7 +50,7 @@ public class Quiz extends AppCompatActivity {
 
         cbxQ1CheckedAmount = 0; cbxQ2CheckedAmount = 0;
 
-        edAgeQuiz = findViewById(R.id.edAgeQuiz);
+        edAgeQuiz = findViewById(R.id.ed_Login_NRIC);
         edAgeQuiz.addTextChangedListener(new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 

@@ -592,7 +592,7 @@
                         android:text="@string/ques6"/>
 
                     <EditText
-                        android:id="@+id/edAgeQuiz"
+                        android:id="@+id/ed_Login_NRIC"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -608,7 +608,7 @@
                         android:gravity="right"
                         android:textColor="#db4442"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/edAgeQuiz"
+                        app:layout_constraintTop_toBottomOf="@+id/ed_Login_NRIC"
                         android:text="@string/required"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

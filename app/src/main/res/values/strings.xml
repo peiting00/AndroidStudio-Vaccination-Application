@@ -180,6 +180,8 @@
     <string name="video3_Desc">KPJ personnel\'s human touch put vaccine recipients at ease | The Star</string>
     <string name="video_source_label">sources: The Star - YouTube</string>
     <string name="click_me_to_login"><u>Click me to LOGIN</u></string>
+    <string name="login_ToRegisText"><u>Don\'t have an account? Register Now!</u></string>
+    <string name="vaccine_now">Vaccine Now!</string>
     <!-- Video END   -->
     <array name="vaccineType">
         <item>Please select a vaccine</item>

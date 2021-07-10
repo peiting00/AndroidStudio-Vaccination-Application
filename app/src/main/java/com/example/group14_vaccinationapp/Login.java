@@ -14,15 +14,15 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
     }
 
-    public void GoUserRegister(View view) {
-        startActivity(new Intent(this,MainActivity.class));
-    }
+    public void goUserRegister(View view) { startActivity(new Intent(this,DeclarationVaccine.class)); }
 
-    public void GoAdminCreate(View view) {
+    public void goAdminCreate(View view) {
         startActivity(new Intent(this,AdminCreateUser.class));
     }
 
-    public void GoAdminUpdate(View view) {
-        startActivity(new Intent(this,AdminUpdateDelete.class));
+    public void goAdminUpdate(View view) { startActivity(new Intent(this,AdminUpdateDelete.class)); }
+
+    public void toStatusCallDb(View view) {
+        startActivity(new Intent(this,VaccineRegisStatus.class));
     }
 }
