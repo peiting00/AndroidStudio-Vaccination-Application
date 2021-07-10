@@ -129,14 +129,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public boolean isIC_Exist(String ic) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_USER + " WHERE " + COLUMN_isADMIN + "='0' AND " + COLUMN_IC + "=?", new String[]{ic});
-        if (cursor.getCount() > 0)
-            return true;//IC exist
-        else
-            return false;
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_USER + " WHERE " + COLUMN_IC + "=?", new String[]{ic});
+        return (cursor.getCount() > 0); //true if exists
     }
 
-    // Registed user info
+    // Registered user info
     public Cursor readInfo(String ic) {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery("SELECT * FROM " + TABLE_USER + " WHERE " + COLUMN_IC + "=?", new String[]{ic});

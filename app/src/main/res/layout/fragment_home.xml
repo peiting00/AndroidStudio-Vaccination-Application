@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtSlogan"
+        android:id="@+id/txt_mainAdmin_welcomeMsg"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
@@ -46,7 +46,7 @@
         app:layout_constraintBottom_toTopOf="@+id/txtCall"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtSlogan">
+        app:layout_constraintTop_toBottomOf="@+id/txt_mainAdmin_welcomeMsg">
 
         <LinearLayout
             android:layout_width="0dp"

@@ -182,6 +182,8 @@
     <string name="click_me_to_login"><u>Click me to LOGIN</u></string>
     <string name="login_ToRegisText"><u>Don\'t have an account? Register Now!</u></string>
     <string name="vaccine_now">Vaccine Now!</string>
+    <string name="thing_went_wrong">Something went wrong! Please try again later.</string>
+    <string name="logout"><b><u>Logout</u></b></string>
     <!-- Video END   -->
     <array name="vaccineType">
         <item>Please select a vaccine</item>

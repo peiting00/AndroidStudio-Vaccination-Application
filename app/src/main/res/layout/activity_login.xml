@@ -9,7 +9,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
-        android:layout_height="600dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
         android:layout_marginEnd="24dp"
@@ -59,7 +59,6 @@
                 android:layout_marginTop="28dp"
                 android:fontFamily="@font/nunito_sans"
                 android:hint="NRIC"
-                android:inputType="numberDecimal"
                 android:paddingLeft="20dp"
                 android:textSize="18dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -82,7 +81,6 @@
                 android:id="@+id/ed_Login_Password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:fontFamily="@font/nunito_sans"
                 android:hint="Password"
                 android:inputType="textPassword"
@@ -110,6 +108,7 @@
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/nunito_sans"
                 android:text="Login"
+                android:onClick="login"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_login_errorMsgPassword" />
@@ -130,17 +129,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btn_Login_login" />
-
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="toStatusCallDB"
-                android:onClick="toStatusCallDb"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_login_toRegis" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

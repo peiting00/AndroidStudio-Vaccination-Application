@@ -1,6 +1,7 @@
 package com.example.group14_vaccinationapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -26,6 +28,14 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private TextView txtUserNameBar;
 
+    private SharedPreferences mPreferences;
+    private String sharedPrefFile = "com.example.android.group14_vaccinationapp";
+
+    // Key for current NRIC
+    private final String NRICPreference = "NRIC";
+    // Key for current isAdmin
+    private final String isAdminPreference = "isAdmin";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +49,12 @@ public class MainActivity extends AppCompatActivity {
 
         DatabaseHelper dbHelper ;
 
+        mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
+
+        String getNRICPreference = mPreferences.getString(NRICPreference, null);
+        String getisAdminPreference = mPreferences.getString(isAdminPreference, null);
+
+        Toast.makeText(MainActivity.this, getNRICPreference,Toast.LENGTH_SHORT).show();
         try{
             dbHelper = new DatabaseHelper(this);
 

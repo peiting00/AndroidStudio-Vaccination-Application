@@ -1,6 +1,7 @@
 package com.example.group14_vaccinationapp.ui.home;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +26,14 @@ public class HomeFragment extends Fragment {
     private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
 
+    private SharedPreferences mPreferences;
+    private String sharedPrefFile = "com.example.android.group14_vaccinationapp";
+
+    // Key for current NRIC
+    private final String NRICPreference = "NRIC";
+    // Key for current isAdmin
+    private final String isAdminPreference = "isAdmin";
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
@@ -38,6 +47,8 @@ public class HomeFragment extends Fragment {
                 textView.setText("");
             }
         });
+
+
         return root;
     }
 
