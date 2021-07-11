@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Group14_VaccinationApp">
-        <activity android:name=".UserManagement"></activity>
+        <activity android:name=".UserManagementMenu"></activity>
         <activity android:name=".MainActivityAdmin" />
         <activity android:name=".AdminUpdateDelete" />
         <activity android:name=".AdminCreateUser" />

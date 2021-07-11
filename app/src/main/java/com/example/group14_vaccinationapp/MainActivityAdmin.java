@@ -69,7 +69,7 @@ public class MainActivityAdmin extends AppCompatActivity {
 
     public void toUserManagement(View view) {
         if(getisAdminPreference.equals("1")){
-            startActivity(new Intent(MainActivityAdmin.this, UserManagement.class));
+            startActivity(new Intent(MainActivityAdmin.this, UserManagementMenu.class));
         }else{
             Toast.makeText(MainActivityAdmin.this, "You have no access to this feature",Toast.LENGTH_SHORT).show();
         }
