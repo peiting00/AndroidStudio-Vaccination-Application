@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+    <!-- This animation list is needed to reference image stored in drawable folder   -->
+    <!--    duration 2 sec = 2000-->
+    <item android:drawable="@drawable/animation1" android:duration="2000"/>
+    <item android:drawable="@drawable/animation2" android:duration="2000"/>
+    <item android:drawable="@drawable/animation3" android:duration="2000"/>
+    <item android:drawable="@drawable/animation4" android:duration="2000"/>
+    <item android:drawable="@drawable/animation5" android:duration="2000"/>
+</animation-list>
