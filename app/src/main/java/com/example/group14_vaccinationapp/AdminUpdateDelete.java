@@ -51,17 +51,20 @@ public class AdminUpdateDelete extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
+                    //while user is entering the NRIC,searching is ongoing...
                     searchUserBy(searchQuery.getText().toString());
             }
         });
     }
 
     private void searchUserBy(String clause) {
+        //search all the user that fits with clause(ic)
+        //using the function from DatabaseHelper
         Cursor cursor = dbHelper.searchUserBy(clause);
         userList.clear();//clear the array list
         if (cursor.moveToFirst()) {
             do {
-                userList.add(new User(
+                userList.add(new User( //add the retrieve item from cursor into array list
                         cursor.getString(0),//ic
                         cursor.getString(1),//name
                         //cursor.getString(2),//password

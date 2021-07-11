@@ -102,6 +102,12 @@ public class Login extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        this.finishAffinity();
+    }
+
     public void goUserRegister(View view) { startActivity(new Intent(this,DeclarationVaccine.class)); }
 
     public void goAdminCreate(View view) {

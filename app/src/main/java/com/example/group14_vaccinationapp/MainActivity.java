@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         try{
             dbHelper = new DatabaseHelper(this);
 
-                Cursor cursor = dbHelper.readInfo("000000000001");
+                Cursor cursor = dbHelper.readInfo(getNRICPreference);
             if (cursor.moveToFirst()) {
                 String name = cursor.getString(1);
                 txtUserNameBar.setText(name);

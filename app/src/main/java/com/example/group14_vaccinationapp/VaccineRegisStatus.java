@@ -3,6 +3,7 @@ package com.example.group14_vaccinationapp;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -13,6 +14,13 @@ import android.database.sqlite.SQLiteDatabase;
 public class VaccineRegisStatus extends AppCompatActivity {
     private DatabaseHelper dbHelper;
     private TextView txtName, txtIC, txtAge, txtPhone, txtAddress, txtNotes, txtVaccinePrefer, txtVaccineStatus;
+
+    private SharedPreferences mPreferences;
+    private String sharedPrefFile = "com.example.android.group14_vaccinationapp";
+
+    // Key for current NRIC
+    private final String NRICPreference = "NRIC";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,9 +40,14 @@ public class VaccineRegisStatus extends AppCompatActivity {
         txtNotes = findViewById(R.id.txtReadNotes);
         txtVaccinePrefer = findViewById(R.id.txtReadVaccinePrefer);
         txtVaccineStatus = findViewById(R.id.txtReadVaccineStatus);
+
+        mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
+
+        String getNRICPreference = mPreferences.getString(NRICPreference, "none");
+
         try{
             dbHelper = new DatabaseHelper(this);
-            String name = "", IC = "000000000001", age = "", phone = "", address = "", notes = "",status="";
+            String name = "", IC =getNRICPreference, age = "", phone = "", address = "", notes = "",status="";
 
                 Cursor cursor = dbHelper.readInfo(IC);
                 cursor.moveToFirst();
