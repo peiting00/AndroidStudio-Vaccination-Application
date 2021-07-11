@@ -4,19 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivityAdmin extends AppCompatActivity {
     private SharedPreferences mPreferences;
     private String sharedPrefFile = "com.example.android.group14_vaccinationapp";
-
+    private String getNRICPreference;
+    private String getisAdminPreference;
     // Key for current NRIC
     private final String NRICPreference = "NRIC";
     // Key for current isAdmin
     private final String isAdminPreference = "isAdmin";
-    TextView txtWelcomeMsg;
+    TextView txtWelcomeMsg, txtNumOfRegistered;
     private DatabaseHelper dbHelper;
 
 
@@ -27,13 +30,22 @@ public class MainActivityAdmin extends AppCompatActivity {
 
         mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
 
-        String getNRICPreference = mPreferences.getString(NRICPreference, null);
-        String getisAdminPreference = mPreferences.getString(isAdminPreference, null);
+        getNRICPreference = mPreferences.getString(NRICPreference, null);
+        getisAdminPreference = mPreferences.getString(isAdminPreference, null);
 
         txtWelcomeMsg = findViewById(R.id.txt_mainAdmin_welcomeMsg);
+        txtNumOfRegistered = findViewById(R.id.txt_mainAdmin_numRegis);
 
 
-        txtWelcomeMsg.setText();
+        dbHelper = new DatabaseHelper(this);
+        Cursor cursor = dbHelper.readInfo(getNRICPreference);
+        cursor.moveToFirst();
+        String adminName = cursor.getString(cursor.getColumnIndex("name"));
+
+        int registeredNum = dbHelper.getUserNum();
+
+        txtNumOfRegistered.setText(Integer.toString(registeredNum));
+        txtWelcomeMsg.setText("Welcome! admin " + adminName);
     }
 
     public void logout(View view) {
@@ -53,5 +65,18 @@ public class MainActivityAdmin extends AppCompatActivity {
         Intent i = new Intent(MainActivityAdmin.this, Login.class);
         startActivity(i);
         finish();
+    }
+
+    public void toUserManagement(View view) {
+        if(getisAdminPreference.equals("1")){
+            startActivity(new Intent(MainActivityAdmin.this, UserManagement.class));
+        }else{
+            Toast.makeText(MainActivityAdmin.this, "You have no access to this feature",Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    public void toCovidNews(View view) {
+        startActivity(new Intent(MainActivityAdmin.this, CovidWebsite.class));
     }
 }

@@ -138,10 +138,11 @@ public class Login extends AppCompatActivity {
                         editor.putString(passwordPreference, edPassword);
                         editor.commit();
 
-                        if(isAdmin.equals("1"))
-                            startActivity(new Intent(this,MainActivityAdmin.class));
-                        else
-                            startActivity(new Intent(this,MainActivity.class));
+                        if(isAdmin.equals("1")){
+                            startActivity(new Intent (this, MainActivityAdmin.class));
+                        }else{
+                            startActivity(new Intent (this, MainActivity.class));
+                        }
 
                         finish();
                     }

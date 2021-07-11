@@ -176,6 +176,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.rawQuery("SELECT * FROM " + TABLE_USER + " WHERE " + COLUMN_isADMIN + " ='0' AND " + COLUMN_IC + " LIKE '%" + clause + "%'", null);
     }
 
+    public int getUserNum() {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_USER, null);
+        return cursor.getCount();
+    }
+
 //    public Cursor filterUserBy(String IC){
 //        SQLiteDatabase db=getReadableDatabase();
 //        return db.rawQuery("SELECT * FROM "+TABLE_USER+" ORDER BY "+COLUMN_IC

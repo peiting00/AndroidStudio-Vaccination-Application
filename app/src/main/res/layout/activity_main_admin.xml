@@ -24,31 +24,139 @@
         app:titleTextColor="#FFFFFF" />
 
     <TextView
+        android:id="@+id/txt_mainAdmin_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="logout"
+        android:padding="15dp"
+        android:text="@string/logout"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/txt_mainAdmin_welcomeMsg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto"
+        android:fontFamily="@font/nunito_sans"
         android:gravity="center"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:text=""
         android:textSize="18sp"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbarMainAdmin" />
 
-
-    <TextView
-        android:id="@+id/txt_mainAdmin_logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="15dp"
-        android:text="@string/logout"
-        android:textColor="#FFFFFF"
-        android:textSize="20dp"
-        android:onClick="logout"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="40dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_mainAdmin_welcomeMsg">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cw_mainAdmin_numRegis"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_weight="0.4"
+            android:background="@drawable/rounded_corners"
+            app:cardCornerRadius="7dp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/conCardNumRegis"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/txt_mainAdmin_numRegis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="center"
+                    android:text="000"
+                    android:textColor="#19BCC3"
+                    android:textSize="120dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txt_mainAdmin_registeredLbl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_sans"
+                    android:gravity="center"
+                    android:text="Registered for Vaccines"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_mainAdmin_numRegis" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_weight="0.5"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cw_mainAdmin_numRegis">
+
+            <Button
+                android:id="@+id/btn_mainAdmin_UserManage"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/rounded_corners"
+                android:fontFamily="@font/nunito_sans"
+                android:gravity="bottom|center_horizontal"
+                android:text="@string/user_management"
+                android:textAllCaps="false"
+                android:onClick="toUserManagement"
+                app:backgroundTint="@color/vaccine_color"
+                app:icon="@drawable/ic_user_icon"
+                app:iconGravity="textTop"
+                app:iconSize="50dp" />
+
+            <Button
+                android:id="@+id/btn_mainAdmin_COVIDNews"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/rounded_corners"
+                android:fontFamily="@font/nunito_sans"
+                android:gravity="bottom|center_horizontal"
+                android:text="@string/covid_19_info_amp_news"
+                app:backgroundTint="@color/teal_700"
+                app:icon="@drawable/covidnews"
+                android:onClick="toCovidNews"
+                app:iconGravity="textTop"
+                app:iconSize="50dp" />
+        </LinearLayout>
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
