@@ -178,13 +178,14 @@
     <string name="video1_desc">Residents unite to ferry seniors for Covid-19 jabs | The Star</string>
     <string name="video2_Desc">AstraZeneca recipients at PWTC share their innoculation experience | The Star</string>
     <string name="video3_Desc">KPJ personnel\'s human touch put vaccine recipients at ease | The Star</string>
-    <string name="video_source_label">sources: The Star - YouTube</string>
+    <string name="video_source_label">sources: @The Star - YouTube</string>
     <string name="click_me_to_login"><u>Click me to LOGIN</u></string>
     <string name="login_ToRegisText"><u>Don\'t have an account? Register Now!</u></string>
     <string name="vaccine_now">Vaccine Now!</string>
     <string name="thing_went_wrong">Something went wrong! Please try again later.</string>
     <string name="logout"><b><u>Logout</u></b></string>
     <string name="user_management">User\nManagement</string>
+    <string name="animation">animation</string>
     <!-- Video END   -->
     <array name="vaccineType">
         <item>Please select a vaccine</item>

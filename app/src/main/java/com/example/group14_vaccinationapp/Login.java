@@ -1,7 +1,5 @@
 package com.example.group14_vaccinationapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -13,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Login extends AppCompatActivity {
     private EditText edLoginIC;
@@ -146,11 +146,13 @@ public class Login extends AppCompatActivity {
 
                         if(isAdmin.equals("1")){
                             startActivity(new Intent (this, MainActivityAdmin.class));
+                            finish();
                         }else{
                             startActivity(new Intent (this, MainActivity.class));
+                            finish();
                         }
 
-                        finish();
+
                     }
                 }else{
                     Toast.makeText(Login.this, "Invalid NRIC or password!",Toast.LENGTH_SHORT).show();
@@ -163,5 +165,9 @@ public class Login extends AppCompatActivity {
         else{
             Toast.makeText(Login.this,"Please make sure every credential is filled in correctly",Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void goGOGO(View view) {
+        startActivity(new Intent(this,VideoAnimation.class));
     }
 }
