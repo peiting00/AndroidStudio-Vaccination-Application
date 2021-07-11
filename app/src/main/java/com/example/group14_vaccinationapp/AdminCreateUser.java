@@ -1,9 +1,5 @@
 package com.example.group14_vaccinationapp;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,11 +7,14 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -178,10 +177,12 @@ public class AdminCreateUser extends AppCompatActivity {
                 validation.requiredFieldValidation(textInputEditText_password, textInputLayout_password)) {
 
             //validate selected spinner
-            String selected = (String) spinner.getSelectedItem();
-            if (selected.contentEquals("Please select a vaccine")) {
+            vaccinePrefer = (String) spinner.getSelectedItem();
+            if (vaccinePrefer.contentEquals("Please select a vaccine")) {
                 displayToast("Please select user's vaccine preference!");
                 valid = false;
+            }else{
+                vaccineID= String.valueOf(spinner.getSelectedItemPosition());
             }
 
             if (valid) {
@@ -190,37 +191,6 @@ public class AdminCreateUser extends AppCompatActivity {
             }
         } // end Validation
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                int SelectedPosition = (int) spinner.getItemIdAtPosition(position);
-                if (SelectedPosition == 0) {
-                    displayToast("Please select user's vaccine preference!");
-                    valid = false;
-                    progressBar.setProgress(80);
-                } else if (SelectedPosition == 1) {
-                    vaccineID = "1";
-                    displayToast("1.pfiser");
-                    vaccinePrefer="Pfizer";
-                    progressBar.setProgress(100);
-                    valid = true;
-                } else if (SelectedPosition == 2) {
-                    vaccineID = "2";
-                    vaccinePrefer="Sinovac";
-                    progressBar.setProgress(100);
-                    valid = true;
-                } else if (SelectedPosition == 3) {
-                    vaccineID = "3";
-                    vaccinePrefer="Astra Zeneca";
-                    progressBar.setProgress(100);
-                    valid = true;
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
     }
 
     private void intoConfirmationState() {

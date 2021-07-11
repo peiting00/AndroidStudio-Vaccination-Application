@@ -136,7 +136,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Registered user info
     public Cursor readInfo(String ic) {
         SQLiteDatabase db = this.getReadableDatabase();
-        return db.rawQuery("SELECT * FROM " + TABLE_USER + " WHERE " + COLUMN_IC + "=?", new String[]{ic});
+        return db.rawQuery("SELECT * FROM " + TABLE_USER + " WHERE " + COLUMN_IC + "=? ", new String[]{ic});
     }
 
     public boolean isBlank() {
@@ -153,7 +153,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Cursor getAllUser() {
         SQLiteDatabase db = getReadableDatabase();
-        return db.rawQuery("SELECT * FROM " + TABLE_USER + " WHERE " + COLUMN_isADMIN + " ='0'", null);
+        return db.rawQuery("SELECT * FROM " + TABLE_USER + " WHERE " + COLUMN_isADMIN + " ='0' ORDER BY "+COLUMN_IC+" ASC", null);
     }
 
     public boolean updateUser(String IC, String name, String age, String phone, String address, String status, String notes, String vaccineID) {
@@ -173,18 +173,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Cursor searchUserBy(String clause) {
         SQLiteDatabase db = getReadableDatabase();
-        return db.rawQuery("SELECT * FROM " + TABLE_USER + " WHERE " + COLUMN_isADMIN + " ='0' AND " + COLUMN_IC + " LIKE '%" + clause + "%'", null);
+        return db.rawQuery("SELECT * FROM " + TABLE_USER + " WHERE " + COLUMN_isADMIN + " ='0' AND "
+                + COLUMN_IC + " LIKE '%" + clause + "%'", null);
     }
 
     public int getUserNum() {
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_USER + " WHERE " + COLUMN_isADMIN + " ='0'", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_USER + " WHERE " +
+                COLUMN_isADMIN + " ='0'", null);
         return cursor.getCount();
     }
-
-//    public Cursor filterUserBy(String IC){
-//        SQLiteDatabase db=getReadableDatabase();
-//        return db.rawQuery("SELECT * FROM "+TABLE_USER+" ORDER BY "+COLUMN_IC
-//    }
 
 }
