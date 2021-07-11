@@ -1,12 +1,8 @@
 package com.example.group14_vaccinationapp;
 
-
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,9 +15,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -143,6 +136,7 @@ public class UserAdapter extends ArrayAdapter<User> {
      */
     private void updateUser(final User user) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        //create a layout from AdminUpdateDelete context
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.dialog_update_user, null);
         builder.setView(view);
@@ -191,15 +185,15 @@ public class UserAdapter extends ArrayAdapter<User> {
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         // When date set/selected
                         //concat the selected year,month,dayofMonth into a string
-                        String date = dayOfMonth + " / " + (month+1) + " / " + year;
+                        String date = dayOfMonth + " / " + (month + 1) + " / " + year;
                         //set the selected date into the editText
                         et_status.setText(String.valueOf("First/Two dose: " + date));
                     }
                 }, year, month, day); //A calendar with year,month and day
                 // System.currentTimeMillis() -> returns the current time in milliseconds
-                // '-1000'
-                picker.getDatePicker().setMinDate(System.currentTimeMillis()-1000);
-                picker.show();
+                // disable the pass date in the calendar
+                picker.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+                picker.show(); //display the dialog
             }
         });
 
@@ -221,7 +215,7 @@ public class UserAdapter extends ArrayAdapter<User> {
                         status = et_status.getText().toString(),
                         notes = et_notes.getText().toString();
 
-                //validation
+                //validation start
                 Validation validation = new Validation(context);
                 if (validation.requiredFieldValidation(et_nric, textInputLayout_nric) &&
                         validation.lengthValidate(et_nric, textInputLayout_nric) &&
@@ -258,8 +252,8 @@ public class UserAdapter extends ArrayAdapter<User> {
                             Toast.makeText(context, "Something Went Wrong!Please try later.", Toast.LENGTH_SHORT).show();
                         }
                     }
-                }
-            }
+                }//validation end
+            }//update in alert dialog end
         });
 
         /*
@@ -275,15 +269,4 @@ public class UserAdapter extends ArrayAdapter<User> {
     }
 
 
-    //below is to show what date picked
-    public static void processDatePickerResult(int year, int month, int day) {
-        //The month integer returned by the date picker starts
-        // counting at 0 for January, so you need to add 1 to it
-        // to show months starting at 1.
-        String month_string = Integer.toString(month + 1);
-        String day_string = Integer.toString(day);
-        String year_string = Integer.toString(year);
-        String dateMessage = (month_string + "/" + day_string + "/" + year_string);
-
-    }
 }
