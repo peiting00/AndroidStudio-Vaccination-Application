@@ -183,6 +183,8 @@ public class AdminCreateUser extends AppCompatActivity {
                 valid = false;
             }else{
                 vaccineID= String.valueOf(spinner.getSelectedItemPosition());
+                progressBar.setProgress(100);
+                valid=true;
             }
 
             if (valid) {
