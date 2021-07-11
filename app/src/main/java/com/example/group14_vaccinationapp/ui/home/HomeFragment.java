@@ -1,5 +1,6 @@
 package com.example.group14_vaccinationapp.ui.home;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +18,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.group14_vaccinationapp.CovidWebsite;
 import com.example.group14_vaccinationapp.FAQs;
+import com.example.group14_vaccinationapp.Login;
+import com.example.group14_vaccinationapp.MainActivityAdmin;
 import com.example.group14_vaccinationapp.PersonalHealthcare;
 import com.example.group14_vaccinationapp.R;
 import com.example.group14_vaccinationapp.VaccinationMenu;
@@ -47,8 +51,6 @@ public class HomeFragment extends Fragment {
                 textView.setText("");
             }
         });
-
-
         return root;
     }
 
@@ -84,6 +86,33 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity().getApplicationContext(), PersonalHealthcare.class);
                 getActivity().startActivity(intent);
+            }
+        });
+
+        view.findViewById(R.id.txt_main_logout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try{
+// calling method to edit values in shared prefs.
+                    mPreferences = getActivity().getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = mPreferences.edit();
+
+                    // below line will clear
+                    // the data in shared prefs.
+                    editor.clear();
+
+                    // below line will apply empty
+                    // data to shared prefs.
+                    editor.apply();
+
+                    // starting mainactivity after
+                    // clearing values in shared preferences.
+                    Intent i = new Intent(getActivity().getApplicationContext(), Login.class);
+                    getActivity().startActivity(i);
+                    getActivity().finish();
+                }catch(Exception e){
+                    Toast.makeText(getActivity().getApplicationContext(), e.toString(),Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
