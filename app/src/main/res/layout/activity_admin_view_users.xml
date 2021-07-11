@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminViewUsers">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_adminView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#00a9b0 "
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:theme="@style/Toolbar_back_button_style"
+        app:title="Registered Users List"
+        app:titleTextColor="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/et_search_AdminView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_10dp"
+        android:layout_marginLeft="@dimen/padding_10dp"
+        android:layout_marginEnd="@dimen/padding_10dp"
+        android:layout_marginRight="@dimen/padding_10dp"
+        android:drawableEnd="@drawable/ic_search"
+        android:drawableRight="@drawable/ic_search"
+        android:ems="10"
+        android:hint="Search by NRIC"
+        android:inputType="textPersonName"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_adminView" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleV_adminViewUser"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/padding_10dp"
+        android:scrollingCache="true"
+        android:smoothScrollbar="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_search_AdminView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

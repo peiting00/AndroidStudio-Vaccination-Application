@@ -41,9 +41,10 @@
             android:layout_height="wrap_content">
 
             <TableRow
+                android:id="@+id/tabRow_userManage_createUser"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:onClick="toCreateUser"
+                android:onClick="adminOperation"
                 android:weightSum="10">
 
                 <ImageView
@@ -83,10 +84,11 @@
             </TableRow>
 
             <TableRow
+                android:id="@+id/tabRow_userManage_viewAllUsers"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:weightSum="10"
-                android:onClick="toViewUsers">
+                android:onClick="adminOperation">
 
                 <ImageView
                     android:id="@+id/img_userManage_viewUsers"
@@ -113,6 +115,7 @@
                 android:layout_height="match_parent"
                 android:padding="8dp">
             </TableRow>
+
             <View
                 android:layout_height="1dip"
                 android:background="#FF909090" />
@@ -124,10 +127,11 @@
             </TableRow>
 
             <TableRow
+                android:id="@+id/tabRow_userManage_manageUsers"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:weightSum="10"
-                android:onClick="toManageUsers">
+                android:onClick="adminOperation">
 
                 <ImageView
                     android:id="@+id/img_userManage_manageUser"

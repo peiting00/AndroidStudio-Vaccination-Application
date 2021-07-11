@@ -476,10 +476,12 @@
                 android:id="@+id/btnCreate_adminCreate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="220dp"
-                android:layout_marginLeft="220dp"
+
+                android:layout_gravity="right"
+
                 android:layout_marginTop="10dp"
                 android:onClick="addNewUser"
+                android:padding="8dp"
                 android:text="Add New User" />
 
         </LinearLayout>

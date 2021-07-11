@@ -178,7 +178,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public int getUserNum() {
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_USER, null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_USER + " WHERE " + COLUMN_isADMIN + " ='0'", null);
         return cursor.getCount();
     }
 

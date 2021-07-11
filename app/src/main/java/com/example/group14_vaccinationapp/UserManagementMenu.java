@@ -3,9 +3,11 @@ package com.example.group14_vaccinationapp;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TableRow;
 
 public class UserManagementMenu extends AppCompatActivity {
 
@@ -29,12 +31,16 @@ public class UserManagementMenu extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void toCreateUser(View view) {
-    }
-
-    public void toViewUsers(View view) {
-    }
-
-    public void toManageUsers(View view) {
+    public void adminOperation(View view){
+       switch (view.getId()){
+           case R.id.tabRow_userManage_createUser:Users:
+               startActivity(new Intent(UserManagementMenu.this, AdminCreateUser.class));
+               break;
+           case R.id.tabRow_userManage_viewAllUsers:
+               startActivity(new Intent(UserManagementMenu.this, AdminViewUsers.class));
+               break;
+           case R.id.tabRow_userManage_manageUsers:
+               startActivity(new Intent(UserManagementMenu.this, AdminUpdateDelete.class));
+        }
     }
 }
