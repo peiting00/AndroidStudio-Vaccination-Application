@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -55,8 +56,8 @@ public class FAQs extends AppCompatActivity {
     }
 
     public void toHospital(View view) {
-        Button btnHospital = (Button)view;
-        String loc = btnHospital.getText().toString();
+        ImageView btnHospital = (ImageView)view;
+        String loc = btnHospital.getContentDescription().toString();
         Uri addressUri = Uri.parse("geo:0,0?q=" + loc);
         Intent intent = new Intent(Intent.ACTION_VIEW, addressUri);
 
