@@ -87,8 +87,8 @@ public class Validation extends Registration {
                                                     TextInputLayout textInputLayout) {
         //Parse the string age to int
         int age = Integer.parseInt(textInputEditText.getText().toString());
-        if (age < 0) { //age less than 0
-            textInputEditText.setError("Age should not be less than 0"); //set error
+        if (age <= 18) { //age less than 18
+            textInputEditText.setError("Age should not be less than 18"); //set error
             textInputEditText.setFocusable(true);
             return false; //validate fail
         }else if(age>120){

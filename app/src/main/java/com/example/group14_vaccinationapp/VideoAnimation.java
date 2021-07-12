@@ -23,12 +23,13 @@ public class VideoAnimation extends YouTubeBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_animation);
         toolbar=findViewById(R.id.toolbar_video);
-        //set back button
+
+        //set back button icon
         toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_backbtn));
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                onBackPressed();//return to previous page
             }
         });
 

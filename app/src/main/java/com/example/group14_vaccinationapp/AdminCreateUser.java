@@ -19,21 +19,23 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.Objects;
+
 public class AdminCreateUser extends AppCompatActivity {
     TextInputLayout textInputLayout_name, textInputLayout_phone, textInputLayout_nric,
             textInputLayout_nric_confirm, textInputLayout_addressLine, textInputLayout_city,
             textInputLayout_postcode, textInputLayout_state, textInputLayout_password,
-            textInputLayout_age,textInputLayout_notes;
+            textInputLayout_age, textInputLayout_notes;
 
     TextInputEditText textInputEditText_name, textInputEditText_phone, textInputEditText_nric,
             textInputEditText_nric_confirm, textInputEditText_addressLine,
             textInputEditText_city, textInputEditText_postcode, textInputEditText_state,
-            textInputEditText_password, textInputEditText_age,textInputEditText_notes;
+            textInputEditText_password, textInputEditText_age, textInputEditText_notes;
     ProgressBar progressBar;
     Button btnCreate;
     Spinner spinner;
     Boolean valid = false;
-    String vaccineID,vaccinePrefer;
+    String vaccineID, vaccinePrefer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +60,7 @@ public class AdminCreateUser extends AppCompatActivity {
         textInputEditText_state = findViewById(R.id.et_adminCreate_state);
         textInputEditText_password = findViewById(R.id.et_adminCreate_password);
         textInputEditText_age = findViewById(R.id.et_adminCreate_age);
-        textInputEditText_notes=findViewById(R.id.et_adminCreate_notes);
+        textInputEditText_notes = findViewById(R.id.et_adminCreate_notes);
 
         textInputLayout_name = findViewById(R.id.Layout_adminCreate_name);
         textInputLayout_phone = findViewById(R.id.Layout_adminCreate_phone);
@@ -70,7 +72,7 @@ public class AdminCreateUser extends AppCompatActivity {
         textInputLayout_state = findViewById(R.id.Layout_adminCreate_state);
         textInputLayout_password = findViewById(R.id.Layout_adminCreate_password);
         textInputLayout_age = findViewById(R.id.Layout_adminCreate_age);
-        textInputLayout_notes=findViewById(R.id.Layout_adminCreate_notes);
+        textInputLayout_notes = findViewById(R.id.Layout_adminCreate_notes);
 
         btnCreate = findViewById(R.id.btnCreate_adminCreate);
         spinner = findViewById(R.id.spinnerVaccineType_adminCreate);
@@ -133,20 +135,32 @@ public class AdminCreateUser extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
+                int age=0;
                 Validation validation = new Validation(getApplicationContext());
-                if (validation.requiredFieldValidation(textInputEditText_age,textInputLayout_age)&&
-                        validation.ageValidate(textInputEditText_age, textInputLayout_age)) {
 
-                    int age = Integer.parseInt(textInputEditText_age.getText().toString());
+                if(validation.requiredFieldValidation(textInputEditText_age,textInputLayout_age)){
+                    if (!validation.ageValidate(textInputEditText_age,textInputLayout_age)){
+                        //NOT pass validation
+                        age = Integer.parseInt(Objects.requireNonNull(textInputEditText_age.getText()).toString());
+                        textInputEditText_age.setError("Age should not be less than 18 or more than 130");
+                        textInputLayout_age.setFocusable(true);
+                    }else{
+                        displayToast("Age is valid for COVID-19 vaccination.");
+                        age = Integer.parseInt(Objects.requireNonNull(textInputEditText_age.getText()).toString());
 
-                    if (age < 12) {
-                        new AlertDialog.Builder(AdminCreateUser.this)
-                                .setTitle("Warning: \nCOVID-19 Vaccine Age Restriction")
-                                .setMessage("Children under 12 years old are not permitted to take COVID-19 vaccination.")
-                                .setCancelable(false)
-                                .setPositiveButton("OK", null).show();
                     }
+
                 }
+
+                if (age <= 18) { // If age less than 12
+                    new AlertDialog.Builder(AdminCreateUser.this) //create new alert dialog
+                            .setTitle("Warning: \nCOVID-19 Vaccine Age Restriction")
+                            .setMessage("Children under 18 years old are not permitted to take COVID-19 vaccination.")
+                            .setCancelable(false)//no cancel button
+                            .setPositiveButton("OK", null).show();//click OK to execute no listener
+                }
+
+
             }
         });
     } //end of OnCreate
@@ -181,10 +195,10 @@ public class AdminCreateUser extends AppCompatActivity {
             if (vaccinePrefer.contentEquals("Please select a vaccine")) {
                 displayToast("Please select user's vaccine preference!");
                 valid = false;
-            }else{
-                vaccineID= String.valueOf(spinner.getSelectedItemPosition());
+            } else {
+                vaccineID = String.valueOf(spinner.getSelectedItemPosition());
                 progressBar.setProgress(100);
-                valid=true;
+                valid = true;
             }
 
             if (valid) {
@@ -197,7 +211,9 @@ public class AdminCreateUser extends AppCompatActivity {
 
     private void intoConfirmationState() {
         try {
+
             DatabaseHelper dbHelper = new DatabaseHelper(this);
+            //store all the input into local variable
             String name = textInputEditText_name.getText().toString(),
 
                     address = textInputEditText_addressLine.getText().toString() + ", " +
@@ -208,28 +224,31 @@ public class AdminCreateUser extends AppCompatActivity {
                     phone = textInputEditText_phone.getText().toString(),
                     IC = textInputEditText_nric_confirm.getText().toString(),
                     password = textInputEditText_password.getText().toString(),
-                    age=textInputEditText_age.getText().toString(),
-                    notes=textInputEditText_notes.getText().toString();
+                    age = textInputEditText_age.getText().toString(),
+                    notes = textInputEditText_notes.getText().toString();
 
-
+            // if successfully inserted new user, it will return true
             if (dbHelper.addUser(IC, name, password, age, phone, address, notes, vaccineID)) {
-
+                //create a new alert dialog
+                //for admin to check created user's credential
                 new AlertDialog.Builder(AdminCreateUser.this)
                         .setTitle("New User Created Successfully")
-                        .setMessage("Registered user information:\n\nFull Name: "+name+"\nNRIC: "+IC
-                        +"\nDefault Password:refer to user's NRIC.")
+                        .setMessage("Registered user information:\n\nFull Name: " + name + "\nNRIC: " + IC
+                                + "\nDefault Password:refer to user's NRIC.")
                         .setCancelable(false)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
+                            @Override // when OK in alert dialog clicked
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent intent = new Intent(AdminCreateUser.this,AdminUpdateDelete.class);
+                                //redirect to the listview page
+                                Intent intent = new Intent(AdminCreateUser.this, AdminUpdateDelete.class);
                                 startActivity(intent);
+                                finish();
                             }
                         }).show();
 
             } else {
                 displayToast("Something went wrong, please try again later");
-            }
+            }//end of insert into database
         } catch (Exception e) {
             displayToast(e.toString());
         }

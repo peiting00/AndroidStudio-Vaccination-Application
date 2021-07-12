@@ -34,7 +34,7 @@ public class VaccinationConfirmed extends AppCompatActivity {
 
         new AlertDialog.Builder(VaccinationConfirmed.this)
                 .setTitle("Login with your credential")
-                .setMessage("NRIC: "+NRIC+"\n\nPassword: "+password)
+                .setMessage("\nNRIC: "+NRIC+"\nPassword: "+password)
                 .setCancelable(false)
                 .setPositiveButton("OK",(dialog, which) -> {
                     Runnable r = new Runnable() {

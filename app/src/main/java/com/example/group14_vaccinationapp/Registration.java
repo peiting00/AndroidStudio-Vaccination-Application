@@ -55,7 +55,7 @@ public class Registration extends AppCompatActivity implements LocationListener 
     Button buttonNext, buttonCancel, buttonConfirm,buttonGoLogin;
     RadioButton radioButton_pfizer, radioButton_sinovac, radioButton_AZ;
     LinearLayout linearLayout_confirm, linearLayout_form;
-    ProgressBar progressBar;
+    ProgressBar progressBar,progressBar_Top;
 
     private String vaccinePrefer, vaccineID;
     private String age;
@@ -108,10 +108,34 @@ public class Registration extends AppCompatActivity implements LocationListener 
         linearLayout_form = findViewById(R.id.register_form_linearLayout);
         confirmationInfo = findViewById(R.id.label_register_confirmationInfo);
         progressBar = findViewById(R.id.progressBar_register_getLocation);
+        progressBar_Top=findViewById(R.id.progressBar_Registration);
 
         Intent intent = getIntent();
         age = intent.getStringExtra("age");
         notes = intent.getStringExtra("notes");
+
+        textInputEditText_name.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                Validation validation = new Validation(Registration.this);
+                if(validation.requiredFieldValidation(textInputEditText_name,textInputLayout_name)){
+                    progressBar_Top.setProgress(30);
+                }
+
+            }
+        });
+
+
 
         //validate the NRIC
         textInputEditText_nric.addTextChangedListener(new TextWatcher() {
@@ -135,6 +159,7 @@ public class Registration extends AppCompatActivity implements LocationListener 
                         valid = false;
                     } else {
                         displayToast("Valid NRIC!");
+                        progressBar_Top.setProgress(50);
                         valid = true;
                     }
                 }
@@ -229,6 +254,7 @@ public class Registration extends AppCompatActivity implements LocationListener 
             textInputEditText_state.setText(addressList.get(0).getAdminArea());
             textInputEditText_postcode.setText(addressList.get(0).getPostalCode());
             progressBar.setVisibility(View.GONE);
+            progressBar_Top.setProgress(70);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -278,6 +304,7 @@ public class Registration extends AppCompatActivity implements LocationListener 
             valid = false;
 
         if (valid) {
+            progressBar_Top.setProgress(90);
             intoConfirmationState();//if validation passed
         }else
             displayToast("Please make sure all the fields are correct.");
@@ -369,6 +396,7 @@ public class Registration extends AppCompatActivity implements LocationListener 
         //set Confirmation buttons visible
         linearLayout_confirm.setVisibility(View.GONE);
         confirmationInfo.setVisibility(View.GONE);
+        progressBar_Top.setProgress(70);
     }
 
     /**
