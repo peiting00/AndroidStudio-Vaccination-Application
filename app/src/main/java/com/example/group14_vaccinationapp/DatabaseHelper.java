@@ -88,18 +88,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_PASSWORD + "," + COLUMN_AGE + "," + COLUMN_PHONE + "," +
                 COLUMN_ADDRESS + "," + COLUMN_NOTES + "," + COLUMN_VACCINE_STATUS + "," +
                 COLUMN_isADMIN + "," + COLUMN_VACCINE_ID + ") VALUES " +
-                "('000427019999','CHEW PEI TING','000427019999','21','01294864903','5 Jln Pinggiran 1 Medan Damai Ukay Hulu Ampang,68000 Klang Selangor','N/A','PENDING','0','1')," +
-                "('991105012980','LIM SIAO SIAO','991105012980','22','0198475735','Blok B 49 Rumah Panjang 1 Jln Batu 13  47100 Puchong Selangor','N/A','PENDING','0','1')," +
-                "('670218145667','MOHD ALI BIN ABUDULLAH','670218145667','54','0164573656','No. 138 4Th Floor Jln Tun H S Lee, 50000 Kuala Lumpur Wilayah Persekutuan','N/A','FIRST DOSE:29TH AUGUST 2021','0','2')," +
-                "('880911143556','JANICE HO YI XIAN','880911143556','33','01948758473',' Lorong Seri Teruntum 1, Medan Warisan 25100 Kuantan Pahang','N/A','2 DOSES OF VACCINATION COMPLETED','0','3')," +
-                "('991023042345','PRICILLA TAN WEI XUAN','991023042345','22','0118347546','NO 52A-F BROOKE DRIVE SIBU 96000 Sibu Sarawak','N/A','PENDING','0','2')," +
-                "('940217101011','TOH XIN YU','940217101011','27','0109948584','1 33 Jln 20/16 Seksyen 20 Petaling Jaya 46300 Petaling Jaya, Selangor','FIRST DOSE DONE','SECOND DOSE:30TH JULY 2021','0','2')," +
-                "('881207100882','SAMUEL NG','881207100882','33','01298847684','62 Jalan 10/34A Kepong Enterpreneurs Park 52100 Kuala Lumpur, Wilayah Persekutuan','N/A','PENDING','0','1')," +
-                "('770703019983','DWEE WEN XIN','770703019983','44','0127787342','Blok H 25 4 Jln Pju 1/37 Prima Square Petaling Jaya 46500 Petaling Jaya, Selangor','N/A','FIRST DOSE:27TH AUGUST 2021','0','3')," +
-                "('780113012456','LONG LI SUAN','780113012456','43','0176475638','Jalan Dagang 1/1A, Taman Dagang, 68000 Ampang, Selangor','N/A','FIRST DOSE:29TH AUGUST 2021','0','1')," +
-                "('admin01','TEOH BO WEI','admin01','21','0116835683','C-6-06 RITZE PERDANA JALAN PJU 8/2 47820 Petaling Jaya, Selangor','N/A','-','1','1')," +
-                "('admin02','CHEW PEI TING','admin02','21','012576773','B5-6 Happy Mansion, Jalan 17/3, 46400 Petaling Jaya, Selangor','N/A','-','1','1')," +
-                "('admin03','BOO TING','admin03','21','0109948573','2a, Jalan Damar Laut 2b Telok Gong 42000 Klang, Selangor','N/A','-','1','1')");
+                "('000101142345','JASON NG','000101142345','21','01294864903','5 JLN PINGGIRAN 34 MEDAN DAMAI UKAY HULU AMPANG,68000 KLANG SELANGOR','N/A','PENDING','0','1')," +
+                "('000427019999','CHEW PEI TING','000427019999','21','01294864903','5 JLN PINGGIRAN 1 MEDAN DAMAI UKAY HULU AMPANG,68000 KLANG SELANGOR','N/A','PENDING','0','1')," +
+                "('991105012980','LIM SIAO SIAO','991105012980','22','0198475735','BLOK B 49 RUMAH PANJANG 1 JLN BATU 13  47100 PUCHONG SELANGOR','N/A','PENDING','0','1')," +
+                "('670218145667','MOHD ALI BIN ABUDULLAH','670218145667','54','0164573656','NO. 138 4TH FLOOR JLN TUN H S LEE, 50000 KUALA LUMPUR WILAYAH PERSEKUTUAN','N/A','FIRST DOSE:29TH AUGUST 2021','0','2')," +
+                "('880911143556','JANICE HO YI XIAN','880911143556','33','01948758473',' LORONG SERI TERUNTUM 1, MEDAN WARISAN 25100 KUANTAN PAHANG','N/A','2 DOSES OF VACCINATION COMPLETED','0','3')," +
+                "('991023042345','PRICILLA TAN WEI XUAN','991023042345','22','0118347546','NO 52A-F BROOKE DRIVE SIBU 96000 SIBU SARAWAK','N/A','PENDING','0','2')," +
+                "('940217101011','TOH XIN YU','940217101011','27','0109948584','33 JLN 20/16 SEKSYEN 20 PETALING JAYA 46300 PETALING JAYA','FIRST DOSE DONE','SECOND DOSE:30TH JULY 2021','0','2')," +
+                "('881207100882','SAMUEL NG','881207100882','33','01298847684','62 JALAN 10/34A KEPONG ENTERPRENEURS PARK 52100 KUALA LUMPUR, WILAYAH PERSEKUTUAN','N/A','PENDING','0','1')," +
+                "('770703019983','DWEE WEN XIN','770703019983','44','0127787342','BLOK H 25 4 JLN PJU 1/37 PRIMA SQUARE PETALING JAYA 46500 PETALING JAYA','N/A','FIRST DOSE:27TH AUGUST 2021','0','3')," +
+                "('780113012456','LONG LI SUAN','780113012456','43','0176475638','JALAN DAGANG 1/1A, TAMAN DAGANG, 68000 AMPANG, SELANGOR','N/A','FIRST DOSE:29TH AUGUST 2021','0','1')," +
+                "('admin01','TEOH BO WEI','admin01','21','0116835683','C-6-06 RITZE PERDANA JALAN PJU 8/2 47820 PETALING JAYA, SELANGOR','N/A','-','1','1')," +
+                "('admin02','CHEW PEI TING','admin02','21','012576773','B5-6 HAPPY MANSION, JALAN 17/3, 46400 PETALING JAYA, SELANGOR','N/A','-','1','1')," +
+                "('admin03','BOO TING','admin03','21','0109948573','2A, JALAN DAMAR LAUT 2B TELOK GONG 42000 KLANG, SELANGOR','N/A','-','1','1')");
 
         //Default vaccine data is inserted into database
         db.execSQL("INSERT INTO " + TABLE_VACCINE + "(" +
@@ -119,7 +120,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         conVal.put(COLUMN_AGE, age);//3
         conVal.put(COLUMN_PHONE, phone);//4
         conVal.put(COLUMN_ADDRESS, address);//5
-        conVal.put(COLUMN_VACCINE_STATUS, "Pending");//default value is pending//6
+        conVal.put(COLUMN_VACCINE_STATUS, "PENDING");//default value is pending//6
         conVal.put(COLUMN_NOTES, notes);//7
         conVal.put(COLUMN_isADMIN, "0"); //default user as not admin//8
         conVal.put(COLUMN_VACCINE_ID, vaccineID); // before come to here need to speficy the id//9

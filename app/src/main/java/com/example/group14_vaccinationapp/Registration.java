@@ -325,7 +325,8 @@ public class Registration extends AppCompatActivity implements LocationListener 
         radioButton_pfizer.setEnabled(false);
         radioButton_sinovac.setEnabled(false);
         radioButton_AZ.setEnabled(false);
-        textInputLayout_password.setEnabled(false);        textInputLayout_password_confirm.setEnabled(false);
+        textInputLayout_password.setEnabled(false);
+        textInputLayout_password_confirm.setEnabled(false);
         // unable onClickEvent
         imageButtonGetLocation.setOnClickListener(null);
         //set Next button not visible
@@ -343,21 +344,21 @@ public class Registration extends AppCompatActivity implements LocationListener 
                 if (checked)
                     //display chosen vaccine
                     displayToast(getString(R.string.text_pfizer_biontech));
-                vaccinePrefer = getString(R.string.text_pfizer_biontech);
+                vaccinePrefer = getString(R.string.text_pfizer_biontech).toUpperCase();
                 vaccineID = "1";
                 break;
             case R.id.radioBtn_register_sinovac:
                 if (checked)
                     //display chosen vaccine
                     displayToast(getString(R.string.text_sinovac_coronavac));
-                vaccinePrefer = getString(R.string.text_sinovac_coronavac);
+                vaccinePrefer = getString(R.string.text_sinovac_coronavac).toUpperCase();
                 vaccineID = "2";
                 break;
             case R.id.radioBtn_register_AZ:
                 if (checked)
                     //display chosen vaccine
                     displayToast(getString(R.string.text_astra_zeneca));
-                vaccinePrefer = getString(R.string.text_astra_zeneca);
+                vaccinePrefer = getString(R.string.text_astra_zeneca).toUpperCase();
                 vaccineID = "3";
                 break;
             default:
@@ -405,24 +406,24 @@ public class Registration extends AppCompatActivity implements LocationListener 
     public void confirm(View view) {
         try {
             DatabaseHelper dbHelper = new DatabaseHelper(this);
-            String name = textInputEditText_name.getText().toString(),
+            String name = textInputEditText_name.getText().toString().toUpperCase(),
 
-                    address = textInputEditText_addressLine.getText().toString() + ", " +
-                            textInputEditText_city.getText().toString() + ", " +
-                            textInputEditText_postcode.getText().toString() + ", " +
-                            textInputEditText_state.getText().toString(),
+                    address = textInputEditText_addressLine.getText().toString().toUpperCase() + ", " +
+                            textInputEditText_city.getText().toString().toUpperCase() + ", " +
+                            textInputEditText_postcode.getText().toString().toUpperCase() + ", " +
+                            textInputEditText_state.getText().toString().toUpperCase(),
 
-                    phone = textInputEditText_phone.getText().toString(),
-                    IC = textInputEditText_nric_confirm.getText().toString(),
-                    password = textInputEditText_password.getText().toString();
+                    phone = textInputEditText_phone.getText().toString().toUpperCase(),
+                    IC = textInputEditText_nric_confirm.getText().toString().toUpperCase(),
+                    password = textInputEditText_password.getText().toString().toUpperCase();
             //int ageParse = Integer.parseInt(age);
 
             if (dbHelper.addUser(IC, name, password, age, phone, address, notes, vaccineID)) {
                 Intent intent = new Intent(this, getOTP.class);
                 Bundle confirmInfo = new Bundle();
                 confirmInfo.putString("name", name);
-                confirmInfo.putString("phone", textInputEditText_phone.getText().toString());
-                confirmInfo.putString("NRIC", textInputEditText_nric.getText().toString());
+                confirmInfo.putString("phone", textInputEditText_phone.getText().toString().toUpperCase());
+                confirmInfo.putString("NRIC", textInputEditText_nric.getText().toString().toUpperCase());
                 confirmInfo.putString("address", address);
                 confirmInfo.putString("vaccine", vaccinePrefer);
                 confirmInfo.putString("password",password);

@@ -214,18 +214,18 @@ public class AdminCreateUser extends AppCompatActivity {
 
             DatabaseHelper dbHelper = new DatabaseHelper(this);
             //store all the input into local variable
-            String name = textInputEditText_name.getText().toString(),
+            String name = textInputEditText_name.getText().toString().toUpperCase(),
 
-                    address = textInputEditText_addressLine.getText().toString() + ", " +
-                            textInputEditText_city.getText().toString() + ", " +
-                            textInputEditText_postcode.getText().toString() + ", " +
-                            textInputEditText_state.getText().toString(),
+                    address = textInputEditText_addressLine.getText().toString().toUpperCase() + ", " +
+                            textInputEditText_city.getText().toString().toUpperCase() + ", " +
+                            textInputEditText_postcode.getText().toString().toUpperCase() + ", " +
+                            textInputEditText_state.getText().toString().toUpperCase(),
 
-                    phone = textInputEditText_phone.getText().toString(),
-                    IC = textInputEditText_nric_confirm.getText().toString(),
-                    password = textInputEditText_password.getText().toString(),
-                    age = textInputEditText_age.getText().toString(),
-                    notes = textInputEditText_notes.getText().toString();
+                    phone = textInputEditText_phone.getText().toString().toUpperCase(),
+                    IC = textInputEditText_nric_confirm.getText().toString().toUpperCase(),
+                    password = textInputEditText_password.getText().toString().toUpperCase(),
+                    age = textInputEditText_age.getText().toString().toUpperCase(),
+                    notes = textInputEditText_notes.getText().toString().toUpperCase();
 
             // if successfully inserted new user, it will return true
             if (dbHelper.addUser(IC, name, password, age, phone, address, notes, vaccineID)) {
