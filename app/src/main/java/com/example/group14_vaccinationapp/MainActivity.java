@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
         String getNRICPreference = mPreferences.getString(NRICPreference, null);
         String getisAdminPreference = mPreferences.getString(isAdminPreference, null);
 
-        Toast.makeText(MainActivity.this, getNRICPreference,Toast.LENGTH_SHORT).show();
         try{
             dbHelper = new DatabaseHelper(this);
 
