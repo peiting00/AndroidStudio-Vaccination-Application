@@ -79,9 +79,9 @@
                 android:paddingBottom="40dp"
                 android:inputType="textCapSentences"
                 app:icon="@drawable/syringe"
-                app:iconSize="70dp"
+                app:iconSize="60dp"
                 android:text="@string/vaccination"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:iconGravity="textTop" />
 
             <Button
@@ -97,10 +97,10 @@
                 android:paddingBottom="10dp"
                 android:text="FAQs"
                 android:textColor="#FFFFFF"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:backgroundTint="#94A1A1"
                 app:icon="@drawable/faqicon"
-                app:iconSize="70dp"
+                app:iconSize="60dp"
                 app:iconGravity="textTop" />
         </LinearLayout>
 
@@ -121,10 +121,10 @@
                 android:inputType="textMultiLine"
                 android:text="Personal Healthcare"
                 android:textAllCaps="false"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:fontFamily="@font/nunito_sans"
                 app:icon="@drawable/healthcare"
-                app:iconSize="70dp"
+                app:iconSize="60dp"
                 app:iconGravity="textTop"
                 app:iconPadding="20dp"
                 android:paddingBottom="10dp"
@@ -140,10 +140,10 @@
                 android:gravity="bottom|center"
                 android:text="@string/covid_19_info_amp_news"
                 android:textAllCaps="false"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:fontFamily="@font/nunito_sans"
                 app:icon="@drawable/covidnews"
-                app:iconSize="70dp"
+                app:iconSize="60dp"
                 app:iconGravity="textTop"
                 app:backgroundTint="@color/teal_700"
                 android:paddingBottom="20dp"/>
