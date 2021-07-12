@@ -52,7 +52,7 @@ public class Registration extends AppCompatActivity implements LocationListener 
     LocationManager locationManager;
     TextView confirmationInfo;
     ImageButton imageButtonGetLocation;
-    Button buttonNext, buttonCancel, buttonConfirm;
+    Button buttonNext, buttonCancel, buttonConfirm,buttonGoLogin;
     RadioButton radioButton_pfizer, radioButton_sinovac, radioButton_AZ;
     LinearLayout linearLayout_confirm, linearLayout_form;
     ProgressBar progressBar;
@@ -100,6 +100,7 @@ public class Registration extends AppCompatActivity implements LocationListener 
         buttonNext = findViewById(R.id.btnNext);
         buttonCancel = findViewById(R.id.btnCancel_register);
         buttonConfirm = findViewById(R.id.btnConfirmForm);
+        buttonGoLogin =findViewById(R.id.btnGoLogin);
         radioButton_pfizer = findViewById(R.id.radioBtn_register_pfizer);
         radioButton_sinovac = findViewById(R.id.radioBtn_register_sinovac);
         radioButton_AZ = findViewById(R.id.radioBtn_register_AZ);
@@ -297,12 +298,12 @@ public class Registration extends AppCompatActivity implements LocationListener 
         radioButton_pfizer.setEnabled(false);
         radioButton_sinovac.setEnabled(false);
         radioButton_AZ.setEnabled(false);
-        textInputLayout_password.setEnabled(false);
-        textInputLayout_password_confirm.setEnabled(false);
+        textInputLayout_password.setEnabled(false);        textInputLayout_password_confirm.setEnabled(false);
         // unable onClickEvent
         imageButtonGetLocation.setOnClickListener(null);
         //set Next button not visible
         buttonNext.setVisibility(View.GONE);
+        buttonGoLogin.setVisibility(View.GONE);
         //set Confirmation buttons visible
         linearLayout_confirm.setVisibility(View.VISIBLE);
         confirmationInfo.setVisibility(View.VISIBLE);
@@ -364,6 +365,7 @@ public class Registration extends AppCompatActivity implements LocationListener 
         radioButton_sinovac.setEnabled(true);
         radioButton_AZ.setEnabled(true);
         buttonNext.setVisibility(View.VISIBLE);
+        buttonGoLogin.setVisibility(View.VISIBLE);
         //set Confirmation buttons visible
         linearLayout_confirm.setVisibility(View.GONE);
         confirmationInfo.setVisibility(View.GONE);
