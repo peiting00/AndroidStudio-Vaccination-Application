@@ -18,10 +18,11 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Group14_VaccinationApp">
-        <activity android:name=".UserDetailInfo"/>
+        <activity android:name=".Audio"></activity>
+        <activity android:name=".UserDetailInfo" />
         <activity android:name=".AdminViewUsers" />
         <activity android:name=".UserManagementMenu" />
-        <activity android:name=".VideoAnimation"/>
+        <activity android:name=".VideoAnimation" />
         <activity android:name=".MainActivityAdmin" />
         <activity android:name=".AdminUpdateDelete" />
         <activity android:name=".AdminCreateUser" />

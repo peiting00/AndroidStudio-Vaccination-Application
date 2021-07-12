@@ -64,4 +64,12 @@ public class CovidWebsite extends AppCompatActivity {
             Log.d("Implicit Intent","Can't handle this!");
         }
     }
+
+    public void toVideo(View view) {
+        startActivity(new Intent(CovidWebsite.this, VideoAnimation.class));
+    }
+
+    public void toAudio(View view) {
+        startActivity(new Intent(CovidWebsite.this, Audio.class));
+    }
 }

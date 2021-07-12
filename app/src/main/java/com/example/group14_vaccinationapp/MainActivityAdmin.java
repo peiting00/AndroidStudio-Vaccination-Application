@@ -48,6 +48,19 @@ public class MainActivityAdmin extends AppCompatActivity {
         txtWelcomeMsg.setText("Welcome! admin " + adminName);
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        dbHelper = new DatabaseHelper(this);
+        Cursor cursor = dbHelper.readInfo(getNRICPreference);
+        cursor.moveToFirst();
+        //String adminName = cursor.getString(cursor.getColumnIndex("name"));
+
+        int registeredNum = dbHelper.getUserNum();
+
+        txtNumOfRegistered.setText(Integer.toString(registeredNum));
+    }
+
     public void logout(View view) {
         // calling method to edit values in shared prefs.
         SharedPreferences.Editor editor = mPreferences.edit();
