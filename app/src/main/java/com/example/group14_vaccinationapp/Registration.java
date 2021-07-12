@@ -12,6 +12,8 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -109,6 +111,35 @@ public class Registration extends AppCompatActivity implements LocationListener 
         Intent intent = getIntent();
         age = intent.getStringExtra("age");
         notes = intent.getStringExtra("notes");
+
+        //validate the NRIC
+        textInputEditText_nric.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                progressBar.setProgress(50);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                Validation validation = new Validation(getApplicationContext());
+                if (validation.lengthValidate(textInputEditText_nric, textInputLayout_nric)) {
+                    if (validation.checkUserExist(textInputEditText_nric, textInputLayout_nric)) {
+                        // if user exist -> error
+                        displayToast("Please proceed to login with your NRIC!");
+                        valid = false;
+                    } else {
+                        displayToast("Valid NRIC!");
+                        valid = true;
+                    }
+                }
+            }
+        });
+
     }
 
     @Override //when back button clicked
@@ -197,6 +228,7 @@ public class Registration extends AppCompatActivity implements LocationListener 
             textInputEditText_state.setText(addressList.get(0).getAdminArea());
             textInputEditText_postcode.setText(addressList.get(0).getPostalCode());
             progressBar.setVisibility(View.GONE);
+
         } catch (IOException e) {
             e.printStackTrace();
             Toast.makeText(this, "Unable to detect your location.", Toast.LENGTH_SHORT).show();
@@ -231,26 +263,23 @@ public class Registration extends AppCompatActivity implements LocationListener 
                 validation.requiredFieldValidation(textInputEditText_addressLine, textInputLayout_addressLine) &&
                 validation.requiredFieldValidation(textInputEditText_city, textInputLayout_city) &&
                 validation.requiredFieldValidation(textInputEditText_postcode, textInputLayout_postcode) &&
-                validation.requiredFieldValidation(textInputEditText_state, textInputLayout_state) &&
-                validation.requiredFieldValidation(textInputEditText_password, textInputLayout_password) &&
-                validation.matchValidate(textInputEditText_password, textInputEditText_password_confirm, textInputLayout_password_confirm)) {
-
-            if (validation.checkUserExist(textInputEditText_nric, textInputLayout_nric)) {
-                // if user exist -> error
-                displayToast("Please proceed to login with your NRIC!");
-                valid = false;
-            } else if (!radioButton_pfizer.isChecked() && !radioButton_sinovac.isChecked() && !radioButton_AZ.isChecked()) {
+                validation.requiredFieldValidation(textInputEditText_state, textInputLayout_state)&&
+                validation.requiredFieldValidation(textInputEditText_password,textInputLayout_password)&&
+                validation.requiredFieldValidation(textInputEditText_password_confirm,textInputLayout_password_confirm)&&
+                validation.matchValidate(textInputEditText_password,textInputEditText_password_confirm,textInputLayout_password_confirm)){
+            valid = true;
+            if (!radioButton_pfizer.isChecked() && !radioButton_sinovac.isChecked() && !radioButton_AZ.isChecked()) {
                 //if the NONE of the radio button is checked
                 displayToast("Please select a preferred vaccine!");
                 valid = false;
-            } else {
-                valid = true;
             }
-        }
+        } else
+            valid = false;
 
         if (valid) {
             intoConfirmationState();//if validation passed
-        }
+        }else
+            displayToast("Please make sure all the fields are correct.");
     }
 
     public void intoConfirmationState() {
@@ -366,6 +395,7 @@ public class Registration extends AppCompatActivity implements LocationListener 
                 confirmInfo.putString("NRIC", textInputEditText_nric.getText().toString());
                 confirmInfo.putString("address", address);
                 confirmInfo.putString("vaccine", vaccinePrefer);
+                confirmInfo.putString("password",password);
                 intent.putExtras(confirmInfo);
                 startActivity(intent);
                 finish();

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class VaccinationConfirmed extends AppCompatActivity {
@@ -28,19 +29,35 @@ public class VaccinationConfirmed extends AppCompatActivity {
         NRIC.setText(confirmInfo.getString("NRIC"));
         vaccine.setText(confirmInfo.getString("vaccine"));
 
-        Runnable r = new Runnable() {
+        String NRIC = confirmInfo.getString("NRIC");
+        String password = confirmInfo.getString("password");
 
-            @Override
-            public void run() {
-                // if you are redirecting from a fragment then use getActivity() as the context.
-                Intent intent2 = new Intent(getApplicationContext(), RegistrationSuccess.class);
-                startActivity(intent2);
-                finish();//user cannot switch back
-            }
-        };
+        new AlertDialog.Builder(VaccinationConfirmed.this)
+                .setTitle("Login with your credential")
+                .setMessage("NRIC: "+NRIC+"\n\nPassword: "+password)
+                .setCancelable(false)
+                .setPositiveButton("OK",(dialog, which) -> {
+                    Runnable r = new Runnable() {
 
-        Handler h = new Handler();
-        // The Runnable will be executed after the given delay time
-        h.postDelayed(r, 3000); // delay 3 sec
+                        @Override
+                        public void run() {
+                            // if you are redirecting from a fragment then use getActivity() as the context.
+                            Intent intent2 = new Intent(getApplicationContext(), RegistrationSuccess.class);
+                            startActivity(intent2);
+                            finish();//user cannot switch back
+                        }
+                    };
+
+                    Handler h = new Handler();
+                    // The Runnable will be executed after the given delay time
+                    h.postDelayed(r, 3000); // delay 3 sec
+                })
+                .show();
+
+
+
+
     }
+
+
 }

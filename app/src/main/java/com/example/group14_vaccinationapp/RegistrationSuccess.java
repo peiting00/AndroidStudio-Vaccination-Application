@@ -37,7 +37,7 @@ public class RegistrationSuccess extends AppCompatActivity {
     }
 
     public void skipInvite(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, Login.class);
         startActivity(intent);
         finish();
     }
