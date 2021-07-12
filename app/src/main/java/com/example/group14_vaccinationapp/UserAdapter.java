@@ -256,7 +256,7 @@ public class UserAdapter extends ArrayAdapter<User> {
         });
 
         /*
-         * WHEN user clicks on ' delete' button
+         * WHEN user clicks on 'cancel' button
          * System close the update alert dialog
          */
         view.findViewById(R.id.btnCancel_adminUpdate).setOnClickListener(new View.OnClickListener() {

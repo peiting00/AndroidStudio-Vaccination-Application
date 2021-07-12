@@ -101,11 +101,11 @@ public class AdminCreateUser extends AppCompatActivity {
             }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            public void onTextChanged(CharSequence s, int ssstart, int before, int count) {
                 progressBar.setProgress(50);
             }
 
-            @Override
+            @Override //nric_editText
             public void afterTextChanged(Editable s) {
                 Validation validation = new Validation(getApplicationContext());
                 if (validation.lengthValidate(textInputEditText_nric, textInputLayout_nric)) {
@@ -133,7 +133,7 @@ public class AdminCreateUser extends AppCompatActivity {
 
             }
 
-            @Override
+            @Override //age_editText
             public void afterTextChanged(Editable s) {
                 int age=0;
                 Validation validation = new Validation(getApplicationContext());
@@ -144,7 +144,7 @@ public class AdminCreateUser extends AppCompatActivity {
                         age = Integer.parseInt(Objects.requireNonNull(textInputEditText_age.getText()).toString());
                         textInputEditText_age.setError("Age should not be less than 18 or more than 130");
                         textInputLayout_age.setFocusable(true);
-                    }else{
+                    }else{ //pass validation
                         displayToast("Age is valid for COVID-19 vaccination.");
                         age = Integer.parseInt(Objects.requireNonNull(textInputEditText_age.getText()).toString());
 
