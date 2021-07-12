@@ -87,8 +87,7 @@
         android:layout_marginRight="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cv_audio_audio1"
-        android:onClick="audioOperation">
+        app:layout_constraintTop_toBottomOf="@id/cv_audio_audio1">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -140,8 +139,7 @@
         android:layout_marginRight="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cv_audio_audio2"
-        android:onClick="audioOperation">
+        app:layout_constraintTop_toBottomOf="@id/cv_audio_audio2">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

@@ -74,15 +74,15 @@
                 android:layout_weight=".60"
                 android:background="@drawable/rounded_corners"
                 android:drawingCacheQuality="auto"
-                android:fontFamily="@font/roboto"
+                android:fontFamily="@font/nunito_sans"
                 android:gravity="bottom|center"
                 android:paddingBottom="40dp"
                 android:inputType="textCapSentences"
                 app:icon="@drawable/syringe"
+                app:iconSize="70dp"
                 android:text="@string/vaccination"
                 android:textSize="20sp"
-                app:iconGravity="textTop"
-                app:iconPadding="10dp" />
+                app:iconGravity="textTop" />
 
             <Button
                 android:id="@+id/btnFaq"
@@ -91,7 +91,7 @@
                 android:layout_margin="8dp"
                 android:layout_weight=".40"
                 android:background="@drawable/rounded_corners"
-                android:fontFamily="@font/roboto"
+                android:fontFamily="@font/nunito_sans"
                 android:gravity="center|bottom"
                 android:inputType="textLongMessage|textCapSentences"
                 android:paddingBottom="10dp"
@@ -99,7 +99,8 @@
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 app:backgroundTint="#94A1A1"
-                app:icon="@drawable/faqiconedit"
+                app:icon="@drawable/faqicon"
+                app:iconSize="70dp"
                 app:iconGravity="textTop" />
         </LinearLayout>
 
@@ -121,8 +122,9 @@
                 android:text="Personal Healthcare"
                 android:textAllCaps="false"
                 android:textSize="20sp"
-                android:fontFamily="@font/roboto"
-                app:icon="@drawable/healthcareedit"
+                android:fontFamily="@font/nunito_sans"
+                app:icon="@drawable/healthcare"
+                app:iconSize="70dp"
                 app:iconGravity="textTop"
                 app:iconPadding="20dp"
                 android:paddingBottom="10dp"
@@ -137,11 +139,14 @@
                 android:background="@drawable/rounded_corners"
                 android:gravity="bottom|center"
                 android:text="@string/covid_19_info_amp_news"
+                android:textAllCaps="false"
                 android:textSize="20sp"
-                android:fontFamily="@font/roboto"
-                app:icon="@mipmap/ic_channel_covidedit_foreground"
+                android:fontFamily="@font/nunito_sans"
+                app:icon="@drawable/covidnews"
+                app:iconSize="70dp"
                 app:iconGravity="textTop"
-                app:backgroundTint="@color/teal_700" />
+                app:backgroundTint="@color/teal_700"
+                android:paddingBottom="20dp"/>
         </LinearLayout>
     </LinearLayout>
 
