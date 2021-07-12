@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -70,6 +71,11 @@ public class CovidWebsite extends AppCompatActivity {
     }
 
     public void toAudio(View view) {
-        startActivity(new Intent(CovidWebsite.this, Audio.class));
+        try{
+            startActivity(new Intent(CovidWebsite.this, Audio.class));
+        }catch(Exception e){
+            Toast.makeText(CovidWebsite.this, e.toString(),Toast.LENGTH_SHORT).show();
+        }
+
     }
 }

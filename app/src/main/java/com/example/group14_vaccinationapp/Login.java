@@ -31,7 +31,6 @@ public class Login extends AppCompatActivity {
 
     Boolean edLoginICValid = false, edPasswordValid = false;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

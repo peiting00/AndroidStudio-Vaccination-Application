@@ -33,7 +33,9 @@ public class Audio extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        currentPlaying.stop();
+        if(currentPlaying != null)
+            if(currentPlaying.isPlaying())
+                currentPlaying.stop();
     }
 
     @Override //when back button clicked
