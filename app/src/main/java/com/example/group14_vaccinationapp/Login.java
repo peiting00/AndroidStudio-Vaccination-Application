@@ -150,8 +150,6 @@ public class Login extends AppCompatActivity {
                             startActivity(new Intent (this, MainActivity.class));
                             finish();
                         }
-
-
                     }
                 }else{
                     Toast.makeText(Login.this, "Invalid NRIC or password!",Toast.LENGTH_SHORT).show();
@@ -164,9 +162,5 @@ public class Login extends AppCompatActivity {
         else{
             Toast.makeText(Login.this,"Please make sure every credential is filled in correctly",Toast.LENGTH_SHORT).show();
         }
-    }
-
-    public void goGOGO(View view) {
-        startActivity(new Intent(this,VideoAnimation.class));
     }
 }

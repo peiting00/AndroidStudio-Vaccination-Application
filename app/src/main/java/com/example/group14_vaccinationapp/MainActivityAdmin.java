@@ -86,7 +86,6 @@ public class MainActivityAdmin extends AppCompatActivity {
         }else{
             Toast.makeText(MainActivityAdmin.this, "You have no access to this feature",Toast.LENGTH_SHORT).show();
         }
-
     }
 
     public void toCovidNews(View view) {
