@@ -63,7 +63,7 @@ public class Quiz extends AppCompatActivity {
                         q6Valid = false;
                     }
                     else{
-                        if(Integer.parseInt(ageCheck) < 0 || Integer.parseInt(ageCheck) > 130){
+                        if(Integer.parseInt(ageCheck) <= 18 || Integer.parseInt(ageCheck) > 130){
                             txtErrorQ6.setText("Invalid age");
                             q6Valid = false;
                         }else{
@@ -222,8 +222,8 @@ public class Quiz extends AppCompatActivity {
             Toast.makeText(Quiz.this,msgUnsuitableStatus,Toast.LENGTH_SHORT).show();
 
             Intent intent = new Intent(this, Registration.class);
-            intent.putExtra("age", edAgeQuiz.getText().toString());
-            intent.putExtra("notes", msgUnsuitableStatus);
+            intent.putExtra("age", edAgeQuiz.getText().toString().toUpperCase());
+            intent.putExtra("notes", msgUnsuitableStatus.toUpperCase());
             startActivity(intent);
             finish();
         }else{

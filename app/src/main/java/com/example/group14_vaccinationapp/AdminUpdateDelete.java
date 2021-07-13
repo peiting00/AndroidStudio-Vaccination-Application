@@ -1,8 +1,5 @@
 package com.example.group14_vaccinationapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.database.Cursor;
 import android.os.Bundle;
 import android.text.Editable;
@@ -10,7 +7,9 @@ import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +36,7 @@ public class AdminUpdateDelete extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        EditText searchQuery=findViewById(R.id.et_search_AdminUpdateDel);
+        EditText searchQuery = findViewById(R.id.et_search_AdminUpdateDel);
         searchQuery.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -49,10 +48,10 @@ public class AdminUpdateDelete extends AppCompatActivity {
 
             }
 
-            @Override
+            @Override //searchQuery_editText
             public void afterTextChanged(Editable s) {
-                    //while user is entering the NRIC,searching is ongoing...
-                    searchUserBy(searchQuery.getText().toString());
+                //while user is entering the NRIC,searching is ongoing...
+                searchUserBy(searchQuery.getText().toString());
             }
         });
     }

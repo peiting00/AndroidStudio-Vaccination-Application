@@ -101,11 +101,11 @@ public class AdminCreateUser extends AppCompatActivity {
             }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            public void onTextChanged(CharSequence s, int ssstart, int before, int count) {
                 progressBar.setProgress(50);
             }
 
-            @Override
+            @Override //nric_editText
             public void afterTextChanged(Editable s) {
                 Validation validation = new Validation(getApplicationContext());
                 if (validation.lengthValidate(textInputEditText_nric, textInputLayout_nric)) {
@@ -133,18 +133,18 @@ public class AdminCreateUser extends AppCompatActivity {
 
             }
 
-            @Override
+            @Override //age_editText
             public void afterTextChanged(Editable s) {
-                int age=0;
+                int age = 0;
                 Validation validation = new Validation(getApplicationContext());
 
-                if(validation.requiredFieldValidation(textInputEditText_age,textInputLayout_age)){
-                    if (!validation.ageValidate(textInputEditText_age,textInputLayout_age)){
+                if (validation.requiredFieldValidation(textInputEditText_age, textInputLayout_age)) {
+                    if (!validation.ageValidate(textInputEditText_age, textInputLayout_age)) {
                         //NOT pass validation
                         age = Integer.parseInt(Objects.requireNonNull(textInputEditText_age.getText()).toString());
                         textInputEditText_age.setError("Age should not be less than 18 or more than 130");
                         textInputLayout_age.setFocusable(true);
-                    }else{
+                    } else { //pass validation
                         displayToast("Age is valid for COVID-19 vaccination.");
                         age = Integer.parseInt(Objects.requireNonNull(textInputEditText_age.getText()).toString());
 
@@ -214,18 +214,18 @@ public class AdminCreateUser extends AppCompatActivity {
 
             DatabaseHelper dbHelper = new DatabaseHelper(this);
             //store all the input into local variable
-            String name = textInputEditText_name.getText().toString(),
+            String name = textInputEditText_name.getText().toString().toUpperCase(),
 
-                    address = textInputEditText_addressLine.getText().toString() + ", " +
-                            textInputEditText_city.getText().toString() + ", " +
-                            textInputEditText_postcode.getText().toString() + ", " +
-                            textInputEditText_state.getText().toString(),
+                    address = textInputEditText_addressLine.getText().toString().toUpperCase() + ", " +
+                            textInputEditText_city.getText().toString().toUpperCase() + ", " +
+                            textInputEditText_postcode.getText().toString().toUpperCase() + ", " +
+                            textInputEditText_state.getText().toString().toUpperCase(),
 
-                    phone = textInputEditText_phone.getText().toString(),
-                    IC = textInputEditText_nric_confirm.getText().toString(),
+                    phone = textInputEditText_phone.getText().toString().toUpperCase(),
+                    IC = textInputEditText_nric_confirm.getText().toString().toUpperCase(),
                     password = textInputEditText_password.getText().toString(),
-                    age = textInputEditText_age.getText().toString(),
-                    notes = textInputEditText_notes.getText().toString();
+                    age = textInputEditText_age.getText().toString().toUpperCase(),
+                    notes = textInputEditText_notes.getText().toString().toUpperCase();
 
             // if successfully inserted new user, it will return true
             if (dbHelper.addUser(IC, name, password, age, phone, address, notes, vaccineID)) {

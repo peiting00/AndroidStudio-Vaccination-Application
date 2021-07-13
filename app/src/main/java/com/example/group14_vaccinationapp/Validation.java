@@ -84,18 +84,18 @@ public class Validation extends Registration {
     }
 
     public boolean ageValidate(TextInputEditText textInputEditText,
-                                                    TextInputLayout textInputLayout) {
+                               TextInputLayout textInputLayout) {
         //Parse the string age to int
         int age = Integer.parseInt(textInputEditText.getText().toString());
         if (age <= 18) { //age less than 18
             textInputEditText.setError("Age should not be less than 18"); //set error
             textInputEditText.setFocusable(true);
             return false; //validate fail
-        }else if(age>120){
+        } else if (age > 120) {
             textInputEditText.setError("Age should not be more than 120"); //set error
             textInputEditText.setFocusable(true);
             return false; //validate fail
-        }else {//no error
+        } else {//no error
             textInputLayout.setErrorEnabled(false);//disable the error message
             return true;
         }
@@ -104,7 +104,7 @@ public class Validation extends Registration {
     //check if the user is exist in the database
     //pass the parameters editText and InputLayout into here
     public boolean checkUserExist(TextInputEditText textInputEditText,
-                                                TextInputLayout textInputLayout) {
+                                  TextInputLayout textInputLayout) {
         //convert the EditText to String
         String ic = textInputEditText.getText().toString();
         //create a databaseHelper object

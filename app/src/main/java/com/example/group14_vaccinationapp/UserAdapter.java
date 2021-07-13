@@ -186,7 +186,7 @@ public class UserAdapter extends ArrayAdapter<User> {
                         //concat the selected year,month,dayofMonth into a string
                         String date = dayOfMonth + " / " + (month + 1) + " / " + year;
                         //set the selected date into the editText
-                        et_status.setText(String.valueOf("First/Two dose: " + date));
+                        et_status.setText(String.valueOf("FIRST/SECOND DOSE: " + date));
                     }
                 }, year, month, day); //A calendar with year,month and day
                 // System.currentTimeMillis() -> returns the current time in milliseconds
@@ -206,13 +206,13 @@ public class UserAdapter extends ArrayAdapter<User> {
 
             @Override
             public void onClick(View v) {
-                String name = et_name.getText().toString(),
-                        ic = et_nric.getText().toString(),
-                        age = et_age.getText().toString(),
-                        phone = et_phone.getText().toString(),
-                        address = et_address.getText().toString(),
-                        status = et_status.getText().toString(),
-                        notes = et_notes.getText().toString();
+                String name = et_name.getText().toString().toUpperCase(),
+                        ic = et_nric.getText().toString().toUpperCase(),
+                        age = et_age.getText().toString().toUpperCase(),
+                        phone = et_phone.getText().toString().toUpperCase(),
+                        address = et_address.getText().toString().toUpperCase(),
+                        status = et_status.getText().toString().toUpperCase(),
+                        notes = et_notes.getText().toString().toUpperCase();
 
                 //validation start
                 Validation validation = new Validation(context);
@@ -234,7 +234,7 @@ public class UserAdapter extends ArrayAdapter<User> {
                         errorMessage.setVisibility(View.VISIBLE);
                         valid = false;
                     } else {
-                        vaccineID = String.valueOf(spinner.getSelectedItemPosition());
+                        vaccineID = String.valueOf(spinner.getSelectedItemPosition()).toUpperCase();
                         valid = true;
                     }
 
@@ -256,7 +256,7 @@ public class UserAdapter extends ArrayAdapter<User> {
         });
 
         /*
-         * WHEN user clicks on ' delete' button
+         * WHEN user clicks on 'cancel' button
          * System close the update alert dialog
          */
         view.findViewById(R.id.btnCancel_adminUpdate).setOnClickListener(new View.OnClickListener() {
