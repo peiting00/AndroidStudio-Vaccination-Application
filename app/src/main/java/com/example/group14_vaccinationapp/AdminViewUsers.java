@@ -1,19 +1,16 @@
 package com.example.group14_vaccinationapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.database.Cursor;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import java.util.ArrayList;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class AdminViewUsers extends AppCompatActivity {
     private String NRICs[];
@@ -21,6 +18,7 @@ public class AdminViewUsers extends AppCompatActivity {
     DatabaseHelper dbHelper;
 
     RecyclerView recycler_AdminView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +42,7 @@ public class AdminViewUsers extends AppCompatActivity {
         recycler_AdminView.setAdapter(adapter);
         recycler_AdminView.setLayoutManager(new LinearLayoutManager(this));
 
-        EditText searchQuery=findViewById(R.id.et_search_AdminView);
+        EditText searchQuery = findViewById(R.id.et_search_AdminView);
         searchQuery.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -91,7 +89,7 @@ public class AdminViewUsers extends AppCompatActivity {
         returnRead(cursor);
     }
 
-    private Cursor returnRead(Cursor cursor){
+    private Cursor returnRead(Cursor cursor) {
         int i = 0, j = 0;
         if (cursor.moveToFirst()) {
             do {

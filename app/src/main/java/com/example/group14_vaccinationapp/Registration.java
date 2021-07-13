@@ -415,7 +415,7 @@ public class Registration extends AppCompatActivity implements LocationListener 
 
                     phone = textInputEditText_phone.getText().toString().toUpperCase(),
                     IC = textInputEditText_nric_confirm.getText().toString().toUpperCase(),
-                    password = textInputEditText_password.getText().toString().toUpperCase();
+                    password = textInputEditText_password.getText().toString();
             //int ageParse = Integer.parseInt(age);
 
             if (dbHelper.addUser(IC, name, password, age, phone, address, notes, vaccineID)) {

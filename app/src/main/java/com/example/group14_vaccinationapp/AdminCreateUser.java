@@ -135,16 +135,16 @@ public class AdminCreateUser extends AppCompatActivity {
 
             @Override //age_editText
             public void afterTextChanged(Editable s) {
-                int age=0;
+                int age = 0;
                 Validation validation = new Validation(getApplicationContext());
 
-                if(validation.requiredFieldValidation(textInputEditText_age,textInputLayout_age)){
-                    if (!validation.ageValidate(textInputEditText_age,textInputLayout_age)){
+                if (validation.requiredFieldValidation(textInputEditText_age, textInputLayout_age)) {
+                    if (!validation.ageValidate(textInputEditText_age, textInputLayout_age)) {
                         //NOT pass validation
                         age = Integer.parseInt(Objects.requireNonNull(textInputEditText_age.getText()).toString());
                         textInputEditText_age.setError("Age should not be less than 18 or more than 130");
                         textInputLayout_age.setFocusable(true);
-                    }else{ //pass validation
+                    } else { //pass validation
                         displayToast("Age is valid for COVID-19 vaccination.");
                         age = Integer.parseInt(Objects.requireNonNull(textInputEditText_age.getText()).toString());
 
@@ -223,7 +223,7 @@ public class AdminCreateUser extends AppCompatActivity {
 
                     phone = textInputEditText_phone.getText().toString().toUpperCase(),
                     IC = textInputEditText_nric_confirm.getText().toString().toUpperCase(),
-                    password = textInputEditText_password.getText().toString().toUpperCase(),
+                    password = textInputEditText_password.getText().toString(),
                     age = textInputEditText_age.getText().toString().toUpperCase(),
                     notes = textInputEditText_notes.getText().toString().toUpperCase();
 

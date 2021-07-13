@@ -36,7 +36,7 @@ public class AdminUpdateDelete extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        EditText searchQuery=findViewById(R.id.et_search_AdminUpdateDel);
+        EditText searchQuery = findViewById(R.id.et_search_AdminUpdateDel);
         searchQuery.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -50,8 +50,8 @@ public class AdminUpdateDelete extends AppCompatActivity {
 
             @Override //searchQuery_editText
             public void afterTextChanged(Editable s) {
-                    //while user is entering the NRIC,searching is ongoing...
-                    searchUserBy(searchQuery.getText().toString());
+                //while user is entering the NRIC,searching is ongoing...
+                searchUserBy(searchQuery.getText().toString());
             }
         });
     }
