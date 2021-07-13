@@ -128,10 +128,12 @@ public class Login extends AppCompatActivity {
                 dbHelper = new DatabaseHelper(this);
 
                 if(dbHelper.isIC_Exist(edNRIC)){
+
                     Cursor cursor = dbHelper.readInfo(edNRIC);
                     cursor.moveToFirst();
                     String passwordDb = cursor.getString(cursor.getColumnIndex("password"));
                     String isAdmin = cursor.getString(cursor.getColumnIndex("isAdmin"));
+                    String name=cursor.getString(cursor.getColumnIndex("name"));
 
                     if(!edPassword.equals(passwordDb)){
                         Toast.makeText(Login.this, "Invalid NRIC or password!",Toast.LENGTH_SHORT).show();
@@ -143,10 +145,13 @@ public class Login extends AppCompatActivity {
                         editor.putString(passwordPreference, edPassword);
                         editor.commit();
 
-                        if(isAdmin.equals("1")){
+                        //To show the account holder name that the user logged in
+                        Toast.makeText(this,"Welcome, "+name+" !",Toast.LENGTH_SHORT).show();
+
+                        if(isAdmin.equals("1")){ //if the account is admin
                             startActivity(new Intent (this, MainActivityAdmin.class));
                             finish();
-                        }else{
+                        }else{//if the account is registered users
                             startActivity(new Intent (this, MainActivity.class));
                             finish();
                         }
